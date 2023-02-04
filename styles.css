@@ -1,0 +1,12 @@
+h1 {
+    font-size: 3em;
+}
+
+ul.social-links li.social-link {
+    padding: 0.4em;
+    font-size: 1.3em;
+}
+
+li.social-link-discord {
+    list-style-image: url("/assets/logos/discord.png");
+}
