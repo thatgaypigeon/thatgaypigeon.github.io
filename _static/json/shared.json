@@ -1,0 +1,11 @@
+{
+  "iso_date_format": "%Y-%m-%dT%H:%M:%SZ",
+  "date_format": "%d-%m-%Y",
+  "date_regex": "^\\d{2}-\\d{2}-\\d{4}$",
+  "wiki_url": "https://pigeon.miraheze.org",
+  "wiki_wiki_url": "/wiki",
+  "wiki_api_url": "/w/api.php",
+  "wiki_img_auth_url": "/w/img_auth.php",
+  "wiki_db_name": "pigeonwiki",
+  "static_wiki_img_url": "https://static.miraheze.org"
+}
