@@ -1,0 +1,10 @@
+.vscode
+TODO
+
+# Ignore tests
+**/test
+
+# Ignore folders starting with an underscore (except _static)
+**/_*
+!_static
+_static/**/_*
