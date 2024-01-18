@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Stego Suite",
+    "desc": "🦕 A Python-based steganography application written for our team's entry to the Python Discord 2023 Code Jam",
+    "date": "14-09-2023",
+    "link": "https://github.com/Artemis21/pydis-jam23",
+    "imag": "https://raw.githubusercontent.com/Artemis21/pydis-jam23/main/src/pydis_jam23/web/static/logo.png",
+    "icon": [
+      "ph",
+      "ph-github-logo"
+    ],
+    "lang": "en",
+    "type": "github",
+    "cats": [
+      "github"
+    ],
+    "code": [
+      "py"
+    ],
+    "team": 5
+  },
+  {
+    "name": "Pigeon's Wiki",
+    "desc": "🌐 My personal wiki, home to information about my niche interests, passions, and creative projects",
+    "date": "11-01-2024",
+    "link": "https://pigeon.miraheze.org/wiki/Main_Page",
+    "imag": "https://pigeon.miraheze.org/w/img_auth.php/9/96/Icon.png",
+    "type": "mw",
+    "tags": [
+      "pj"
+    ],
+    "lang": "en",
+    "code": false
+  }
+]
