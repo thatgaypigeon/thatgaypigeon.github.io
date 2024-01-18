@@ -1,0 +1,2999 @@
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// -------------------------------------------------- CONTENTS ------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* This section is auto-generated. Please do not edit it manually! :) */
+
+/* → Table of Contents
+// ----------------------------- //
+CONTENTS                   4
+IMPORTS / SETUP            12
+ROOT                       100
+ → Variables               117
+GENERAL                    448
+ → Global                  455
+ → Base                    473
+ → Headings                511
+ → Text                    561
+   → Links                 575
+   → Code                  594
+   → Keyboard Shortcuts    610
+   → Other                 680
+ → Images                  696
+ → Buttons                 708
+FORM INPUTS                728
+ → Layout                  735
+ → Inputs                  776
+   → Single-Cell           793
+   → Radio / Checkbox      818
+   → Range                 837
+   → Button                880
+   → Toggle                917
+   → Select                974
+ → Labels                  1003
+ → Reset Buttons           1090
+ → Output                  1118
+HEADER                     1129
+ → Buttons                 1164
+ → Menus                   1242
+ → Menu Content            1290
+   → Text                  1302
+   → Headings              1316
+ → Menu Lists              1370
+   → Links                 1389
+MAIN MENU                  1484
+ → Button                  1491
+ → Menu                    1527
+SEARCH                     1542
+ → Button                  1549
+ → Menu                    1568
+ → Search Bar              1671
+ → Search Input            1716
+ → Search Settings         1773
+   → Result Count          1832
+   → Filters               1846
+ → Search Info             1861
+ → Search Results          1884
+   → Results               1904
+SETTINGS                   2112
+ → Button                  2119
+ → Overlay                 2129
+ → Menu                    2153
+COOKIES                    2166
+ → Button                  2173
+FOOTER                     2187
+ → Left                    2194
+ → Right                   2205
+   → Links                 2228
+ICONS                      2289
+UTILITY                    2362
+ → Content                 2429
+ → Images                  2457
+ → Tooltips                2491
+ → Sparks                  2710
+ → Caret                   2731
+PREFERENCES                2751
+ → Accessibility           2758
+   → Reduce Motion         2763
+   → Keyboard Navigation   2802
+ → Cookies                 2815
+ → Other                   2830
+ANIMATIONS                 2852
+ → Blink                   2887
+ → Slide                   2902
+ → Sparks                  2931
+MOBILE                     2978
+ → Screen Width            2989
+// ----------------------------- */
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ---------------------------------------------- IMPORTS / SETUP ---------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------------- //
+// -------------------------------- Defaults ------------------------------- //
+// ------------------------------------------------------------------------- */
+
+:root {
+    --font-subheader-name: "Poppins";
+    --font-header-name: "Poppins";
+    --font-accent-name: "Poppins";
+    --font-mono-name: "Space Mono";
+}
+
+/* ------------------------------------------------------------------------- //
+// ---------------------------- Material Symbols --------------------------- //
+// ------------------------------------------------------------------------- */
+
+.material-symbols-rounded {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* ------------------------------------------------------------------------- //
+// ------------------------------- Lulo Clean ------------------------------ //
+// ------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: "Lulo Clean";
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+    src: url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.eot");
+    src: url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.eot?#iefix") format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.woff2") format("woff2"),
+        url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.woff") format("woff"),
+        url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lulo Clean";
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+    src: url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.eot");
+    src: url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.eot?#iefix") format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.woff2") format("woff2"),
+        url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.woff") format("woff"),
+        url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.ttf") format("truetype");
+}
+
+/* ------------------------------------------------------------------------- //
+// ----------------------------- Phosphor Icons ---------------------------- //
+// ------------------------------------------------------------------------- */
+
+/* → Re-defined to specify Unicode ranges
+// --------------------- */
+
+@font-face {
+    font-family: PhosphorBold;
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+    src: url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.woff2") format("woff2"),
+        url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.woff") format("woff"),
+        url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.ttf") format("truetype"),
+        url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.svg#Phosphor-Bold")
+            format("svg");
+    unicode-range: U+E900-EFFF;
+}
+
+/* ------------------------------------------------------------------------- //
+// ---------------------------- Custom Icon Font --------------------------- //
+// ------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: TheNestIcons;
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+    src: url("/_static/font/TheNestIcons/build/TheNestIcons");
+    src: url("/_static/font/TheNestIcons/build/TheNestIcons.ttf") format("truetype");
+    unicode-range: U+E0??;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ---------------------------------------------------- ROOT --------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+:root {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    -webkit-filter: brightness(var(--brightness)) contrast(var(--contrast));
+    filter: brightness(var(--brightness)) contrast(var(--contrast));
+    letter-spacing: 0.15px;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// --------------------------------------- Variables --------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+:root {
+    /* setup for customisation with JS */
+    --h: 227;
+    --brightness: 1;
+    --contrast: 1;
+
+    /* → Constants */
+
+    /* → Other colours */
+    --red-light: hsl(4 100% 75%);
+    --red: hsl(4 90% 58%);
+    --red-dark: hsl(8 80% 40%);
+
+    --orange-light: hsl(24 100% 70%);
+    --orange: hsl(20 90% 56%);
+    --orange-dark: hsl(24 80% 42%);
+
+    --gold-light: hsl(34 100% 67%);
+    --gold: hsl(34 100% 54%);
+    --gold-dark: hsl(34 95% 38%);
+
+    --yellow-light: hsl(48 100% 70%);
+    --yellow: hsl(48 100% 55%);
+    --yellow-dark: hsl(48 80% 36%);
+
+    --lime-light: hsl(80 85% 62%);
+    --lime: hsl(80 82% 56%);
+    --lime-dark: hsl(80 85% 36%);
+
+    --green-light: hsl(130 75% 72%);
+    --green: hsl(125 75% 57%);
+    --green-dark: hsl(130 72% 36%);
+    --green-extra-dark: hsl(130 80% 24%);
+
+    --aqua-light: hsl(165 90% 60%);
+    --aqua: hsl(165 90% 44%);
+    --aqua-dark: hsl(165 85% 28%);
+
+    --turquoise-light: hsl(182 90% 60%);
+    --turquoise: hsl(182 85% 43%);
+    --turquoise-dark: hsl(182 85% 28%);
+
+    --blue-light: hsl(200 100% 70%);
+    --blue: hsl(200 95% 48%);
+    --blue-dark: hsl(200 90% 30%);
+
+    --navy-light: hsl(225 100% 80%);
+    --navy: hsl(225 95% 58%);
+    --navy-dark: hsl(225 90% 405);
+
+    --indigo-light: hsl(230 100% 80%);
+    --indigo: hsl(250 100% 54%);
+    --indigo-dark: hsl(255 90% 40%);
+
+    --purple-light: hsl(270 85% 75%);
+    --purple: hsl(270 95% 50%);
+    --purple-dark: hsl(270 95% 30%);
+
+    --magenta-light: hsl(290 90% 80%);
+    --magenta: hsl(290 82% 55%);
+    --magenta-dark: hsl(290 80% 40%);
+
+    --pink-light: hsl(315 90% 80%);
+    --pink: hsl(320 85% 58%);
+    --pink-dark: hsl(315 80% 40%);
+
+    --rose-light: hsl(335 90% 80%);
+    --rose: hsl(335 95% 65%);
+    --rose-dark: hsl(335 80% 40%);
+
+    --white: hsl(0 0% 100%);
+    --grey-light-3: hsl(0 0% 90%);
+    --grey-light-2: hsl(0 0% 80%);
+    --grey-light-1: hsl(0 0% 70%);
+    --grey-light-0: hsl(0 0% 60%);
+    --grey: hsl(0 0% 50%);
+    --grey-dark-0: hsl(0 0% 40%);
+    --grey-dark-1: hsl(0 0% 30%);
+    --grey-dark-2: hsl(0 0% 20%);
+    --grey-dark-3: hsl(0 0% 10%);
+    --black: hsl(0 0% 0%);
+
+    --rainbow-gradient: linear-gradient(
+        90deg,
+        var(--red) 1.5%,
+        var(--orange),
+        var(--gold),
+        var(--yellow),
+        var(--lime),
+        var(--green),
+        var(--aqua),
+        var(--turquoise),
+        var(--blue),
+        var(--navy),
+        var(--indigo),
+        var(--purple),
+        var(--magenta),
+        var(--pink),
+        var(--rose)
+    );
+
+    --rainbow-gradient-stop: linear-gradient(
+        90deg,
+        var(--red),
+        var(--red) calc(1% * 1 * 100 / 15),
+        var(--orange) calc(1% * 1 * 100 / 15),
+        var(--orange) calc(1% * 2 * 100 / 15),
+        var(--gold) calc(1% * 2 * 100 / 15),
+        var(--gold) calc(1% * 3 * 100 / 15),
+        var(--yellow) calc(1% * 3 * 100 / 15),
+        var(--yellow) calc(1% * 4 * 100 / 15),
+        var(--lime) calc(1% * 4 * 100 / 15),
+        var(--lime) calc(1% * 5 * 100 / 15),
+        var(--green) calc(1% * 5 * 100 / 15),
+        var(--green) calc(1% * 6 * 100 / 15),
+        var(--aqua) calc(1% * 6 * 100 / 15),
+        var(--aqua) calc(1% * 7 * 100 / 15),
+        var(--turquoise) calc(1% * 7 * 100 / 15),
+        var(--turquoise) calc(1% * 8 * 100 / 15),
+        var(--blue) calc(1% * 8 * 100 / 15),
+        var(--blue) calc(1% * 9 * 100 / 15),
+        var(--navy) calc(1% * 9 * 100 / 15),
+        var(--navy) calc(1% * 10 * 100 / 15),
+        var(--indigo) calc(1% * 10 * 100 / 15),
+        var(--indigo) calc(1% * 11 * 100 / 15),
+        var(--purple) calc(1% * 11 * 100 / 15),
+        var(--purple) calc(1% * 12 * 100 / 15),
+        var(--magenta) calc(1% * 12 * 100 / 15),
+        var(--magenta) calc(1% * 13 * 100 / 15),
+        var(--pink) calc(1% * 13 * 100 / 15),
+        var(--pink) calc(1% * 14 * 100 / 15),
+        var(--rose) calc(1% * 14 * 100 / 15),
+        var(--rose)
+    );
+
+    --rainbow-gradient-light: linear-gradient(
+        90deg,
+        var(--red-light) 1.5%,
+        var(--orange-light),
+        var(--gold-light),
+        var(--yellow-light),
+        var(--lime-light),
+        var(--green-light),
+        var(--aqua-light),
+        var(--turquoise-light),
+        var(--blue-light),
+        var(--navy-light),
+        var(--indigo-light),
+        var(--purple-light),
+        var(--magenta-light),
+        var(--pink-light),
+        var(--rose-light)
+    );
+
+    --rainbow-gradient-light-stop: linear-gradient(
+        90deg,
+        var(--red-light),
+        var(--red-light) calc(1% * 1 * 100 / 15),
+        var(--orange-light) calc(1% * 1 * 100 / 15),
+        var(--orange-light) calc(1% * 2 * 100 / 15),
+        var(--gold-light) calc(1% * 2 * 100 / 15),
+        var(--gold-light) calc(1% * 3 * 100 / 15),
+        var(--yellow-light) calc(1% * 3 * 100 / 15),
+        var(--yellow-light) calc(1% * 4 * 100 / 15),
+        var(--lime-light) calc(1% * 4 * 100 / 15),
+        var(--lime-light) calc(1% * 5 * 100 / 15),
+        var(--green-light) calc(1% * 5 * 100 / 15),
+        var(--green-light) calc(1% * 6 * 100 / 15),
+        var(--aqua-light) calc(1% * 6 * 100 / 15),
+        var(--aqua-light) calc(1% * 7 * 100 / 15),
+        var(--turquoise-light) calc(1% * 7 * 100 / 15),
+        var(--turquoise-light) calc(1% * 8 * 100 / 15),
+        var(--blue-light) calc(1% * 8 * 100 / 15),
+        var(--blue-light) calc(1% * 9 * 100 / 15),
+        var(--navy-light) calc(1% * 9 * 100 / 15),
+        var(--navy-light) calc(1% * 10 * 100 / 15),
+        var(--indigo-light) calc(1% * 10 * 100 / 15),
+        var(--indigo-light) calc(1% * 11 * 100 / 15),
+        var(--purple-light) calc(1% * 11 * 100 / 15),
+        var(--purple-light) calc(1% * 12 * 100 / 15),
+        var(--magenta-light) calc(1% * 12 * 100 / 15),
+        var(--magenta-light) calc(1% * 13 * 100 / 15),
+        var(--pink-light) calc(1% * 13 * 100 / 15),
+        var(--pink-light) calc(1% * 14 * 100 / 15),
+        var(--rose-light) calc(1% * 14 * 100 / 15),
+        var(--rose-light)
+    );
+
+    --colour-error: var(--red);
+    --colour-warning: var(--orange);
+    --colour-issue: var(--gold);
+    --colour-good: var(--green);
+    --colour-info: var(--blue);
+
+    /* → Other styles */
+    --shadow-small-1: hsl(0 0% 0% / 0.6) 0 0.25rem 0.5rem;
+    --shadow-small-0: hsl(0 0% 0% / 0.6) 0 0.25rem 1rem;
+    --shadow: hsl(0 0% 0% / 0.6) 0 0.25rem 1.5rem;
+
+    --shadow-inside-small-1: inset hsl(0 0% 0% / 0.6) 0 0.25rem 0.5rem;
+    --shadow-inside-small-0: inset hsl(0 0% 0% / 0.6) 0 0.25rem 1rem;
+    --shadow-inside: inset hsl(0 0% 0% / 0.6) 0 0.25rem 1.5rem;
+
+    /* → Fonts */
+    --font-fallback: Helvetica, Arial, sans-serif;
+
+    --font-subheader: var(--font-subheader-name), var(--font-header);
+    --font-header: var(--font-header-name), var(--font-accent);
+    --font-accent: var(--font-accent-name), var(--font-text);
+    --font-text: TheNestIcons, PhosphorBold, var(--font-text-name), var(--font-fallback);
+    --font-mono: var(--font-mono-name), monospace;
+
+    /* → Borders */
+    --border-style: solid;
+
+    --border-width-thin-2: 0.025rem;
+    --border-width-thin-1: 0.05rem;
+    --border-width-thin-0: 0.075rem;
+    --border-width: 0.1rem;
+    --border-width-thick-0: 0.15rem;
+    --border-width-thick-1: 0.2rem;
+    --border-width-thick-2: 0.3rem;
+    --border-width-thick-3: 0.4rem;
+
+    --border-dark-1: var(--border-width) var(--border-style) var(--border-colour-dark-1);
+    --border-dark-0: var(--border-width) var(--border-style) var(--border-colour-dark-0);
+    --border: var(--border-width) var(--border-style) var(--border-colour);
+    --border-light-0: var(--border-width) var(--border-style) var(--border-colour-light-0);
+    --border-light-1: var(--border-width) var(--border-style) var(--border-colour-light-1);
+
+    --border-subtle: var(--border-width) var(--border-style) var(--border-colour-subtle);
+
+    --focus-border-width: var(--border-width);
+    --focus-border-style: solid;
+    --focus-border-colour: var(--colour-primary);
+    --focus-border: var(--focus-border-width) var(--focus-border-style) var(--focus-border-colour);
+
+    /* → Spacing */
+    --main-padding: 2rem;
+
+    /* → Transition */
+    --transition-curve: ease;
+    --transition-short-1: 100ms var(--transition-curve);
+    --transition-short-0: 200ms var(--transition-curve);
+    --transition: 300ms var(--transition-curve);
+    --transition-long-0: 400ms var(--transition-curve);
+    --transition-long-1: 500ms var(--transition-curve);
+    --transition-long-2: 600ms var(--transition-curve);
+
+    --transition-wobble-curve: cubic-bezier(0.55, 0.6, 0, 1.15);
+    --transition-wobble-short-3: 250ms var(--transition-wobble-curve);
+    --transition-wobble-short-2: 350ms var(--transition-wobble-curve);
+    --transition-wobble-short-1: 500ms var(--transition-wobble-curve);
+    --transition-wobble-short-0: 900ms var(--transition-wobble-curve);
+    --transition-wobble: 1200ms var(--transition-wobble-curve);
+    --transition-wobble-long-0: 1750ms var(--transition-wobble-curve);
+
+    --transition-wobble-emphasised-curve: cubic-bezier(0.55, 0.6, 0, 1.3);
+    --transition-wobble-emphasised-short-3: 250ms var(--transition-wobble-emphasised-curve);
+    --transition-wobble-emphasised-short-2: 350ms var(--transition-wobble-emphasised-curve);
+    --transition-wobble-emphasised-short-1: 500ms var(--transition-wobble-emphasised-curve);
+    --transition-wobble-emphasised-short-0: 900ms var(--transition-wobble-emphasised-curve);
+    --transition-wobble-emphasised: 1200ms var(--transition-wobble-emphasised-curve);
+    --transition-wobble-emphasised-long-0: 1750ms var(--transition-wobble-emphasised-curve);
+
+    /* → Tooltips */
+    --tooltip-auto-delay: 1000ms;
+    --tooltip-auto-duration: 5000ms;
+    --tooltip-bg-colour: var(--colour-bg-200);
+    --tooltip-closable-gap: 0.55em;
+    --tooltip-closable-padding: 0.75em;
+    --tooltip-closable-width: 1.125em;
+    --tooltip-gap-from-edge: 8px;
+    --tooltip-max-width-numeric: 18;
+    --tooltip-max-width: calc(1rem * var(--tooltip-max-width-numeric));
+    --tooltip-offset: 0.3rem;
+    --tooltip-outline-colour: var(--colour-bg-700);
+    --tooltip-outline-width: var(--border-width);
+    --tooltip-pointer-size: 0.35rem;
+
+    /* → Other */
+    --focus-transition: 150ms outline-width var(--transition-curve);
+
+    --menu-button-max-size: var(--logo-size);
+}
+
+:root {
+    --nav-height: 4rem;
+    --nav-padding: 0.5rem;
+    --nav-gap: 1rem;
+    --icon-size: 1.5rem;
+    --icon-padding: 0.5rem;
+    --icon-border-radius: 0.4rem;
+    --icon-gap: 0.5rem;
+    --logo-size: 2.75rem;
+    --logo-font-size: 1.5rem;
+    --logo-padding: 0rem;
+    /* --logo-padding: 0.25rem; */
+    --logo-border-radius: 0.4rem;
+    --logo-gap: 0.5rem;
+    --search-bar-size: 0.65rem;
+    --divider-width: 0.1em;
+    --divider-gap: var(--icon-gap);
+    --divider-gap-modifier: 3;
+}
+
+:root[at-top] {
+    --nav-height: 5rem;
+    --nav-padding: 0.75rem;
+    --nav-gap: 1.5rem;
+    --icon-size: 1.8rem;
+    --icon-padding: 0.6rem;
+    --icon-border-radius: 0.5rem;
+    --icon-gap: 0.5rem;
+    --logo-size: 3.25rem;
+    --logo-font-size: 2rem;
+    --logo-padding: 0rem;
+    /* --logo-padding: 0.5rem; */
+    --logo-border-radius: 0.5rem;
+    --logo-gap: 0.6rem;
+    --search-bar-size: 0.75rem;
+    --divider-gap-modifier: 4;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// -------------------------------------------------- GENERAL -------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Global ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+* {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    transition: var(--focus-transition);
+    outline-color: var(--colour-primary);
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------------------------ Base ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+body {
+    position: relative;
+    margin: 0;
+    background-color: var(--colour-bg);
+    font-family: var(--font-text), var(--font-fallback);
+    color: var(--colour-text);
+    font-size: 1.1rem;
+    overflow-x: hidden;
+}
+
+header {
+    position: -webkit-sticky;
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 99;
+}
+
+main {
+    margin-top: var(--nav-height);
+    padding: var(--main-padding);
+    transition: margin-top var(--transition);
+}
+
+footer {
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--colour-bg-400);
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Headings --------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    display: flex;
+    gap: 0.5em;
+    font-family: var(--font-header);
+    text-wrap: balance;
+}
+
+h1,
+.h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--colour-text-900);
+}
+
+h2,
+.h2 {
+    font-size: 1.25rem;
+    font-weight: bolder;
+    color: var(--colour-text-800);
+}
+
+h3,
+.h3 {
+    font-size: 1.15rem;
+    color: var(--colour-text-700);
+}
+
+h4,
+.h4 {
+    font-size: 1.1rem;
+    color: var(--colour-text-600);
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------------------------ Text ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+p {
+    margin-block: 1.25em;
+    text-wrap: pretty;
+}
+
+main p {
+    margin-inline: 1.75em; /* give space for tone indicators if enabled */
+}
+
+/* ------------------------------------------------------------------------- //
+// --------------------------------- Links --------------------------------- //
+// ------------------------------------------------------------------------- */
+
+a {
+    text-decoration: none;
+    border-radius: 0.2rem;
+    color: var(--colour-primary);
+}
+
+a:hover {
+    color: var(--colour-primary-light-0);
+}
+
+p a:focus-visible {
+    outline-width: var(--border-width) !important;
+    outline-offset: var(--border-width) !important;
+}
+
+/* ------------------------------------------------------------------------- //
+// ---------------------------------- Code --------------------------------- //
+// ------------------------------------------------------------------------- */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: var(--font-mono);
+    background-color: var(--colour-bg);
+    padding: 0.15em 0.4em;
+    border: var(--border-dark-0);
+    border-radius: 0.6em;
+    white-space: pre;
+}
+
+/* ------------------------------------------------------------------------- //
+// --------------------------- Keyboard Shortcuts -------------------------- //
+// ------------------------------------------------------------------------- */
+
+.shortcut {
+    display: flex;
+    align-items: center;
+    font-size: 0.6em;
+    gap: 0.5em;
+}
+
+kbd[symbol]::before,
+kbd[symbol]::after {
+    position: relative;
+    display: inline-block;
+    padding-inline: 0.45em;
+    scale: 1.25;
+    font-family: initial;
+    -webkit-filter: brightness(1.1);
+    filter: brightness(1.1);
+}
+
+kbd[symbol]:not([after])::before,
+kbd[symbol][after]::after {
+    content: attr(symbol);
+}
+
+kbd[symbol]::before {
+    padding-left: 0.1em !important;
+    left: 0.1em;
+}
+
+kbd[symbol]::after {
+    padding-right: 0.1em !important;
+    right: 0.1em;
+}
+
+kbd[symbol="←"]::before,
+kbd[symbol="←"]::after,
+kbd[symbol="↑"]::before,
+kbd[symbol="↑"]::after,
+kbd[symbol="→"]::before,
+kbd[symbol="→"]::after,
+kbd[symbol="↓"]::before,
+kbd[symbol="↓"]::after {
+    top: -0.1em;
+    font-weight: bold;
+}
+
+kbd[key="Command"]::before,
+kbd[key="Super"]::before,
+kbd[key="Option"]::before {
+    top: 0.05em;
+}
+
+kbd[key="Tab"]::after {
+    top: -0.125em;
+    scale: 1.5 !important;
+}
+
+kbd[key="Shift"]::before {
+    font-weight: bold;
+    scale: 1.375 !important;
+}
+
+kbd[key="Enter"]::before {
+    top: -0.15em;
+    scale: 1.5 !important;
+}
+
+/* ------------------------------------------------------------------------- //
+// --------------------------------- Other --------------------------------- //
+// ------------------------------------------------------------------------- */
+
+mark {
+    background: none;
+    color: var(--colour-text-700);
+    font-weight: bolder;
+    -webkit-text-decoration: underline 1.75px var(--colour-primary);
+    text-decoration: underline 1.75px var(--colour-primary);
+    text-underline-position: under;
+    /* text-underline-offset: 3px;
+    text-decoration-skip-ink: none; */
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Images ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.site-icon {
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+    border-radius: 15%;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Buttons ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+button,
+.button {
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+    background-color: var(--colour-bg-700);
+    border: var(--border);
+    color: var(--colour-text-600);
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------ FORM INPUTS ------------------------------------------------ //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Layout ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+form p {
+    margin: 0.5em auto 0 auto !important;
+}
+
+/* → Groups of related inputs
+// --------------------- */
+form fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+/* → Group title
+// --------------------- */
+form legend {
+    color: var(--colour-text-600);
+    font-size: 0.9em;
+    margin-block: 0 0.4em;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Inputs ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+form input + label {
+    padding: 0.5em 0.6em;
+}
+
+form input + label:last-of-type {
+    padding-bottom: 0.55em;
+}
+
+form input:checked + label {
+    outline: var(--focus-border) !important;
+}
+
+/* ------------------------------------------------------------------------- //
+// ------------------------------ Single-Cell ------------------------------ //
+// ------------------------------------------------------------------------- */
+
+form .input-wrapper {
+    display: -ms-grid;
+    display: grid;
+    grid-template-areas: "input";
+}
+
+form .input-wrapper input[type="radio"],
+form .input-wrapper input[type="radio"] + label,
+form .input-wrapper input[type="checkbox"],
+form .input-wrapper input[type="checkbox"] + label {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-row: 1;
+    grid-column: 1;
+    grid-area: input;
+}
+
+form .input-wrapper input:checked:focus-visible + label {
+    outline: var(--border-width) solid var(--colour-secondary) !important;
+}
+
+/* ------------------------------------------------------------------------- //
+// ---------------------------- Radio / Checkbox --------------------------- //
+// ------------------------------------------------------------------------- */
+
+form input[type="radio"],
+form input[type="checkbox"] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+form input[type="radio"] + label,
+form input[type="checkbox"] + label {
+    outline: var(--border-width) solid hsl(var(--h) 55% 15% / 0.85);
+    background: var(--colour-bg-500);
+}
+
+/* ------------------------------------------------------------------------- //
+// --------------------------------- Range --------------------------------- //
+// ------------------------------------------------------------------------- */
+
+form .range-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+form .range-wrapper .reset-button {
+    margin-inline: 0.25em;
+}
+
+form input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    padding: 0.4em 0.5em;
+    border: none;
+    background: none;
+}
+
+form input[type="range"]::-webkit-slider-thumb,
+form input[type="range"]::-moz-range-thumb {
+    width: 1em;
+    height: 1em;
+    background-color: var(--colour-primary);
+    border: var(--border-light-0);
+    border-radius: 100vw;
+    cursor: pointer;
+}
+
+form input[type="range"]::-webkit-slider-runnable-track,
+form input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 0.5em;
+    background: var(--colour-bg-800);
+    border-radius: 100vw;
+    border: var(--border-subtle);
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------- //
+// --------------------------------- Button -------------------------------- //
+// ------------------------------------------------------------------------- */
+
+form .button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.15em 0.45em;
+}
+
+form input[type="button"] {
+    display: -ms-inline-grid;
+    display: inline-grid;
+    place-items: center;
+    padding: var(--padding) var(--padding) calc(1.25em + var(--padding)) var(--padding);
+    background-color: var(--colour-bg-700);
+    border: var(--border);
+    color: var(--colour-text-600);
+    border-radius: 0.5em;
+    aspect-ratio: 1 / 1;
+    font-size: 0.75rem;
+    --padding: 0.125em;
+}
+
+form input[type="button"][disabled] {
+    background-color: var(--colour-bg-400);
+    border-color: var(--border-colour-subtle);
+    color: var(--colour-text-400);
+}
+
+form input[type="button"]:hover {
+    background-color: var(--colour-bg-600);
+    border-color: var(--border-colour-light-0);
+    color: var(--colour-text-700);
+    transition: all var(--transition);
+}
+
+/* ------------------------------------------------------------------------- //
+// --------------------------------- Toggle -------------------------------- //
+// ------------------------------------------------------------------------- */
+
+form .toggle-wrapper > input.toggle + label {
+    display: block;
+    height: 1.5em;
+    aspect-ratio: 7 / 4;
+    padding: 0.25em; /* spacing for 'ball' */
+    background-color: var(--colour-bg-800);
+    border-radius: 100vw;
+    outline: none !important;
+    transition: all var(--transition);
+    box-shadow: inset hsl(0 0% 0% / 0.15) 0.1em 0.1em 0.2em;
+    overflow: clip;
+}
+
+form .toggle-wrapper > input.toggle + label::before {
+    content: "";
+    position: relative;
+    display: block;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: var(--colour-text-800);
+    border-radius: 100%;
+    margin-inline: 0 auto;
+    left: 0;
+    transition: all var(--transition-wobble-short-2);
+    box-shadow: var(--shadow-small-0);
+}
+
+/* → Toggled "On"
+// --------------------- */
+form .toggle-wrapper > input.toggle:checked + label {
+    background-color: var(--green);
+}
+
+form .toggle-wrapper > input.toggle:checked + label::before {
+    left: 100%;
+    background-color: var(--colour-text-900);
+    transform: translateX(-100%);
+}
+
+/* → Disabled
+// --------------------- */
+form .toggle-wrapper > input.toggle[disabled] {
+    background-color: var(--colour-bg-700);
+    outline-color: var(--border-colour-subtle);
+    color: var(--colour-text-200);
+}
+
+/* ------------------------------------------------------------------------- //
+// --------------------------------- Select -------------------------------- //
+// ------------------------------------------------------------------------- */
+
+/* form select {
+    appearance: none;
+    display: grid;
+    place-items: center;
+    padding: 0.35em 0.6em;
+    font-size: 0.8em;
+    background: var(--colour-bg-400);
+    border: none;
+    border-radius: 0.4em;
+    outline: var(--border-width) solid hsl(var(--h) 55% 15% / 0.85);
+    color: var(--colour-text-600);
+    text-align: center;
+    transition: outline var(--transition);
+}
+
+form select:focus,
+form select:focus-visible {
+    outline: var(--focus-border) !important;
+}
+
+form select::-ms-expand {
+    display: none;
+} */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Labels ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+form label {
+    display: -ms-grid;
+    display: grid;
+    gap: 0.125em;
+    -ms-grid-columns: 1fr 0.125em auto;
+    grid-template-columns: 1fr auto;
+    border-radius: var(--border-radius);
+    transition: outline var(--transition-short-1);
+    --border-radius: 0.2em;
+    --border-radius-end: 0.5em;
+}
+
+form .main-label {
+    font-size: 0.75em;
+    color: var(--colour-text);
+    display: inline-flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
+form .sub-label {
+    font-size: 0.625em;
+    color: var(--colour-text-200);
+}
+
+form input[type="radio"][disabled] + label,
+form input[type="checkbox"]:not(.toggle)[disabled] + label {
+    background-color: var(--colour-bg-600);
+    color: var(--colour-text-200);
+    opacity: 0.75;
+}
+
+form input[type="radio"][disabled] + label .main-label,
+form input[type="checkbox"]:not(.toggle)[disabled] + label .main-label {
+    color: var(--colour-text-200);
+}
+
+form input[type="radio"][disabled] + label .sub-label,
+form input[type="checkbox"]:not(.toggle)[disabled] + label .sub-label {
+    color: var(--colour-text-100);
+    opacity: 0.5;
+}
+
+form input[type="radio"][disabled] + label:hover,
+form input[type="checkbox"]:not(.toggle)[disabled] + label:hover {
+    background-color: var(--colour-bg-700);
+    color: var(--colour-text-500);
+    transition: all var(--transition);
+}
+
+/* → Border radii
+// --------------------- */
+form fieldset > label:first-of-type,
+form fieldset .input-wrapper:first-of-type > label {
+    border-top-left-radius: var(--border-radius-end);
+    border-top-right-radius: var(--border-radius-end);
+}
+
+form fieldset > label:last-of-type,
+form fieldset .input-wrapper:last-of-type > label {
+    border-bottom-left-radius: var(--border-radius-end);
+    border-bottom-right-radius: var(--border-radius-end);
+}
+
+form fieldset.horizontal > label:first-of-type,
+form fieldset.horizontal .input-wrapper:first-of-type > label {
+    border-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius-end);
+    border-bottom-left-radius: var(--border-radius-end);
+}
+
+form fieldset.horizontal > label:last-of-type,
+form fieldset.horizontal .input-wrapper:last-of-type > label {
+    border-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius-end);
+    border-bottom-right-radius: var(--border-radius-end);
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------------------- Reset Buttons ------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.menu-inner .reset-button {
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    color: var(--colour-text-300);
+    background: none;
+    border: none;
+    padding: 0.25em;
+    font: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    border-radius: 0.25em;
+}
+
+.menu-inner .reset-button::before {
+    aspect-ratio: 1 / 1;
+    width: 1em;
+    height: 1em;
+    display: block;
+    position: relative;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Output ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+output {
+    font-weight: bolder;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// --------------------------------------------------- HEADER -------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+header > nav {
+    display: flex;
+    height: var(--nav-height);
+    padding: var(--nav-padding);
+    gap: var(--nav-gap);
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--colour-bg-400);
+    border-bottom: 0.11em solid var(--colour-bg-600);
+    transition: height var(--transition), padding var(--transition);
+    z-index: 99;
+}
+
+:root[rainbow] header > nav {
+    border-image: var(--rainbow-gradient) 1;
+}
+
+nav > div {
+    display: flex;
+    gap: var(--icon-gap);
+    transition: gap var(--transition);
+}
+
+nav > div:first-child {
+    flex-grow: 1;
+    gap: calc((var(--icon-gap) * var(--divider-gap-modifier)) + var(--divider-width));
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Buttons ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.menu-button {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    color: var(--colour-text-400);
+    font-size: var(--icon-size);
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+    padding: var(--icon-padding);
+    border-radius: var(--icon-border-radius);
+    transition: all var(--transition), outline-width 150ms var(--transition-wobble-curve);
+    /* 'width' needed for @media query */
+    will-change: transform;
+    z-index: 3;
+    max-width: var(--menu-button-max-size);
+    max-height: var(--menu-button-max-size);
+}
+
+.menu-button:hover {
+    background-color: rgb(255 255 255 / 0.06);
+}
+
+.menu-button .icon {
+    width: 1em;
+    height: 1em;
+}
+
+/* → SVG icons
+// --------------------- */
+.menu-button svg > path,
+.menu-button svg > line,
+.menu-button svg > polyline {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 18; /* regular = 16, bold = 24 */
+}
+
+.menu-button svg circle {
+    fill: currentColor;
+    stroke: none;
+}
+
+.menu-button svg > line.red-line-through {
+    stroke: var(--red);
+}
+
+/* → Toggle-able menu button icons
+// --------------------- */
+:root[sound="on"] #sound-button .sound-off,
+:root[sound="off"] #sound-button .sound-on,
+:root[mode="dark"] #theme-button .theme-light,
+:root[mode="light"] #theme-button .theme-dark,
+:root[cookies="enabled"] #cookies-button .cookies-off,
+:root[cookies="disabled"] #cookies-button .cookies-on {
+    display: none;
+}
+
+:root[mode="light"] #theme-button .icon {
+    rotate: 180deg;
+}
+:root[mode="light"] #theme-button:hover .icon {
+    rotate: 360deg;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Menus ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.menu {
+    position: relative;
+}
+
+.menu > .menu-inner {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    scale: 0;
+    transition: all var(--transition-short-1), scale var(--transition-wobble-emphasised-short-2);
+    z-index: 4;
+}
+
+.menu:not(#search-menu) > .menu-inner {
+    position: absolute;
+    flex-direction: column;
+    gap: 0.75rem;
+    background-color: var(--colour-bg-600);
+    padding: 1rem;
+    border-radius: 0.5rem 0.5rem 1rem 1rem;
+    box-shadow: var(--shadow);
+    z-index: 50;
+}
+
+.menu[open] > .menu-inner {
+    position: absolute;
+    opacity: 1;
+    visibility: visible;
+    scale: 1;
+    min-width: 18rem;
+}
+
+nav > div:first-child > .menu > .menu-inner {
+    left: 0;
+    transform-origin: top left;
+}
+
+nav > div:last-child > .menu > .menu-inner {
+    right: 0;
+    transform-origin: top right;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// -------------------------------------- Menu Content ------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.menu p,
+.menu .h2,
+.menu .h3,
+.menu .h4 {
+    margin-block: 0;
+}
+
+/* ------------------------------------------------------------------------- //
+// ---------------------------------- Text --------------------------------- //
+// ------------------------------------------------------------------------- */
+
+.menu p {
+    font-size: 0.75em;
+    color: var(--colour-text-400);
+}
+
+.menu .text-subtle {
+    font-size: 0.65em;
+    color: var(--colour-text-300);
+}
+
+/* ------------------------------------------------------------------------- //
+// -------------------------------- Headings ------------------------------- //
+// ------------------------------------------------------------------------- */
+
+.menu-inner > .h2,
+.menu-inner > .h2 > span {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+}
+
+/* → Heading Icons
+// --------------------- */
+.menu-inner > .h2 i,
+.menu-inner > .h2 > span span,
+.menu-inner > .h2 .lang {
+    padding: 0.25em;
+    background-color: var(--colour-bg-800);
+    border-radius: 0.35rem;
+    color: var(--colour-text-400);
+}
+
+.menu-inner > .h2 > span span {
+    margin-right: -0.075em;
+    padding: 0.1em 0.15em 0.1em 0.15em;
+    font-size: 0.9em;
+}
+
+/* → Heading Toggle
+// --------------------- */
+.menu-inner > .h2 form,
+.menu-inner > .h2 .lang,
+.menu-inner > .h2 .reset-button,
+.menu-inner > .h3 .reset-button,
+.menu-inner > .h4 .reset-button {
+    margin-left: auto;
+}
+
+.menu-inner > .h2 .lang {
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+    padding: 0.25em 0.4em;
+    font-size: 0.75em;
+    color: var(--colour-text-600);
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// --------------------------------------- Menu Lists -------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.menu .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.menu .button-list {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* ------------------------------------------------------------------------- //
+// --------------------------------- Links --------------------------------- //
+// ------------------------------------------------------------------------- */
+
+.menu .menu-list > a,
+.menu .button-list > a {
+    --transition: var(--transition-long-1);
+    display: flex;
+    align-items: center;
+    background-color: var(--colour-bg-500);
+    padding: 0.6em 0.7em;
+    border-radius: 0.4rem;
+    border: var(--border-width-thick-0) var(--border-style) var(--border-colour-dark-0-subtle);
+    transition: color var(--transition);
+    gap: 0.5em;
+    line-height: initial; /* fixes spacing issues */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.menu .menu-list > a {
+    font-size: 1.08em;
+    color: var(--colour-text-800);
+}
+
+.menu .button-list > a {
+    padding: 0.45em 0.65em;
+    gap: 0.4rem;
+    border-radius: 0.6rem;
+    color: var(--colour-text-700);
+}
+
+.menu .button-list > a span {
+    font-size: 0.92em;
+}
+
+.menu .menu-list > a:first-of-type {
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+}
+
+.menu .menu-list > a:last-of-type {
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+}
+
+.menu .menu-list > a:hover,
+.menu .button-list > a:hover {
+    color: var(--colour-text-900);
+}
+
+/* → Background
+// --------------------- */
+.menu .menu-list > a::after,
+.menu .button-list > a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--colour-primary-dark-0);
+    transition: left var(--transition);
+    z-index: -1;
+}
+
+.menu .menu-list > a:hover::after,
+.menu .button-list > a:hover::after {
+    left: 0;
+}
+
+/* → Inner Icons
+// --------------------- */
+.menu .menu-list > a i:last-child {
+    position: relative;
+    top: -0.025rem;
+    left: -0.15rem;
+    font-size: 0.75em;
+    color: var(--colour-text-400);
+    opacity: 0.8;
+}
+
+.menu .menu-list > a:hover i:last-child {
+    color: var(--colour-text-900);
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------- MAIN MENU ------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Button ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#menu-button {
+    position: relative;
+    aspect-ratio: initial;
+    display: flex;
+    gap: var(--logo-gap);
+    align-items: center;
+    padding: 0;
+    font-size: var(--logo-font-size);
+    font-family: var(--font-header);
+    font-weight: bold;
+    color: var(--colour-secondary);
+    transition: all var(--transition), transform var(--transition-wobble-emphasised-short-2),
+        scale 350ms cubic-bezier(0.1, 1, 0.3, 1.4);
+    border-radius: var(--logo-border-radius);
+    white-space: nowrap;
+    transition-delay: 0ms, 400ms;
+}
+
+#menu-button > .site-icon {
+    height: var(--logo-size);
+    transition: height var(--transition), padding var(--transition), border-radius var(--transition);
+    outline: var(--outline-width) solid var(--border-colour-dark-0);
+    outline-offset: calc(0px - var(--outline-width));
+    --outline-width: 0.1rem;
+}
+
+#menu-button:hover {
+    scale: 1.1;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------------------------ Menu ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#menu {
+    margin-left: 0.25rem;
+}
+
+#menu[open] .menu-inner {
+    min-width: 22rem;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// --------------------------------------------------- SEARCH -------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Button ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+:root:not([mobile]) #search-button {
+    display: none;
+}
+
+/* → Set search icon to spin around circle's centre instead of icon's centre
+// --------------------- */
+#search-button .icon {
+    transform-origin: 43.5% 44.9%;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------------------------ Menu ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#search-menu {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    background-color: transparent;
+    position: relative !important;
+    transform-origin: center left !important;
+    width: 100%;
+}
+
+#search-menu[open] {
+    transition-delay: 0;
+}
+
+#search-menu:focus-within {
+    transition-delay: 0;
+    transition-delay: 150ms;
+}
+
+#search-menu > .menu-inner {
+    position: absolute;
+    min-width: var(--min-width);
+    width: var(--min-width);
+    max-width: 75rem;
+    top: 0;
+    left: 50%;
+    flex-direction: column;
+    background-color: var(--bg-colour);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transform: translateX(-50%);
+    transition: width 1000ms var(--transition-curve), gap var(--transition);
+    --min-width: 16rem;
+    --padding: 1.125rem;
+    --gap: 0.75rem;
+    --bg-colour: var(--colour-bg-600);
+    --border-radius: 1rem;
+    --divider-gap: 0.5rem;
+    --filter-gap: 0.75em;
+    --search-icon-gap: 0.75rem;
+    --search-icon-padding: calc(var(--padding) * 1);
+    --search-icon-size: 1.25rem;
+}
+
+#search-menu[open] > .menu-inner {
+    width: 100% !important;
+}
+
+/* → Divider
+// --------------------- */
+#search-menu::before {
+    content: "";
+    position: absolute;
+    left: calc(0px - ((var(--divider-gap) * var(--divider-gap-modifier) / 2) + var(--divider-width)));
+    inset-block: 0.5em;
+    width: var(--divider-width);
+    background-color: var(--colour-bg-700);
+    border-radius: 100vw;
+    opacity: var(--subtle);
+    transition: all var(--transition);
+}
+
+:root:not([mobile]) #search-menu > .menu-inner {
+    scale: 1;
+    opacity: 1;
+    visibility: visible;
+    width: var(--min-width);
+    left: 0;
+    transform: translateX(0);
+    box-shadow: none;
+}
+
+/* → Inner content
+// --------------------- */
+#search-menu .menu-inner > :not(#search-bar) {
+    margin: var(--gap);
+}
+
+#search-menu .menu-inner > :not(#search-bar):not(#search-results) {
+    margin-inline: calc(var(--gap) * 2);
+}
+
+#search-menu:not([open]) .menu-inner > :not(#search-bar) {
+    opacity: 0;
+    scale: 0;
+    visibility: hidden;
+    height: 0;
+    padding-block: 0;
+    margin-block: 0 !important;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// --------------------------------------- Search Bar -------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#search-menu #search-bar {
+    height: var(--menu-button-max-size);
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+    grid-template-areas: "search";
+    transition: height var(--transition);
+    --colour: var(--colour-text-200);
+    --padding-left: calc(var(--search-icon-size) + var(--search-icon-padding) + var(--search-icon-gap));
+}
+
+#search-menu #search-bar > * {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-row: 1;
+    grid-column: 1;
+    grid-area: search;
+}
+
+#search-menu #search-bar > .search-icon {
+    margin-inline: var(--search-icon-padding) auto;
+    font-size: var(--search-icon-size);
+    color: var(--colour);
+}
+
+#search-menu #search-bar > .shortcut {
+    margin-inline: auto var(--padding);
+    opacity: var(--subtle-1, 0.6);
+    font-size: 0.5em;
+}
+
+#search-menu #search-bar > .shortcut > kbd {
+    background-color: var(--colour-bg-300);
+}
+
+/* :root:not([mobile]) #search-menu:not([open]) #search-bar {
+    height: 100%;
+} */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// -------------------------------------- Search Input ------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#search {
+    width: 100%;
+    height: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    font-family: var(--font-subheader);
+    font-size: var(--search-bar-size);
+    font-weight: bolder;
+    color: var(--colour);
+    transition: outline var(--transition), color var(--transition), font-size var(--transition);
+    padding-inline: var(--padding-left) var(--padding);
+    border-radius: calc(var(--border-radius) - (var(--focus-border-width) / 2));
+    /* z-index: 99; */
+    caret-color: transparent;
+}
+
+#search-menu .menu:not([open]) #search {
+    width: 0;
+    padding: 0;
+}
+
+#search:focus,
+#search:focus-visible,
+#search:focus + .search-icon,
+#search:focus-visible + .search-icon {
+    --colour: var(--colour-text-400);
+}
+
+#search:focus,
+#search:focus-visible {
+    outline-offset: calc(0px - var(--focus-border-width));
+    font-weight: bold;
+}
+
+/* → Divider
+// --------------------- */
+#search-menu .menu-inner > :nth-child(2)::before {
+    content: "";
+    position: absolute;
+    inset: var(--divider-gap) 7.5%;
+    top: calc(0px - var(--divider-gap));
+    display: block;
+    height: var(--divider-width);
+    background-color: var(--colour-bg-800);
+    border-radius: 100vw;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------------------ Search Settings ------------------------------------ //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#search-settings {
+    max-height: 0;
+    scale: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+    font-size: 0.85em;
+    padding-top: 0.25em;
+    box-sizing: content-box;
+    transition: all var(--transition-long-1);
+}
+
+#search-menu[open] #search-settings {
+    scale: 1;
+    max-height: 100vh;
+}
+
+#search-settings form fieldset {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+}
+
+#search-settings form fieldset > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#search-settings form fieldset input + label {
+    white-space: nowrap;
+    padding: 0.3em 0.4em;
+    margin: 0.25em;
+}
+
+#search-settings form fieldset legend {
+    color: var(--colour-text);
+    font-size: 1.25em;
+    line-height: 1;
+}
+
+#search-settings form fieldset legend.left {
+    float: left;
+    margin: 0 0.25em 0 0;
+}
+
+#search-settings form fieldset legend.right {
+    float: right;
+    margin: 0 0 0 0.25em;
+}
+
+/* ------------------------------------------------------------------------- //
+// ------------------------------ Result Count ----------------------------- //
+// ------------------------------------------------------------------------- */
+
+#search-count {
+    transition: all var(--transition-long-1);
+}
+
+#search-count form fieldset {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+/* ------------------------------------------------------------------------- //
+// -------------------------------- Filters -------------------------------- //
+// ------------------------------------------------------------------------- */
+
+#search-filters {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+#search-filters form {
+    scrollbar-width: none;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// -------------------------------------- Search Info -------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#search-info {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 0.25em !important;
+    font-size: 0.7em;
+    color: var(--colour-text-300);
+}
+
+#search-info .no-results {
+    margin: 0 auto calc(var(--gap) * 1.5);
+    opacity: 0.8;
+}
+
+#search-menu #search-info:empty {
+    display: none;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------------------- Search Results ------------------------------------ //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#search-menu #search-results {
+    position: relative;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    transition: scale var(--transition);
+    transform-origin: top left;
+    transition-delay: 100ms;
+}
+
+#search-menu #search-results:empty {
+    display: none;
+}
+
+/* ------------------------------------------------------------------------- //
+// -------------------------------- Results -------------------------------- //
+// ------------------------------------------------------------------------- */
+
+#search-results .result {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto 1rem 1fr;
+    grid-template-columns: auto 1fr;
+    -ms-grid-rows: auto 0.4rem 1fr;
+    grid-template-rows: auto 1fr;
+    -moz-column-gap: 1rem;
+    column-gap: 1rem;
+    row-gap: 0.35em;
+    padding: 0.75em;
+    border-radius: 0.5em;
+    transition: background-color var(--transition), color var(--transition);
+    -webkit-animation: var(--transition-long-1) calc(var(--index) * 42ms) backwards slideInFromRight;
+    animation: var(--transition-long-1) calc(var(--index) * 42ms) backwards slideInFromRight;
+}
+
+#search-results .result:hover {
+    color: var(--colour-text-600);
+    background-color: var(--colour-bg-400);
+}
+
+/* → Images
+// --------------------- */
+#search-results .result-image {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 / 2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    grid-row: 1 / 3;
+    height: var(--size);
+    width: var(--size);
+    border-radius: 0.5rem;
+    /* margin-right: 1rem; */
+    -o-object-fit: contain;
+    object-fit: contain;
+    --size: 4.5rem;
+}
+
+#search-results .result-icon {
+    font-size: var(--size);
+    color: var(--colour-text-300);
+    opacity: var(--subtle-1);
+    --size: 4rem;
+}
+
+/* → Headers
+// --------------------- */
+#search-results .result-header {
+    -ms-grid-row: 1;
+    grid-row: 1;
+    grid-row-start: 1;
+    -ms-grid-column-span: -1;
+    grid-column-end: -1;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+
+/* → Titles
+// --------------------- */
+#search-results .result-name {
+    font-family: var(--font-subheader);
+    font-size: 0.985rem;
+    font-weight: bolder;
+    color: var(--colour-text-700);
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+#search-results .result:hover .result-name {
+    color: var(--colour-text-800);
+}
+
+#search-results .result .result-name mark {
+    color: var(--colour-text-800);
+    transition: color var(--transition);
+}
+
+#search-results .result:hover .result-name mark {
+    color: var(--colour-text-900);
+}
+
+/* → Code titles
+// --------------------- */
+#search-results .result:hover code.result-name {
+    background-color: var(--colour-bg-600);
+    border-color: var(--border-colour-light-0);
+}
+
+#search-results .result[data-type="gh"] code.result-name::before {
+    content: "/";
+    padding-right: 0.125rem;
+}
+
+/* → Info
+// --------------------- */
+#search-results .result-info {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 1em;
+    font-size: 0.75em;
+    color: var(--colour-text-200);
+}
+
+#search-results .result-info > *,
+#search-results .result-info > * > * {
+    display: inline-flex;
+    align-items: center;
+}
+
+#search-results .result-info > :not(:last-child)::after {
+    content: "\2022";
+    margin-inline: 0.6em;
+    color: var(--colour-text-100);
+    filter: brightness(0.75) opacity(0.75);
+}
+
+/* → Languages
+// --------------------- */
+#search-results .result-lang {
+    color: var(--colour-text-900);
+    font-size: 1.5em;
+    margin-right: -0.1em; /* roughly account for space in font */
+}
+
+#search-results .result-lang[tooltip]::before {
+    padding-left: 0.65em !important;
+}
+
+/* → Dates
+// --------------------- */
+#search-results .result-date-wrapper {
+    width: 3rem;
+}
+
+#search-results .result-date {
+    position: fixed !important;
+    /* ↑ for tooltip */
+    white-space: nowrap;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    transition: color var(--transition);
+}
+
+#search-results .result:hover .result-date {
+    color: var(--colour-text-100);
+}
+
+/* → Descriptions
+// --------------------- */
+#search-results .result-desc {
+    display: -webkit-box;
+    -ms-grid-row-span: -1;
+    grid-row-end: -1;
+    -ms-grid-column-span: -1;
+    grid-column-end: -1;
+    -ms-grid-row-align: start;
+    align-self: start;
+    padding-bottom: 0.125rem; /* allow extra space for mark */
+    font-size: 80%;
+    color: var(--colour-text-400);
+    transition: color var(--transition);
+    /* Wrap after 2 lines */
+    line-height: 1.25rem;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#search-results .result .result-desc mark {
+    color: var(--colour-text);
+    transition: color var(--transition);
+}
+
+#search-results .result:hover .result-desc {
+    color: var(--colour-text);
+}
+
+#search-results .result:hover .result-desc mark {
+    color: var(--colour-text-700);
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// -------------------------------------------------- SETTINGS ------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Button ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#settings-button:hover .icon {
+    rotate: 180deg;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Overlay ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#settings-overlay {
+    content: "";
+    position: fixed;
+    inset: 0;
+    -webkit-backdrop-filter: contrast(0.98) blur(10px);
+    backdrop-filter: contrast(0.98) blur(10px);
+    z-index: 40;
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+}
+
+#settings[open] + #settings-overlay {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------------------------ Menu ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#settings > .menu-inner {
+    position: fixed !important;
+    inset: var(--gap);
+    --gap: 3rem;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// -------------------------------------------------- COOKIES -------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Button ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#cookies-button .icon .cookie-icon {
+    position: relative;
+    top: -0.05em;
+    scale: 1.25;
+    font-size: 0.75em;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// --------------------------------------------------- FOOTER -------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------------------------ Left ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#copyright {
+    color: var(--colour-text-200);
+    font-size: 90%;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Right ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.social-links {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0 0 0 auto;
+}
+
+.social-links > .social-link {
+    aspect-ratio: 1 / 1;
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+    border-radius: 0.75rem;
+    padding: 0;
+    transition: background-color var(--transition-short-0);
+    background-color: transparent;
+    border: none;
+}
+
+/* ------------------------------------------------------------------------- //
+// --------------------------------- Links --------------------------------- //
+// ------------------------------------------------------------------------- */
+
+.social-links > .social-link > a {
+    border-radius: 0.75rem;
+}
+
+.social-links > .social-link > a > .icon {
+    padding: 0.75rem;
+}
+
+.social-links > .social-link > a > .icon > .social-link-icon {
+    width: 2rem !important;
+    aspect-ratio: 1 / 1;
+    background-color: var(--colour-text-400);
+    transition: background-color var(--transition-long-2);
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+/* → Icons
+// --------------------- */
+.social-links > .social-link > a > .icon > #social-link-icon-discord {
+    -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/discord.svg");
+    mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/discord.svg");
+    --hover-color: #5865f2;
+}
+
+.social-links > .social-link > a > .icon > #social-link-icon-github {
+    -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg");
+    mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg");
+    --hover-color: #ffffff;
+}
+
+.social-links > .social-link > a > .icon > #social-link-icon-youtube {
+    -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/youtube.svg");
+    mask-image: url("https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/youtube.svg");
+    --hover-color: #ff0000;
+}
+
+/* → Hover
+// --------------------- */
+.social-links > .social-link:hover {
+    background-color: rgb(255 255 255 / 0.05);
+}
+
+.social-links > .social-link:hover > a > .icon > .social-link-icon {
+    background-color: var(--hover-color);
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// --------------------------------------------------- ICONS --------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* → Set all icons to be square
+// --------------------- */
+.icon {
+    display: inline-block;
+    aspect-ratio: 1 / 1;
+}
+
+/* → Spin on hover
+// --------------------- */
+button .icon,
+button :not(.icon) svg,
+.button .icon,
+.button :not(.icon) svg,
+.social-link .icon,
+.social-link :not(.icon) svg,
+a.ph::before,
+a.ph-bold::before {
+    display: inline-block;
+    rotate: 0deg;
+    transform-origin: center center;
+    transition: rotate var(--transition-wobble);
+    will-change: rotate;
+}
+
+button:hover .icon,
+button:hover :not(.icon) svg,
+.button:hover .icon,
+.button:hover :not(.icon) svg,
+.social-link:hover .icon,
+.social-link:hover :not(.icon) svg,
+a.ph:hover::before,
+a.ph-bold:hover::before {
+    rotate: 360deg;
+}
+
+/* → Phosphor icons
+// --------------------- */
+p > i.ph,
+p > i.ph-bold {
+    position: relative;
+    top: 0.125em;
+}
+
+.ph-warning {
+    color: var(--colour-warning);
+}
+
+/* → Other
+// --------------------- */
+.more-info {
+    color: var(--colour-text-300);
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// -------------------------------------------------- UTILITY -------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+/* → Inputs
+// --------------------- */
+[disabled],
+.disabled,
+[disabled] + label,
+.disabled + label {
+    cursor: not-allowed;
+}
+
+/* → Fix input text opacity
+// --------------------- */
+::-webkit-input-placeholder {
+    opacity: 1;
+}
+::-moz-placeholder {
+    opacity: 1;
+}
+:-ms-input-placeholder {
+    opacity: 1;
+}
+::-ms-input-placeholder {
+    opacity: 1;
+}
+::placeholder {
+    opacity: 1;
+}
+
+/* → So bounding box doesn't make the scrollbar freak out when icons at the edge of the screen are rotated on :hover
+// --------------------- */
+.rotation-wrapper {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Content ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.text-subtle {
+    font-size: 0.75em;
+    color: var(--colour-text-100);
+}
+
+/* → Screen reader only
+// --------------------- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Images ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+img.broken,
+img.loading,
+img.none {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--colour-bg-600);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    border: 2px solid transparent;
+    outline: var(--border-subtle);
+    outline-offset: calc(0px - var(--border-width));
+    /* border-radius: 12.5%; */
+}
+
+img.broken {
+    background-image: url("https://api.iconify.design/material-symbols:image-not-supported.svg?color=%23FFFFFF1A");
+}
+
+img.none {
+    background-image: url("https://api.iconify.design/material-symbols:image-not-supported.svg?color=%23FFFFFF1A");
+}
+
+img.loading {
+    background-image: url("https://api.iconify.design/svg-spinners:180-ring-with-bg.svg?color=%23FFFFFF1A");
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Tooltips --------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+:has(> [tooltip]) {
+    position: relative;
+}
+
+.icon-tooltip [tooltip],
+.tooltip-wrapper [tooltip] {
+    height: 100%;
+    width: 100%;
+    top: -100%;
+    position: relative;
+}
+
+.icon-tooltip {
+    width: 1em;
+    height: 1em;
+}
+
+/* → Hide empty tooltips
+// --------------------- */
+[tooltip=""]::before,
+[tooltip=""]::after {
+    content: none !important;
+}
+
+/* → Hide tooltips on mobile (may be changed in the future)
+// --------------------- */
+:root:not([mobile]) [tooltip]::before,
+[tooltip][tooltip-type~="auto"]::before {
+    content: attr(tooltip);
+}
+
+:root:not([mobile]) [tooltip]::after,
+[tooltip][tooltip-type~="auto"]::after {
+    content: "";
+}
+
+[tooltip]::before {
+    all: initial;
+    position: absolute;
+    right: 50%;
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    max-width: var(--tooltip-max-width);
+    padding: 0.6em 0.9em;
+    background: var(--tooltip-bg-colour);
+    color: var(--colour-text);
+    border: var(--tooltip-outline-width) solid var(--tooltip-outline-colour);
+    font-size: clamp(0.5rem, 0.85em, 0.75rem);
+    font-family: var(--font-text);
+    visibility: hidden;
+    opacity: 0;
+    scale: 0;
+    border-radius: 0.5rem;
+    transform: translate(calc(50% + var(--posX, 0%)), 0) translateZ(0);
+    transition: opacity var(--transition-short-0), scale var(--transition-wobble-emphasised-short-3),
+        visibility var(--transition-short-0);
+    will-change: opacity;
+    z-index: 9998;
+    pointer-events: none;
+    line-height: 1.1;
+    text-wrap: initial;
+    white-space: pre-wrap; /* allow manual line breaks */
+    box-sizing: border-box;
+
+    /* dir = top defaults */
+    transform-origin: bottom right; /* 'right' is actually the centre because of other positioning / transforms */
+}
+
+[tooltip]::after {
+    all: initial;
+    position: absolute;
+    left: 50%;
+    aspect-ratio: 1 / 1;
+    width: var(--tooltip-pointer-size);
+    background: var(--tooltip-bg-colour);
+    border: var(--tooltip-outline-width) solid var(--tooltip-outline-colour);
+    border-radius: 1px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-short-1), visibility var(--transition-short-0);
+    will-change: opacity;
+    z-index: 9999;
+    pointer-events: none;
+
+    /* dir = top defaults */
+    transform: translate(-50%, calc(-45% - var(--tooltip-outline-width))) rotate(45deg);
+    -webkit-clip-path: polygon(
+        calc(100% - var(--tooltip-outline-width)) var(--tooltip-outline-width),
+        100% 0,
+        100% 100%,
+        0 100%,
+        var(--tooltip-outline-width) calc(100% - var(--tooltip-outline-width)),
+        var(--tooltip-outline-width) var(--tooltip-outline-width)
+    );
+    clip-path: polygon(
+        calc(100% - var(--tooltip-outline-width)) var(--tooltip-outline-width),
+        100% 0,
+        100% 100%,
+        0 100%,
+        var(--tooltip-outline-width) calc(100% - var(--tooltip-outline-width)),
+        var(--tooltip-outline-width) var(--tooltip-outline-width)
+    );
+}
+
+[tooltip]:not([tooltip-type~="bottom"])::before {
+    bottom: calc(100% + var(--tooltip-offset));
+}
+
+[tooltip]:not([tooltip-type~="bottom"])::after {
+    top: calc(0% - var(--tooltip-offset));
+}
+
+[tooltip][tooltip-type~="auto"]:not([tooltip-no-close])::before {
+    background-image: url("https://api.iconify.design/ph:x-bold.svg?color=%23FFFFFF48");
+    background-repeat: no-repeat;
+    background-position: calc(100% - var(--tooltip-closable-padding)) center;
+    background-size: var(--tooltip-closable-width);
+    padding-right: calc(var(--tooltip-closable-width) + var(--tooltip-closable-gap) + var(--tooltip-closable-padding));
+}
+
+[tooltip][tooltip-type~="auto"]::before,
+[tooltip][tooltip-type~="auto"]::after {
+    animation: show var(--transition-wobble-emphasised-short-3) var(--tooltip-auto-delay) 1 forwards,
+        hide var(--transition) calc(var(--tooltip-auto-delay) + var(--tooltip-auto-duration)) 1 forwards;
+}
+
+[tooltip][tooltip-type~="closed"]::before,
+[tooltip][tooltip-type~="closed"]::after {
+    scale: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+}
+
+[tooltip]:not([tooltip-type~="auto"]):hover::before,
+[tooltip]:not([tooltip-type~="auto"]):hover::after {
+    visibility: visible;
+    opacity: 1;
+    scale: 1;
+}
+
+[tooltip]:not([tooltip-type~="auto"]):hover::after {
+    transition: opacity var(--transition-short-0), visibility var(--transition-short-0);
+}
+
+[tooltip][tooltip-type~="bottom"]::before {
+    top: calc(100% + var(--tooltip-offset));
+    transform-origin: top right; /* 'right' is actually the centre because of other positioning / transforms */
+}
+
+[tooltip][tooltip-type~="bottom"]::after {
+    bottom: calc(0% - var(--tooltip-offset));
+    transform: translate(-50%, calc(45% + var(--tooltip-outline-width))) rotate(45deg);
+    -webkit-clip-path: polygon(
+        calc(100% - var(--tooltip-outline-width)) var(--tooltip-outline-width),
+        100% 0,
+        0 0,
+        0 100%,
+        var(--tooltip-outline-width) calc(100% - var(--tooltip-outline-width)),
+        calc(100% - var(--tooltip-outline-width)) calc(100% - var(--tooltip-outline-width))
+    );
+    clip-path: polygon(
+        calc(100% - var(--tooltip-outline-width)) var(--tooltip-outline-width),
+        100% 0,
+        0 0,
+        0 100%,
+        var(--tooltip-outline-width) calc(100% - var(--tooltip-outline-width)),
+        calc(100% - var(--tooltip-outline-width)) calc(100% - var(--tooltip-outline-width))
+    );
+}
+
+[tooltip][tooltip-type~="error"] {
+    --tooltip-outline-colour: var(--colour-error);
+}
+
+[tooltip][tooltip-type~="warning"] {
+    --tooltip-outline-colour: var(--colour-warning);
+}
+
+[tooltip][tooltip-type~="issue"] {
+    --tooltip-outline-colour: var(--colour-issue);
+}
+
+[tooltip][tooltip-type~="good"] {
+    --tooltip-outline-colour: var(--colour-good);
+}
+
+[tooltip][tooltip-type~="info"] {
+    --tooltip-outline-colour: var(--colour-info);
+}
+
+[tooltip][tooltip-type~="error"]::before,
+[tooltip][tooltip-type~="warning"]::before,
+[tooltip][tooltip-type~="issue"]::before,
+[tooltip][tooltip-type~="good"]::before,
+[tooltip][tooltip-type~="info"]::before {
+    padding: 0.5em 0.9em 0.6em 0.7em;
+}
+
+[tooltip][tooltip-type~="big"]::before {
+    padding: 0.55rem 0.7rem;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Sparks ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.spark-wrapper {
+    position: fixed;
+    z-index: 999999;
+}
+
+.spark {
+    position: absolute;
+    width: 2.5px;
+    background-color: var(--colour-text-900, white);
+    border-radius: 50vw;
+    -webkit-animation: sparkAnimation var(--transition) forwards;
+    animation: sparkAnimation var(--transition) forwards;
+    z-index: 1;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Caret ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+#caret {
+    position: fixed;
+    display: block;
+    height: 1em;
+    width: 1.25px;
+    margin-left: 0.75px;
+    background: currentColor;
+    border-radius: 100vw;
+    filter: brightness(1.15);
+    z-index: 99999;
+    animation: 300ms ease-in-out 0s infinite alternate blink;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------ PREFERENCES ------------------------------------------------ //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ------------------------------------- Accessibility ------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------------- //
+// ----------------------------- Reduce Motion ----------------------------- //
+// ------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* @supports selector(:has(*)) {
+        :has(:target) {
+            scroll-behavior: smooth;
+        }
+    } */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .spark {
+        display: none;
+    }
+}
+
+:root[reduce-motion] *,
+:root[reduce-motion] *::before,
+:root[reduce-motion] *::after {
+    -webkit-animation: none !important;
+    animation: none !important;
+    -webkit-animation-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-iteration-count: 1 !important;
+    transition: none !important;
+    transition-duration: 0.001ms !important;
+}
+
+:root[reduce-motion] .spark {
+    display: none;
+}
+
+/* ------------------------------------------------------------------------- //
+// -------------------------- Keyboard Navigation -------------------------- //
+// ------------------------------------------------------------------------- */
+
+:focus-visible,
+form input:focus-visible + label {
+    border: none;
+    outline: var(--focus-border) !important;
+    -webkit-backdrop-filter: brightness(1.25);
+    backdrop-filter: brightness(1.25);
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Cookies ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.no-cookies-warning {
+    color: var(--colour-issue);
+}
+
+:root[cookies="enabled"] .no-cookies-warning {
+    display: none;
+    visibility: hidden;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Other ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+/* → Tone indicators
+// --------------------- */
+p[tone]::before {
+    content: "/" attr(tone);
+    position: absolute;
+    right: calc(100% + 1.25em);
+    font-size: 0.75em;
+    color: var(--colour-text-100);
+    opacity: var(--subtle-1);
+    font-family: var(--font-mono);
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------- ANIMATIONS ------------------------------------------------ //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        scale: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+        scale: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        scale: 0;
+        visibility: hidden;
+    }
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Blink ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Slide ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+/* → From right
+// --------------------- */
+@-webkit-keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Sparks ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+@-webkit-keyframes sparkAnimation {
+    0% {
+        opacity: 1;
+        transform: scaleY(0%);
+        transform-origin: top;
+    }
+
+    40% {
+        opacity: 1;
+        transform: scaleY(100%);
+        transform-origin: center;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scaleY(15%);
+        transform-origin: bottom;
+    }
+}
+
+@keyframes sparkAnimation {
+    0% {
+        opacity: 1;
+        transform: scaleY(0%);
+        transform-origin: top;
+    }
+
+    40% {
+        opacity: 1;
+        transform: scaleY(100%);
+        transform-origin: center;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scaleY(15%);
+        transform-origin: bottom;
+    }
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// --------------------------------------------------- MOBILE -------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+:root[device-type="mobile"] .shortcut {
+    display: none;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// -------------------------------------- Screen Width ------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+@media screen and (width < 780px) {
+    header nav .page-title span {
+        display: none;
+    }
+}
+
+@media screen and (width < 640px) {
+    :root {
+        font-size: calc(100% * 7 / 8);
+    }
+}
+
+@media screen and (width < 400px) {
+    header nav .page-title {
+        display: none;
+    }
+
+    :root[at-top] #menu-button {
+        width: 2.5rem;
+    }
+
+    #menu-button .icon {
+        display: none;
+    }
+}

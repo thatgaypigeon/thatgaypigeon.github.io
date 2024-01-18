@@ -1,0 +1,61 @@
+:root {
+    /* → Background colours */
+    --colour-bg-100: hsl(var(--h) 80% 2%);
+    --colour-bg-200: hsl(var(--h) 85% 2.5%);
+    --colour-bg-300: hsl(var(--h) 90% 3%);
+    --colour-bg-400: hsl(var(--h) 88% 4%);
+    --colour-bg-500: hsl(var(--h) 85% 5%);
+    --colour-bg-600: hsl(var(--h) 82% 6%);
+    --colour-bg-700: hsl(var(--h) 80% 9%);
+    --colour-bg-800: hsl(var(--h) 75% 11%);
+    --colour-bg-900: hsl(var(--h) 68% 14%);
+
+    --colour-bg: var(--colour-bg-500);
+
+    /* → Text colours */
+    --colour-text-100: hsl(var(--h) 30% 55% / 0.6);
+    --colour-text-200: hsl(var(--h) 28% 58% / 0.7);
+    --colour-text-300: hsl(var(--h) 36% 70% / 0.75);
+    --colour-text-400: hsl(var(--h) 42% 75% / 0.8);
+    --colour-text-500: hsl(var(--h) 48% 80% / 0.85);
+    --colour-text-600: hsl(var(--h) 56% 82% / 0.9);
+    --colour-text-700: hsl(var(--h) 84% 86% / 0.95);
+    --colour-text-800: hsl(var(--h) 96% 92.5%);
+    --colour-text-900: hsl(var(--h) 100% 100%);
+
+    --colour-text: var(--colour-text-500);
+
+    /* → Accent colours */
+    --colour-primary-dark-1: hsl(34 100% 40%);
+    --colour-primary-dark-0: hsl(36 95% 50%);
+    --colour-primary: hsl(40 84% 54%);
+    --colour-primary-light-0: hsl(42 92% 68%);
+    --colour-primary-light-1: hsl(42 94% 75%);
+
+    --colour-secondary-dark-3: hsl(205 60% 30%);
+    --colour-secondary-dark-2: hsl(205 60% 36%);
+    --colour-secondary-dark-1: hsl(205 60% 42%);
+    --colour-secondary-dark-0: hsl(205 61% 48%);
+    --colour-secondary: hsl(205 62% 55%);
+    --colour-secondary-light-0: hsl(205 63% 60%);
+    --colour-secondary-light-1: hsl(205 64% 65%);
+
+    --colour-tertiary-dark-3: hsl(190 52% 32%);
+    --colour-tertiary-dark-2: hsl(190 52% 36%);
+    --colour-tertiary-dark-1: hsl(190 52% 40%);
+    --colour-tertiary-dark-0: hsl(190 52% 45%);
+    --colour-tertiary: hsl(192 52% 56%);
+    --colour-tertiary-light-0: hsl(194 52% 64%);
+    --colour-tertiary-light-1: hsl(194 52% 74%);
+
+    /* → Border colours */
+    --border-colour-dark-1: hsl(0 0% 20% / 0.25);
+    --border-colour-dark-0: hsl(0 0% 50% / 0.15);
+    --border-colour: hsl(0 0% 100% / 0.075);
+    --border-colour-light-0: hsl(0 0% 100% / 0.1);
+    --border-colour-light-1: hsl(0 0% 100% / 0.15);
+
+    --border-colour-light-0-subtle: hsl(0 0% 100% / calc(0.08 * var(--opacity-900)));
+    --border-colour-subtle: hsl(0 0% 100% / calc(0.05 * var(--opacity-900)));
+    --border-colour-dark-0-subtle: hsl(0 0% 100% / calc(0.02 * var(--opacity-900)));
+}

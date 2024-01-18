@@ -1,0 +1,83 @@
+/* → Regular
+// --------------------- */
+@font-face {
+    font-family: "Open Dyslexic";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/_static/font/OpenDyslexic/OpenDyslexic-Regular.eot");
+    src:
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Regular.eot?#iefix") format("embedded-opentype"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Regular.woff2") format("woff2"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Regular.woff") format("woff"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Regular.otf") format("opentype");
+}
+
+/* → Italic
+// --------------- */
+@font-face {
+    font-family: "Open Dyslexic";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/_static/font/OpenDyslexic/OpenDyslexic-Italic.eot");
+    src:
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Italic.eot?#iefix") format("embedded-opentype"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Italic.woff2") format("woff2"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Italic.woff") format("woff"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Italic.otf") format("opentype");
+}
+
+/* → Bold
+// --------------------- */
+@font-face {
+    font-family: "Open Dyslexic";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/_static/font/OpenDyslexic/OpenDyslexic-Bold.eot");
+    src:
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Bold.eot?#iefix") format("embedded-opentype"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Bold.woff2") format("woff2"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Bold.woff") format("woff"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Bold.otf") format("opentype");
+}
+
+/* → Italic
+// --------------- */
+@font-face {
+    font-family: "Open Dyslexic";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/_static/font/OpenDyslexic/OpenDyslexic-Bold-Italic.eot");
+    src:
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Bold-Italic.eot?#iefix") format("embedded-opentype"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Bold-Italic.woff2") format("woff2"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Bold-Italic.woff") format("woff"),
+        url("/_static/font/OpenDyslexic/OpenDyslexic-Bold-Italic.otf") format("opentype");
+}
+
+/* → Monospace
+// --------------------- */
+@font-face {
+    font-family: "Open Dyslexic Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/_static/font/OpenDyslexicMono/OpenDyslexicMono-Regular.otf") format("opentype");
+}
+
+/* → Variables
+// --------------------- */
+:root {
+    --font-header-name: "Open Dyslexic";
+    --font-subheader-name: "Open Dyslexic";
+    --font-accent-name: "Open Dyslexic";
+    --font-text-name: "Open Dyslexic";
+    --font-mono-name: "Open Dyslexic Mono";
+    --font-fallback: Helvetica, Arial, sans-serif;
+    letter-spacing: -0.04em !important;
+    line-height: 1.4em;
+    word-spacing: -0.4em;
+}
