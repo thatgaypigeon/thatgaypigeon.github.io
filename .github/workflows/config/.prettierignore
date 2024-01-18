@@ -1,0 +1,3 @@
+# Actions-specific ignore
+# *.css
+_static/css/styles.css
