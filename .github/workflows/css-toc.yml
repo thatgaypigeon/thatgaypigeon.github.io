@@ -1,0 +1,50 @@
+name: "Generate CSS Table of Contents"
+run-name: "Generate CSS Table of Contents by @${{ github.actor }}"
+
+on:
+  push:
+    paths:
+      - "_static/css/styles.css"
+      - ".github/workflows/scripts/css-toc.py"
+      - ".github/workflows/css-toc.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    name: "Run css-toc.py"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git config
+        run: |
+          git config --global user.name "thatgaypigeon"
+          git config --global user.email "pigeon43.stuff@gmail.com"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run css-toc.py
+        run: python ./.github/workflows/scripts/css-toc.py
+
+      - name: Pre-build commit
+        run: |
+          git add ./_static/css/styles.css
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "⚙️ Auto-commit from css-toc.py"
+            git remote set-url origin https://${{ secrets.GH_PAT_TOKEN }}@github.com/thatgaypigeon/thatgaypigeon.github.io.git
+            git pull origin main
+            git push
+          fi

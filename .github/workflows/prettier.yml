@@ -1,0 +1,53 @@
+name: "📝 Format with Prettier"
+run-name: "📝 Format with Prettier by @${{ github.actor }}"
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    name: "Run Prettier"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git config
+        run: |
+          git config --global user.name "thatgaypigeon"
+          git config --global user.email "pigeon43.stuff@gmail.com"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Prettier
+        run: npx prettier --config ".prettierrc" --ignore-path ".github/workflows/config/.prettierignore" --write .
+
+      - name: Run markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v14
+        continue-on-error: true
+        with:
+          config: ".markdownlint.jsonc"
+          fix: true
+          globs: "**/*.md"
+
+      - name: Pre-build commit
+        run: |
+          git add .
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "⚙️ Auto-commit from Prettier"
+            git remote set-url origin https://${{ secrets.GH_PAT_TOKEN }}@github.com/thatgaypigeon/thatgaypigeon.github.io.git
+            git pull origin main
+            git push
+          fi
