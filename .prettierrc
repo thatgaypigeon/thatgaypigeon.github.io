@@ -1,0 +1,25 @@
+{
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "printWidth": 120,
+  "semi": false,
+  "singleQuote": false,
+  "tabWidth": 4,
+  "trailingComma": "none",
+  "useTabs": false,
+
+  "overrides": [
+    {
+      "files": ["*.yaml", "*.yml", "*.json", "*.jsonc", ".*rc", "site.webmanifest"],
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["*.md", "*.html", "*.xml"],
+      "options": {
+        "printWidth": 9999
+      }
+    }
+  ]
+}

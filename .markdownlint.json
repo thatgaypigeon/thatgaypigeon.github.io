@@ -1,0 +1,42 @@
+{
+  "blanks-around-fences": {
+    "list_items": false
+  },
+  "blanks-around-headings": {
+    "lines_below": 0
+  },
+  "code-block-style": {
+    "style": "fenced"
+  },
+  "code-fence-style": {
+    "style": "backtick"
+  },
+  "emphasis-style": {
+    "style": "asterisk"
+  },
+  "first-line-h1": false,
+  "heading-increment": false,
+  "heading-style": {
+    "style": "atx"
+  },
+  "line-length": false,
+  "no-duplicate-heading": {
+    "siblings_only": true
+  },
+  "no-inline-html": false,
+  "no-multiple-blanks": {
+    "maximum": 2
+  },
+  "no-trailing-punctuation": {
+    "punctuation": ".,;:。，；："
+  },
+  "ol-prefix": {
+    "style": "ordered"
+  },
+  "strong-style": {
+    "style": "asterisk"
+  },
+  "ul-style": {
+    "style": "asterisk"
+  }
+}
