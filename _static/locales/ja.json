@@ -1,0 +1,31 @@
+{
+  "menu-header-menu": "メニュー",
+  "menu-item-home": "ホームページ",
+  "menu-item-projects": "事業",
+  "menu-item-design": "デザイン",
+  "menu-item-wiki": "ウィキ",
+  "menu-item-links": "リンク",
+
+  "menu-header-about": "について",
+  "menu-item-about": "について",
+  "menu-item-faq": "よくあるご質問",
+  "menu-item-contact": "連絡する",
+  "menu-item-source": "ソースコード",
+  "menu-item-legal": "法的",
+
+  "lang-en": "英語",
+  "lang-en-GB": "イギリス",
+  "lang-en-US": "アメリカ",
+  "lang-fr": "フランス語",
+  "lang-ja": "日本語",
+  "lang-no": "ノルウェー語",
+  "lang-nb": "ブークモール",
+  "lang-es": "スペイン語",
+  "lang-tok": "トキポナ",
+  "lang-tok-ku": "く",
+  "lang-uk": "ウクライナ語",
+
+  "search": "捜索",
+
+  "welcome": "ようこそ！"
+}

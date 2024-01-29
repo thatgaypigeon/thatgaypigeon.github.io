@@ -1,0 +1,31 @@
+{
+  "menu-header-menu": "Меню",
+  "menu-item-home": "Дома́шня Сторі́нка",
+  "menu-item-projects": "Проєкти",
+  "menu-item-design": "Дизайн",
+  "menu-item-wiki": "Вікі",
+  "menu-item-links": "Лінки",
+
+  "menu-header-about": "About",
+  "menu-item-about": "Про",
+  "menu-item-faq": "Поширений Запитання",
+  "menu-item-contact": "Зв'яжіться",
+  "menu-item-source": "Початковий код",
+  "menu-item-legal": "Юридичний",
+
+  "lang-en": "Англійський",
+  "lang-en-GB": "Британська",
+  "lang-en-US": "Американська",
+  "lang-fr": "Французька",
+  "lang-ja": "Японська",
+  "lang-no": "Норвезька",
+  "lang-nb": "Букмол",
+  "lang-es": "Іспанська",
+  "lang-tok": "токі пона",
+  "lang-tok-ku": "ку",
+  "lang-uk": "Українська",
+
+  "search": "Пошук",
+
+  "welcome": "Ласкаво Просимо!"
+}

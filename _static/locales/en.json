@@ -1,0 +1,31 @@
+{
+  "menu-header-menu": "Menu",
+  "menu-item-home": "Home",
+  "menu-item-projects": "Projects",
+  "menu-item-design": "Design",
+  "menu-item-wiki": "Wiki",
+  "menu-item-links": "Links",
+
+  "menu-header-about": "About",
+  "menu-item-about": "About",
+  "menu-item-faq": "FAQ",
+  "menu-item-contact": "Contact",
+  "menu-item-source": "Source",
+  "menu-item-legal": "Legal",
+
+  "lang-en": "English",
+  "lang-en-GB": "British",
+  "lang-en-US": "American",
+  "lang-fr": "French",
+  "lang-ja": "Japanese",
+  "lang-no": "Norwegian",
+  "lang-nb": "Bokmål",
+  "lang-es": "Spanish",
+  "lang-tok": "toki pona",
+  "lang-tok-ku": "ku",
+  "lang-uk": "Ukrainian",
+
+  "search": "Search",
+
+  "welcome": "Welcome!"
+}

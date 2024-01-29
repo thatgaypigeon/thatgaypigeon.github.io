@@ -1,0 +1,31 @@
+{
+  "menu-header-menu": "Meny",
+  "menu-item-home": "Hjemmeside",
+  "menu-item-projects": "Prosjekter",
+  "menu-item-design": "Utforminger",
+  "menu-item-wiki": "Wiki",
+  "menu-item-links": "Lenker",
+
+  "menu-header-about": "Om",
+  "menu-item-about": "Om",
+  "menu-item-faq": "Vanlige Spørsmål",
+  "menu-item-contact": "Kontakte",
+  "menu-item-source": "Kildekode",
+  "menu-item-legal": "Juridisk",
+
+  "lang-en": "Engelsk",
+  "lang-en-GB": "Britisk",
+  "lang-en-US": "Amerikansk",
+  "lang-fr": "Fransk",
+  "lang-ja": "Japansk",
+  "lang-no": "Norsk",
+  "lang-nb": "Bokmål",
+  "lang-es": "Spansk",
+  "lang-tok": "toki pona",
+  "lang-tok-ku": "ku",
+  "lang-uk": "Ukrainsk",
+
+  "search": "Søk",
+
+  "welcome": "Velkommen!"
+}
