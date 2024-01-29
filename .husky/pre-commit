@@ -1,0 +1,69 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+CLR='\033[38;2;255;150;0m'
+BLD="\033[1m"
+ITL="\033[3m"
+UDL="\033[4m"
+
+ERR="${R}${BLD}✗${RST}"
+SUC="${G}${BLD}✓${RST}"
+
+RST="\033[0m" # Reset
+
+IND="→"
+
+HD1="\n${CLR}${BLD}${IND}"
+HD2="\n  ${CLR}${IND}"
+
+DONE="\nAll done! ✨ 🍰 ✨"
+
+# Get the list of modified, added, or deleted files
+changed_files=$(git status --porcelain | awk '{print $2}')
+
+# Basic python file checks
+if echo "$changed_files" | grep -q "\.py$"; then
+    echo -e "${HD1} Checking python files...${RST}"
+
+    echo -e "${HD2} Running isort...${RST}"
+    isort .
+
+    echo -e "${HD2} Running flake8...${RST}"
+    flake8 --extend-ignore E501
+
+    echo -e "${HD2} Running black...${RST}"
+    black .
+
+    echo -e $DNE
+fi
+
+# Generate icon font
+if echo "$changed_files" | grep -q "^/_static/fonts/TheNestIcons/[^/]*$"; then
+    echo -e "${HD1} Generating icon font...${RST}"
+    cd /_static/fonts/TheNestIcons
+    python -m nanoemoji.write_font -v 0 --config_file "config.toml" --glyphmap_file "map.glyphmap"
+    echo -e $DONE
+    cd ../../../
+fi
+
+# Generate CSS headers
+if echo "$changed_files" | grep -q "^/_static/css/styles\.css$"; then
+    echo -e "${HD1} Generating CSS headers...${RST}"
+    cd .husky/scripts
+    python css-toc.py
+    echo -e $DONE
+    cd ../../
+fi
+
+# Run prettier
+if echo "$changed_files" | grep -q "^/_static/css/styles\.css$"; then
+    echo -e "${HD1} Formatting files...${RST}"
+
+    echo -e "${HD2} Running prettier...${RST}"
+    prettier --config .prettierrc --write .
+
+    echo -e "${HD2} Running markdownlint...${RST}"
+    markdownlint --config .markdownlint.json --fix .
+
+    echo -e $DONE
+fi
