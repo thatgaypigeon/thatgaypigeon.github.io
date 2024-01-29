@@ -1,0 +1,79 @@
+:root {
+    /* → Background colours */
+    --colour-bg-100: hsl(220 25% 3%);
+    --colour-bg-200: hsl(220 29% 4%);
+    --colour-bg-300: hsl(220 32% 5.5%);
+    --colour-bg-400: hsl(220 35% 6.5%);
+    --colour-bg-500: hsl(220 38% 8%);
+    --colour-bg-600: hsl(220 40% 10%);
+    --colour-bg-700: hsl(220 42% 11%);
+    --colour-bg-800: hsl(220 45% 13%);
+    --colour-bg-900: hsl(220 48% 15%);
+
+    --colour-bg: var(--colour-bg-500);
+
+    /* → Text colours */
+    --colour-text-100: hsl(220 20% 30%);
+    --colour-text-200: hsl(220 18% 38%);
+    --colour-text-300: hsl(220 16% 45%);
+    --colour-text-400: hsl(220 14% 52%);
+    --colour-text-500: hsl(220 12% 58%);
+    --colour-text-600: hsl(220 10% 65%);
+    --colour-text-700: hsl(220 7% 75%);
+    --colour-text-800: hsl(220 5% 85%);
+    --colour-text-900: white;
+
+    --colour-text: var(--colour-text-500);
+
+    /* → Accent colours */
+    --colour-primary-100: hsl(32 75% 34%);
+    --colour-primary-200: hsl(34 90% 36%);
+    --colour-primary-300: hsl(36 100% 38%);
+    --colour-primary-400: hsl(36 95% 44%);
+    --colour-primary-500: hsl(37 84% 50%);
+    --colour-primary-600: hsl(36 94% 57%);
+    --colour-primary-700: hsl(35 96% 65%);
+    --colour-primary-800: hsl(34 98% 75%);
+    --colour-primary-900: hsl(33 100% 85%);
+
+    --colour-primary: var(--colour-primary-500);
+
+    --colour-primary-text-100: hsl(32 100% 45%);
+    --colour-primary-text-200: hsl(34 100% 40%);
+    --colour-primary-text-300: hsl(36 100% 35%);
+    --colour-primary-text-400: hsl(36 95% 30%);
+    --colour-primary-text-500: hsl(37 84% 25%);
+    --colour-primary-text-600: hsl(36 94% 20%);
+    --colour-primary-text-700: hsl(35 96% 15%);
+    --colour-primary-text-800: hsl(34 98% 7%);
+    --colour-primary-text-900: black;
+
+    --colour-primary-text: var(--colour-primary-text-500);
+
+    --colour-secondary-dark-3: hsl(205 60% 30%);
+    --colour-secondary-dark-2: hsl(205 60% 36%);
+    --colour-secondary-dark-1: hsl(205 60% 42%);
+    --colour-secondary-dark-0: hsl(205 61% 48%);
+    --colour-secondary: hsl(205 62% 55%);
+    --colour-secondary-light-0: hsl(205 63% 60%);
+    --colour-secondary-light-1: hsl(205 64% 65%);
+
+    --colour-tertiary-dark-3: hsl(190 52% 32%);
+    --colour-tertiary-dark-2: hsl(190 52% 36%);
+    --colour-tertiary-dark-1: hsl(190 52% 40%);
+    --colour-tertiary-dark-0: hsl(190 52% 45%);
+    --colour-tertiary: hsl(192 52% 56%);
+    --colour-tertiary-light-0: hsl(194 52% 64%);
+    --colour-tertiary-light-1: hsl(194 52% 74%);
+
+    /* → Border colours */
+    --border-colour-dark-1: hsl(0 0% 20% / 0.25);
+    --border-colour-dark-0: hsl(0 0% 50% / 0.15);
+    --border-colour: hsl(0 0% 100% / 0.075);
+    --border-colour-light-0: hsl(0 0% 100% / 0.1);
+    --border-colour-light-1: hsl(0 0% 100% / 0.15);
+
+    --border-colour-light-0-subtle: hsl(0 0% 100% / calc(0.08 * var(--opacity-900)));
+    --border-colour-subtle: hsl(0 0% 100% / calc(0.05 * var(--opacity-900)));
+    --border-colour-dark-0-subtle: hsl(0 0% 100% / calc(0.02 * var(--opacity-900)));
+}
