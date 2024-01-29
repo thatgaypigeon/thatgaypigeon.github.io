@@ -1,0 +1,17 @@
+<div class="menu" id="settings">
+    <button aria-label="Settings" class="menu-button" id="settings-button" tooltip="🍪 Cookies are enabled!" tooltip-type="auto closable bottom" type="button">
+        <div class="icon ph ph-gear"></div>
+    </button>
+    <div class="menu-inner">
+        <div class="h2"><i class="ph ph-gear"></i> Settings</div>
+        <div class="button-list">
+            {% include 'menu/settings/cookies.html' %}
+            {% include 'menu/settings/sound.html' %}
+            {% include 'menu/settings/translate.html' %}
+            {% include 'menu/settings/appearance.html' %}
+            {% include 'menu/settings/text-settings.html' %}
+            {% include 'menu/settings/accessibility.html' %}
+        </div>
+    </div>
+</div>
+<div id="settings-overlay"></div>

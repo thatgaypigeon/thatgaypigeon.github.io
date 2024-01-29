@@ -1,0 +1,20 @@
+site_name: The Nest
+site_description: The Nest — Pigeon's safe space! Make yourself at home, it's alright. 🧡
+site_author: Max Kerr (@thatgaypigeon)
+copyright: 2023 © Max Kerr (@thatgaypigeon)
+
+repo_url: https://github.com/thatgaypigeon/thatgaypigeon.github.io
+
+docs_dir: src
+site_dir: build
+
+theme:
+  name: null
+  locale: en
+  custom_dir: _components
+  include_sidebar: false
+
+plugins: []
+
+extra:
+  version: 1.0
