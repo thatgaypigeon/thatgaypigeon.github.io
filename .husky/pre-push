@@ -22,7 +22,7 @@ DONE="\nAll done! ✨ 🍰 ✨"
 changed_files=$(git status --porcelain | awk '{print $2}')
 
 # Build
-if echo "$changed_files" | grep -q "^/src"; then
+if echo "$changed_files" | grep -q "^src"; then
     echo -e "${HD2} Running mkdocs...${RST}"
     mkdocs gh-deploy --dirty --config-file ./mkdocs.yml --message "🛠️ Build [auto]"
 
