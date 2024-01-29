@@ -1,26 +1,49 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+CLR='\033[38;2;255;150;0m'
+BLD="\033[1m"
+ITL="\033[3m"
+UDL="\033[4m"
+
+ERR="${R}${BLD}✗${RST}"
+SUC="${G}${BLD}✓${RST}"
+
+RST="\033[0m" # Reset
+
+IND="→"
+
+HD1="\n${CLR}${BLD}${IND}"
+HD2="\n  ${CLR}${IND}"
+
+DONE="\nAll done! ✨ 🍰 ✨"
+
+# Get the list of modified, added, or deleted files
+changed_files=$(git status --porcelain | awk '{print $2}')
+
 # Build
-if git diff --quiet HEAD -- ./src; then
-    mkdocs gh-deploy --config-file ./mkdocs.yml --message "🛠️ Build [auto]"
+if echo "$changed_files" | grep -q "^/src"; then
+    echo -e "${HD2} Running mkdocs...${RST}"
+    mkdocs gh-deploy --dirty --config-file ./mkdocs.yml --message "🛠️ Build [auto]"
+
+    echo -e $DNE
 fi
 
-# Stash uncommitted changes
-git stash save --keep-index
+# # Stash uncommitted changes
+# git stash save --keep-index
 
-# Switch to gh-pages branch
-git checkout gh-pages
+# # Switch to gh-pages branch
+# git checkout gh-pages
 
-# Add and commit changes in _static directory
-git add "_static/*"
-git commit -m "Update static files"
+# # Add and commit changes in _static directory
+# git add "_static/*"
+# git commit -m "Update static files"
 
-# Push changes to remote gh-pages branch
-git push origin gh-pages
+# # Push changes to remote gh-pages branch
+# git push origin gh-pages
 
-# Switch back to main branch
-git checkout main
+# # Switch back to main branch
+# git checkout main
 
-# Apply stashed changes
-git stash pop
+# # Apply stashed changes
+# git stash pop
