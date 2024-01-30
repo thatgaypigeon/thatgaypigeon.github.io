@@ -36,7 +36,10 @@ jobs:
           pip install mkdocs
 
       - name: Build with mkdocs
-        run: mkdocs gh-deploy --config-file ./mkdocs.yml --message "🛠️ Build [$(git rev-parse HEAD)]"
+        run: |
+          git fetch origin gh-pages
+          git reset --hard origin/gh-pages
+          mkdocs gh-deploy --config-file ./mkdocs.yml --message "🛠️ Build [$(git rev-parse HEAD)]"
 
       - name: Cleanup files
         run: rm -rf build
