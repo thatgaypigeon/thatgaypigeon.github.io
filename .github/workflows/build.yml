@@ -35,6 +35,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install mkdocs
 
+      - name: Debugging
+        run: |
+          pwd
+          ls -la
+
       - name: Build with mkdocs
         run: |
           git fetch origin gh-pages
