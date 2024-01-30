@@ -2,13 +2,17 @@ import json
 import os
 import string
 from datetime import datetime as dt
-from typing import Any
+from typing import Any, LiteralString
 
 from requests import Response, Session
 
+NO_INCLUDE_CATEGORIES: set[str] = {"Redirect", "Disambiguation"}
 
-def strip_unprintable(s):
-    printable = string.ascii_letters + string.digits + string.punctuation + " "
+
+def strip_unprintable(s) -> LiteralString:
+    printable: LiteralString = (
+        string.ascii_letters + string.digits + string.punctuation + " "
+    )
     return "".join(c for c in s if c in printable)
 
 
@@ -89,7 +93,6 @@ def get_site_info(session: Session) -> dict[str, Any]:
         "type": "mw",
         "tags": ["pj"],
         "lang": "en",
-        "code": False,
     }
 
 
@@ -102,7 +105,7 @@ def get_pages(session: Session) -> list[dict[str, Any]]:
         "generator": "allpages",
         "gaplimit": "max",  # retrieve ALL pages
         "gapnamespace": "0",  # ensure only (main) namespace; though this is already the default
-        "prop": "extracts|info|pageimages|revisions",  # extract short description, date edited, images, and revisions (for date)
+        "prop": "extracts|info|pageimages|revisions|categories",  # extract short description, date edited, images, and revisions (for date)
         "exintro": "true",  # extract only the first section (short description)
         "explaintext": "true",  # do not parse text extract as HTML
         "piprop": "original",  # extract only thumbnail image
@@ -135,7 +138,10 @@ def get_pages(session: Session) -> list[dict[str, Any]]:
     try:
         page_data: list[dict[str, Any]] = [
             {
-                "name": page.get("title"),
+                "name": "Lowercase title"
+                in {item["title"] for item in page.get("categories", {})}
+                and page.get("title").lower()
+                or page.get("title"),
                 "desc": page.get("extract", "").split("==")[0].strip(),
                 "date": format_date(get_latest_revision(page.get("revisions", [])))
                 or page.get("touched"),
@@ -145,12 +151,15 @@ def get_pages(session: Session) -> list[dict[str, Any]]:
                 "type": "wiki",
                 "tags": ["wiki"],
                 "lang": page.get("pagelanguage", "en"),
-                "code": False,
             }
             for page in pages.values()
             if page.get("ns") == 0
             and page.get("contentmodel") == "wikitext"
             and "redirect" not in page
+            and not bool(
+                NO_INCLUDE_CATEGORIES
+                & {item["title"] for item in page.get("categories", {})}
+            )
         ]
 
         print("✅ PAGES PARSED SUCCESSFULLY")
@@ -161,7 +170,7 @@ def get_pages(session: Session) -> list[dict[str, Any]]:
         raise Exception("❌ ERROR PARSING PAGE DATA")
 
 
-with open("_static/json/shared.json", "r") as f:
+with open("/_static/config.json", "r") as f:
     shared_json: dict = json.load(f)
 
     ISO_DATE_FORMAT: str = shared_json.get("iso_date_format")
@@ -184,7 +193,8 @@ session = Session()
 token: str = get_token(session)
 login(session, token)
 
-with open("_static/searchindex/other.json", "r", encoding="utf-8") as f:
+
+with open("/_static/searchindex/other.json", "r", encoding="utf-8") as f:
     site_info: list[dict[str, Any]] = get_site_info(session)
 
     data = json.loads(f.read().encode("utf-16", "surrogatepass").decode("utf-16"))
@@ -205,14 +215,15 @@ with open("_static/searchindex/other.json", "r", encoding="utf-8") as f:
 
     print(json.dumps(data, indent=2, ensure_ascii=False))
 
-with open("_static/searchindex/other.json", "w", encoding="utf-8") as f:
+with open("/_static/searchindex/other.json", "w", encoding="utf-8") as f:
     print("Writing site data...")
     f.write(json.dumps(data, indent=2, ensure_ascii=False))
 
-# with open("_static/searchindex/wiki.json", "w", encoding="utf-8") as f:
-#     pages: list[dict[str, Any]] = get_pages(session)
-#     print("Writing page data...")
-#     f.write(json.dumps(pages, indent=2, ensure_ascii=False))
+
+with open("/_static/searchindex/wiki.json", "w", encoding="utf-8") as f:
+    pages: list[dict[str, Any]] = get_pages(session)
+    print("Writing page data...")
+    f.write(json.dumps(pages, indent=2, ensure_ascii=False))
 
 
 print("✅ DONE")
