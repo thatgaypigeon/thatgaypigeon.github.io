@@ -1,5 +1,5 @@
-name: "🔎 Fetch Wiki Pages"
-run-name: "🔎 Fetch Wiki Pages by @${{ github.actor }}"
+name: "🔎 Fetch Wiki Changes"
+run-name: "🔎 Fetch Wiki Changes by @${{ github.actor }}"
 
 on:
   schedule:
@@ -34,7 +34,7 @@ jobs:
           pip install requests
 
       - name: Run fetch-wiki.py
-        run: python ./.github/workflows/scripts/fetch-wiki.py
+        run: python ./.github/workflows/js/fetch-wiki.py
         env:
           WIKI_BOT_USERNAME: ${{ secrets.WIKI_BOT_USERNAME }}
           WIKI_BOT_PASSWORD: ${{ secrets.WIKI_BOT_PASSWORD }}

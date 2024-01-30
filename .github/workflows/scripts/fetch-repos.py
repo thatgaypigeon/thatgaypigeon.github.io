@@ -52,5 +52,5 @@ for repo in repos:
 
     data.append(repo_data)
 
-with open("_static/searchindex/github.json", "w", encoding="utf-8") as f:
+with open("../../../_static/searchindex/github.json", "w", encoding="utf-8") as f:
     f.write(json.dumps(data, indent=2, ensure_ascii=False))
