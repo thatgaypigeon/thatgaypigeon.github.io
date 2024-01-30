@@ -41,7 +41,7 @@ jobs:
 
       - name: Pre-build commit
         run: |
-          git add ./_static/searchindex/wiki.json ./_static/searchindex/other.json
+          git add ./src/_static/searchindex/wiki.json ./src/_static/searchindex/other.json
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else

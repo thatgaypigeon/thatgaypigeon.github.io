@@ -1,6 +1,6 @@
 import re
 
-file_path = "../../_static/css/styles.css"
+file_path = "../../src/_static/css/styles.css"
 
 contents: dict[int, dict[int, str]] = {}
 INDENT = 2

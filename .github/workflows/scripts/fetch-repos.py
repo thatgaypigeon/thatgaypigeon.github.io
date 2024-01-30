@@ -5,7 +5,7 @@ from datetime import datetime as dt
 from requests import Response, Session
 
 REPO_IMAGES: dict[str, str] = {
-    "thatgaypigeon.github.io": "/_static/img/banner/banner-square.png"
+    "thatgaypigeon.github.io": "/src/_static/img/banner/banner-square.png"
 }
 
 TOKEN: str = os.environ["GH_PAT_TOKEN"]
