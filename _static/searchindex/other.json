@@ -5,11 +5,18 @@
     "date": "14-09-2023",
     "link": "https://github.com/Artemis21/pydis-jam23",
     "imag": "https://raw.githubusercontent.com/Artemis21/pydis-jam23/main/src/pydis_jam23/web/static/logo.png",
-    "icon": ["ph", "ph-github-logo"],
+    "icon": [
+      "ph",
+      "ph-github-logo"
+    ],
     "lang": "en",
     "type": "github",
-    "cats": ["github"],
-    "code": { "Python": 100 },
+    "cats": [
+      "github"
+    ],
+    "code": {
+      "Python": 100
+    },
     "team": 5
   },
   {
@@ -19,7 +26,9 @@
     "link": "https://pigeon.miraheze.org/wiki/Main_Page",
     "imag": "https://pigeon.miraheze.org/w/img_auth.php/9/96/Icon.png",
     "type": "mw",
-    "tags": ["pj"],
+    "tags": [
+      "pj"
+    ],
     "lang": "en"
   }
 ]
