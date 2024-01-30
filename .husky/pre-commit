@@ -60,7 +60,7 @@ if echo "$changed_files" | grep -q ".*"; then
     echo -e "${HD1} Formatting files...${RST}"
 
     echo -e "${HD2} Running prettier...${RST}"
-    prettier --config .prettierrc --write .
+    git diff --staged --name-only | xargs prettier --config .prettierrc --write || true
 
     echo -e "${HD2} Running markdownlint...${RST}"
     markdownlint --config .markdownlint.json --fix .
