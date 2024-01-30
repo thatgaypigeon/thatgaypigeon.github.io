@@ -24,7 +24,7 @@ changed_files=$(git status --porcelain | awk '{print $2}')
 # Build
 if echo "$changed_files" | grep -q "^src"; then
     echo -e "${HD2} Running mkdocs...${RST}"
-    mkdocs gh-deploy --dirty --config-file ./mkdocs.yml --message "🛠️ Build [$(git rev-parse HEAD)]"
+    mkdocs gh-deploy --config-file ./mkdocs.yml --message "🛠️ Build [$(git rev-parse HEAD)]"
 
     echo -e "${HD2} Cleaning up...${RST}"
     rm -rf build
