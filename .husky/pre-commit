@@ -19,7 +19,7 @@ HD2="\n  ${CLR}${IND}"
 DONE="\nAll done! ✨ 🍰 ✨"
 
 # Get the list of modified, added, or deleted files
-changed_files=$(git status --porcelain | awk '{print $2}')
+changed_files=$(git status --porcelain -u | awk '{print $2}')
 
 # Basic python file checks
 if echo "$changed_files" | grep -q "\.py$"; then
@@ -56,7 +56,7 @@ if echo "$changed_files" | grep -q "^/_static/css/styles\.css$"; then
 fi
 
 # Run prettier
-if echo "$changed_files" | grep -q "^/_static/css/styles\.css$"; then
+if echo "$changed_files" | grep -q ".*"; then
     echo -e "${HD1} Formatting files...${RST}"
 
     echo -e "${HD2} Running prettier...${RST}"
