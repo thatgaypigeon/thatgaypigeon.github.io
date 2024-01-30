@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
@@ -36,12 +36,7 @@ jobs:
           pip install mkdocs
 
       - name: Build with mkdocs
-        run: |
-          git fetch origin gh-pages
-          git reset --hard origin/gh-pages
-          pwd
-          ls -la
-          mkdocs gh-deploy --config-file mkdocs.yml --message "🛠️ Build [$(git rev-parse HEAD)]"
+        run: mkdocs gh-deploy --force --config-file mkdocs.yml --message "🛠️ Build [$(git rev-parse HEAD)]"
 
       - name: Cleanup files
         run: rm -rf build
