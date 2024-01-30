@@ -35,15 +35,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install mkdocs
 
-      - name: Debugging
-        run: |
-          pwd
-          ls -la
-
       - name: Build with mkdocs
         run: |
           git fetch origin gh-pages
           git reset --hard origin/gh-pages
+          pwd
+          ls -la
           mkdocs gh-deploy --config-file mkdocs.yml --message "🛠️ Build [$(git rev-parse HEAD)]"
 
       - name: Cleanup files
