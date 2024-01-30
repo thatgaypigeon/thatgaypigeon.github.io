@@ -1,0 +1,52 @@
+name: "🔎 Fetch Wiki Pages"
+run-name: "🔎 Fetch Wiki Pages by @${{ github.actor }}"
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    name: "Run fetch-wiki.py"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git config
+        run: |
+          git config --global user.name "thatgaypigeon"
+          git config --global user.email "pigeon43.stuff@gmail.com"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run fetch-wiki.py
+        run: python ./.github/workflows/scripts/fetch-wiki.py
+        env:
+          WIKI_BOT_USERNAME: ${{ secrets.WIKI_BOT_USERNAME }}
+          WIKI_BOT_PASSWORD: ${{ secrets.WIKI_BOT_PASSWORD }}
+
+      - name: Pre-build commit
+        run: |
+          git add ./_static/searchindex/wiki.json ./_static/searchindex/other.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "⚙️ Auto-commit from fetch-wiki.py"
+            git remote set-url origin https://${{ secrets.GH_PAT_TOKEN }}@github.com/thatgaypigeon/thatgaypigeon.github.io.git
+            git pull origin main
+            git push
+          fi
