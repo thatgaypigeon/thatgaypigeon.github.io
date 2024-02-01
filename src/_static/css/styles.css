@@ -180,8 +180,8 @@ MOBILE                     3148
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100%;
-    -webkit-filter: brightness(var(--brightness)) contrast(var(--contrast));
-    filter: brightness(var(--brightness)) contrast(var(--contrast));
+    -webkit-filter: brightness(var(--brightness)) contrast(var(--contrast)) saturate(var(--saturation));
+    filter: brightness(var(--brightness)) contrast(var(--contrast)) saturate(var(--saturation));
     letter-spacing: 0.15px;
 }
 
@@ -196,6 +196,7 @@ MOBILE                     3148
     --h: 224;
     --brightness: 1;
     --contrast: 1;
+    --saturation: 1;
 
     /* → Constants */
 
@@ -502,6 +503,9 @@ MOBILE                     3148
     /* → Other */
     --focus-transition: outline-width 150ms (--transition-curve);
 
+    --form-input-min-width: 14rem;
+    --form-input-max-width: 21rem;
+
     --menu-button-max-size: var(--logo-size);
 }
 
@@ -658,11 +662,14 @@ h6,
 .h3,
 .h4,
 .h5,
-.h6 {
+.h6,
+.header {
     display: flex;
-    gap: 0.5em;
+    align-items: center;
+    gap: 0.35em;
     font-family: var(--font-header);
     text-wrap: balance;
+    margin-bottom: 0.25em;
 }
 
 h1,
@@ -910,17 +917,17 @@ button,
 form {
     display: flex;
     flex-direction: column;
-    gap: 1em;
 }
 
 form p {
-    margin: 0.5em auto 0 auto !important;
+    margin-top: 0.5em !important;
+    text-align: center;
 }
 
 /* → Groups of related inputs
 // --------------------- */
 form fieldset {
-    margin: 0;
+    margin: 0.5em 0.5em;
     padding: 0;
     border: none;
     display: flex;
@@ -928,12 +935,18 @@ form fieldset {
     gap: 0.5em;
 }
 
+form fieldset:not(.breakout):not(.horizontal) {
+    min-width: var(--form-input-min-width);
+    width: auto;
+    max-width: var(--form-input-max-width);
+}
+
 /* → Group title
 // --------------------- */
 form legend {
-    color: var(--colour-text-600);
-    font-size: 0.9em;
-    margin-block: 0 0.4em;
+    color: var(--colour-text-700);
+    font-size: 0.85em;
+    margin: 0.25em 0 0.75em -0.25em;
 }
 
 /* ----------------------------------------------------------------------------------------- //
@@ -958,17 +971,33 @@ form .input-wrapper {
     display: -ms-grid;
     display: grid;
     grid-template-areas: "input";
+    align-items: center;
 }
 
-form .input-wrapper input[type="radio"],
-form .input-wrapper input[type="radio"] + label,
-form .input-wrapper input[type="checkbox"],
-form .input-wrapper input[type="checkbox"] + label {
+form fieldset.breakout .input-wrapper {
+    grid-template-columns: clamp(var(--form-input-min-width), 100%, var(--form-input-max-width));
+    column-gap: 0.75em;
+}
+
+form .input-wrapper input,
+form .input-wrapper input + label {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
     grid-row: 1;
     grid-column: 1;
     grid-area: input;
+    cursor: pointer;
+}
+
+form .input-wrapper > div:only-of-type:not(.range-wrapper) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-row: 1;
+    grid-column: 2;
+}
+
+form .input-wrapper input:checked ~ div:last-of-type:not(.input-wrapper) {
+    color: var(--colour-text);
 }
 
 form .input-wrapper input:checked:focus-visible + label {
@@ -991,7 +1020,14 @@ form input[type="checkbox"] {
 form input[type="radio"] + label,
 form input[type="checkbox"] + label {
     outline: var(--border-width) solid hsl(var(--h) 55% 15% / 0.85);
-    background: var(--colour-bg-500);
+    background-color: var(--colour-bg-500);
+    transition: background-color var(--transition);
+}
+
+form input[type="radio"] + label:hover,
+form input[type="checkbox"] + label:hover {
+    outline: var(--border-width) solid hsl(var(--h) 55% 15%);
+    background-color: var(--colour-bg-600);
 }
 
 /* ------------------------------------------------------------------------- //
@@ -1051,14 +1087,13 @@ form input[type="button"] {
     display: -ms-inline-grid;
     display: inline-grid;
     place-items: center;
-    padding: var(--padding) var(--padding) calc(1.25em + var(--padding)) var(--padding);
     background-color: var(--colour-bg-700);
     border: var(--border);
     color: var(--colour-text-600);
     border-radius: 0.5em;
     aspect-ratio: 1 / 1;
     font-size: 0.75rem;
-    --padding: 0.125em;
+    width: 1.8em;
 }
 
 form input[type="button"][disabled] {
@@ -1165,14 +1200,16 @@ form label {
     gap: 0.125em;
     align-items: center;
     -ms-grid-columns: 1fr 0.125em auto;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
+    grid-template-areas: "title sub icon" "desc desc desc";
     border-radius: var(--border-radius);
     transition: outline var(--transition-short-1);
-    --border-radius: 0.2em;
+    --border-radius: 0.25em;
     --border-radius-end: 0.5em;
 }
 
-form .main-label {
+form label > .main-label {
+    grid-area: title;
     font-size: 0.75em;
     color: var(--colour-text);
     display: inline-flex;
@@ -1180,16 +1217,28 @@ form .main-label {
     align-items: center;
 }
 
-form .sub-label {
+form label > .sub-label,
+form label > .sub-label-desc {
     font-size: 0.625em;
     color: var(--colour-text-200);
+}
+
+form label > .sub-label {
+    grid-area: sub;
+}
+
+form label > .sub-label-desc {
+    grid-area: desc;
+}
+
+form label > .icon-tooltip {
+    grid-area: icon;
 }
 
 form input[type="radio"][disabled] + label,
 form input[type="checkbox"]:not(.toggle)[disabled] + label {
     background-color: var(--colour-bg-600);
     color: var(--colour-text-200);
-    opacity: 0.75;
 }
 
 form input[type="radio"][disabled] + label .main-label,
@@ -1200,7 +1249,6 @@ form input[type="checkbox"]:not(.toggle)[disabled] + label .main-label {
 form input[type="radio"][disabled] + label .sub-label,
 form input[type="checkbox"]:not(.toggle)[disabled] + label .sub-label {
     color: var(--colour-text-100);
-    opacity: 0.5;
 }
 
 form input[type="radio"][disabled] + label:hover,
@@ -1213,13 +1261,17 @@ form input[type="checkbox"]:not(.toggle)[disabled] + label:hover {
 /* → Border radii
 // --------------------- */
 form fieldset > label:first-of-type,
-form fieldset .input-wrapper:first-of-type > label {
+form fieldset > .input-wrapper:first-of-type > label,
+form fieldset > .input-wrapper-extra:first-of-type > .input-wrapper label {
+    border-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius-end);
     border-top-right-radius: var(--border-radius-end);
 }
 
 form fieldset > label:last-of-type,
-form fieldset .input-wrapper:last-of-type > label {
+form fieldset > .input-wrapper:last-of-type > label,
+form fieldset > .input-wrapper-extra:last-of-type > .input-wrapper label {
+    border-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius-end);
     border-bottom-right-radius: var(--border-radius-end);
 }
@@ -1343,7 +1395,7 @@ nav > div:first-child {
 }
 
 .menu-button:hover {
-    background-color: rgb(255 255 255 / 0.22);
+    background-color: rgb(255 255 255 / 0.1);
     color: var(--colour-text-900);
 }
 
@@ -1357,6 +1409,7 @@ nav > div > .menu > .menu-button {
 }
 
 nav > div > .menu > .menu-button:hover {
+    background-color: rgb(255 255 255 / 0.3);
     color: var(--nav-text-colour-900);
 }
 
@@ -1369,7 +1422,7 @@ nav > div > .menu > .menu-button:hover {
     stroke: currentColor;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-width: 18; /* regular = 16, bold = 24 */
+    stroke-width: 16; /* regular = 16, bold = 24 */
 }
 
 .menu-button svg circle {
@@ -1460,13 +1513,6 @@ nav > div > .menu > .menu-button:hover {
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- */
 
-.menu p,
-.menu .h2,
-.menu .h3,
-.menu .h4 {
-    margin-block: 0;
-}
-
 /* ------------------------------------------------------------------------- //
 // ---------------------------------- Text --------------------------------- //
 // ------------------------------------------------------------------------- */
@@ -1485,8 +1531,8 @@ nav > div > .menu > .menu-button:hover {
 // -------------------------------- Headings ------------------------------- //
 // ------------------------------------------------------------------------- */
 
-.menu-inner > .h2,
-.menu-inner > .h2 > span {
+.menu-inner .h2,
+.menu-inner .h2 > span {
     display: flex;
     align-items: center;
     gap: 0.4em;
@@ -1494,16 +1540,16 @@ nav > div > .menu > .menu-button:hover {
 
 /* → Heading Icons
 // --------------------- */
-.menu-inner > .h2 i,
-.menu-inner > .h2 > span span,
-.menu-inner > .h2 .lang {
+.menu-inner .h2 i,
+.menu-inner .h2 .icon,
+.menu-inner .h2 .lang-wrapper {
     padding: 0.25em;
     background-color: var(--colour-bg-800);
     border-radius: 0.35rem;
-    color: var(--colour-text-400);
+    color: var(--colour-text);
 }
 
-.menu-inner > .h2 > span span {
+.menu-inner .h2 .icon {
     margin-right: -0.075em;
     padding: 0.1em 0.15em 0.1em 0.15em;
     font-size: 0.9em;
@@ -1511,18 +1557,15 @@ nav > div > .menu > .menu-button:hover {
 
 /* → Heading Toggle
 // --------------------- */
-.menu-inner > .h2 form,
-.menu-inner > .h2 .lang,
-.menu-inner > .h2 .reset-button,
-.menu-inner > .h3 .reset-button,
-.menu-inner > .h4 .reset-button {
+.menu-inner .h2 form,
+.menu-inner .h2 .lang-wrapper,
+.menu-inner .h2 .reset-button {
     margin-left: auto;
 }
 
-.menu-inner > .h2 .lang {
-    display: -ms-grid;
-    display: grid;
-    place-items: center;
+.menu-inner .h2 .lang-wrapper {
+    display: flex;
+    align-items: center;
     padding: 0.25em 0.4em;
     font-size: 0.75em;
     color: var(--colour-text-600);
@@ -1622,16 +1665,20 @@ nav > div > .menu > .menu-button:hover {
 
 /* → Inner Icons
 // --------------------- */
-.menu .menu-list > a i:last-child {
+.menu .menu-list > a i:last-child,
+.menu .button-list > a i:last-child {
     position: relative;
-    top: -0.025rem;
-    left: -0.15rem;
     font-size: 0.75em;
     color: var(--colour-text-400);
     opacity: 0.8;
 }
 
-.menu .menu-list > a:hover i:last-child {
+.menu .menu-list > a i:last-child {
+    top: -0.025rem;
+}
+
+.menu .menu-list > a:hover i:last-child,
+.menu .button-list > a:hover i:last-child {
     color: var(--colour-text-900);
 }
 
@@ -1877,10 +1924,10 @@ nav > div > .menu > .menu-button:hover {
     background-color: var(--nav-bg-colour-700);
 }
 
-#search:focus,
-#search:focus-visible,
-#search:focus + .search-icon,
-#search:focus-visible + .search-icon {
+#search-menu[open] #search:focus,
+#search-menu[open] #search:focus-visible,
+#search-menu[open] #search:focus + .search-icon,
+#search-menu[open] #search:focus-visible + .search-icon {
     --search-text-colour: var(--colour-text-700);
 }
 
@@ -1944,7 +1991,7 @@ nav > div > .menu > .menu-button:hover {
 
 #search-settings form fieldset input + label {
     white-space: nowrap;
-    padding: 0.3em 0.4em;
+    padding: 0.3em 0.25em 0.25em 0.4em;
     margin: 0.25em;
 }
 
@@ -2060,7 +2107,7 @@ nav > div > .menu > .menu-button:hover {
     transition: background-color var(--transition), color var(--transition);
     -webkit-animation: var(--transition-long-1) calc(var(--index) * 42ms) backwards slideInFromRight;
     animation: var(--transition-long-1) calc(var(--index) * 42ms) backwards slideInFromRight;
-    --image-size: 4.5rem;
+    --image-size: clamp(1rem, 5vw, 4rem);
 }
 
 #search-results .result:hover {
@@ -2117,6 +2164,7 @@ nav > div > .menu > .menu-button:hover {
 /* → Titles
 // --------------------- */
 #search-results .result-name {
+    margin-block: 0;
     font-family: var(--font-subheader);
     font-size: 0.985rem;
     font-weight: bolder;
@@ -2219,6 +2267,7 @@ nav > div > .menu > .menu-button:hover {
     grid-column-end: -1;
     -ms-grid-row-align: start;
     align-self: start;
+    margin-block: 0;
     padding-bottom: 0.125rem; /* allow extra space for mark */
     font-size: 80%;
     color: var(--colour-text-400);
@@ -2292,10 +2341,17 @@ nav > div > .menu > .menu-button:hover {
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- */
 
-#settings > .menu-inner {
+.menu#settings > .menu-inner {
     position: fixed !important;
-    inset: var(--gap);
-    --gap: 3rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    inset: 2.5rem;
+}
+
+#settings .h2:first-child {
+    min-width: var(--form-input-min-width);
+    width: auto;
+    max-width: var(--form-input-max-width);
 }
 
 /* ------------------------------------------------------------------------------------------------------------- //
@@ -2318,6 +2374,104 @@ nav > div > .menu > .menu-button:hover {
     left: -0.025em;
     scale: 1.25;
     font-size: 0.75em;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// --------------------------------------------------- TABS ---------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+}
+
+.tabs-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    list-style: none;
+    max-width: 16em;
+}
+
+.tabs-labels > * {
+    width: 20ch;
+    padding: 0.6em 1em;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.tabs-labels > :hover {
+    background-color: var(--colour-bg-900);
+    color: var(--colour-text-700);
+}
+
+.tabs-labels > [active] {
+    background-color: var(--colour-primary);
+    color: var(--colour-text-900);
+}
+
+.tabs-labels > [active]:hover {
+    background-color: var(--colour-primary-600);
+}
+
+.tabs-content {
+    width: 100%;
+}
+
+.tabs-content > * {
+    display: none;
+}
+
+.tabs-content > [open] {
+    display: block;
+    width: 100%;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// -------------------------------------------- COLLAPSIBLE CONTENT -------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+.collapsible {
+    display: flex;
+    flex-direction: column;
+}
+
+.collapsible > .collapsible-header {
+    display: flex;
+    flex-direction: row;
+    gap: var(--collapsible-header-gap);
+    padding-right: var(--collapsible-header-gap);
+    align-items: center;
+    justify-content: space-between;
+    --collapsible-header-gap: 1em;
+}
+
+.collapsible > .collapsible-header > .collapsible-toggle {
+    display: inline-block;
+    rotate: 0deg;
+    transition: rotate var(--transition);
+    z-index: 1;
+}
+
+.collapsible[open] > .collapsible-header > .collapsible-toggle {
+    rotate: 90deg;
+}
+
+.collapsible > .collapsible-content {
+    display: none;
+}
+
+.collapsible[open] > .collapsible-content {
+    display: block;
 }
 
 /* ------------------------------------------------------------------------------------------------------------- //
