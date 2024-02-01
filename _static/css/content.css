@@ -1,0 +1,44 @@
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Waves ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.waves {
+    width: calc(100% + calc(2 * var(--main-padding)));
+    margin-left: calc(0rem - var(--main-padding));
+}
+
+.waves > img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 50%;
+    object-fit: cover;
+}
+
+.waves > img:last-of-type {
+    rotate: 180deg;
+}
+
+.waves > h2 {
+    outline: 1rem solid;
+    padding: 0;
+    margin: 0;
+    padding: 4rem 3rem;
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+    color: var(--colour-text-900);
+    font-family: var(--font-header);
+    font-size: 5rem;
+    font-weight: bold;
+    letter-spacing: 1rem;
+    left: 0.5rem;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.waves[colour="orange"] > h2 {
+    background-color: #d55819;
+    outline-color: #d55819;
+}
