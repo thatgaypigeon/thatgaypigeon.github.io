@@ -1,16 +1,16 @@
 :root {
     /* → Background colours */
-    --colour-bg-100: hsl(220 25% 80%);
-    --colour-bg-200: hsl(220 29% 85%);
-    --colour-bg-300: hsl(220 32% 90%);
-    --colour-bg-400: hsl(220 35% 93%);
-    --colour-bg-500: hsl(220 38% 96%);
-    --colour-bg-600: hsl(220 40% 97%);
-    --colour-bg-700: hsl(220 42% 98%);
-    --colour-bg-800: hsl(220 45% 99%);
-    --colour-bg-900: hsl(220 48% 100%);
+    --colour-bg-100: hsl(220 18% 72%);
+    --colour-bg-200: hsl(220 22% 80%);
+    --colour-bg-300: hsl(220 25% 85%);
+    --colour-bg-400: hsl(220 28% 90%);
+    --colour-bg-500: hsl(220 32% 93%);
+    --colour-bg-600: hsl(220 35% 95%);
+    --colour-bg-700: hsl(220 38% 96.5%);
+    --colour-bg-800: hsl(220 42% 98%);
+    --colour-bg-900: hsl(220 45% 100%);
 
-    --colour-bg: var(--colour-bg-500);
+    --colour-bg: var(--colour-bg-600);
 
     /* → Text colours */
     --colour-text-100: hsl(220 20% 65%);
