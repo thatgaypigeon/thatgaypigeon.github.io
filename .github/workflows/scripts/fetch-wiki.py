@@ -92,7 +92,7 @@ def get_site_info(session: Session) -> dict[str, Any]:
         # "icon": "",
         "type": "mw",
         "tags": ["pj"],
-        "lang": "en",
+        "lang": "en-GB",
     }
 
 
