@@ -369,6 +369,13 @@ function getDeviceInfo() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+    document.body.style.opacity = "0"
+    document.body.style.visibility = "hidden"
+    document.body.style.transition = "all 150ms ease-in"
+    document.body.style.transitionDelay = "50ms"
+
+    updatePageLangText(pageLang)
+
     detectBrokenImages([...document.getElementsByTagName("img")])
     formatKeyboardShortcuts([...document.getElementsByTagName("kbd")])
 
@@ -399,6 +406,9 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 window.addEventListener("load", () => {
+    document.body.style.visibility = "visible"
+    document.body.style.opacity = "1"
+
     // Mobile debugging
     // const originalConsoleError = console.error
     // const originalConsoleLog = console.log
@@ -422,44 +432,24 @@ window.addEventListener("load", () => {
     // Device info
     const deviceInfo = getDeviceInfo()
 
-    if (deviceInfo.isMobile) {
-        root.setAttribute("mobile", "")
-    }
+    if (deviceInfo.isMobile) root.setAttribute("mobile", "")
 
     root.setAttribute("os", deviceInfo.os)
     root.setAttribute("browser", deviceInfo.browser)
     root.setAttribute("engine", deviceInfo.engine)
 
-    /* → Scale menu buttons
-    // --------------------- */
-    function scaleButtons() {
-        const elements = document.querySelectorAll("header > button")
-        const screenWidth = window.innerWidth
-        const minScale = 0.75
-        const maxScale = 1.0
-        const minGap = -0.5
-        const maxGap = 0.375
-        const maxScreenWidth = 1080
+    // Collapsible elements
+    const collapsibleElements = Array.from(document.getElementsByClassName("collapsible-header"))
 
-        if (screenWidth < maxScreenWidth) {
-            const scale = minScale + (maxScale - minScale) * (screenWidth / maxScreenWidth)
-            const gap = minGap + (maxGap - minGap) * (screenWidth / maxScreenWidth)
-
-            elements.forEach((element) => {
-                element.style.scale = `${scale}`
-                element.style.setProperty("--gap", gap.toString() + "rem")
+    collapsibleElements.forEach((element) => {
+        let parent = element.parentElement
+        if (parent.classList.contains("collapsible")) {
+            console.log(parent)
+            element.addEventListener("click", () => {
+                console.log(element, parent)
+                parent.toggleAttribute("open")
             })
         }
-    }
-
-    scaleButtons()
-
-    window.addEventListener("resize", scaleButtons)
-
-    // Set language information
-    const langElements = document.querySelectorAll(".lang")
-    langElements.forEach((el) => {
-        el.innerHTML = root.getAttribute("lang")
     })
 })
 
@@ -490,6 +480,8 @@ document.write('<script src="/_static/js/settings.js"></script>')
 document.write('<script src="/_static/js/caret.js" defer></script>')
 document.write('<script src="/_static/js/clicks.js" defer></script>')
 document.write('<script src="/_static/js/menu.js" defer></script>')
+document.write('<script src="/_static/js/redirect.js"></script>')
+document.write('<script src="/_static/js/tabs.js"></script>')
 document.write('<script src="/_static/js/tooltip.js" defer></script>')
 
 document.write('<script type="module" src="/_static/js/search.js"></script>')

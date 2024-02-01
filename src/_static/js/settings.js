@@ -12,7 +12,6 @@ const COOKIES_ON = "enabled"
 const COOKIES_OFF = "disabled"
 const COOKIES_DEFAULT = COOKIES_ON
 
-const COOKIES_BUTTON = "cookies-button"
 const COOKIES_INPUT = "cookies-input"
 
 /**
@@ -121,7 +120,7 @@ const FONT_CLEAN_INPUT = "font-" + FONT_CLEAN
 const FONT_DYSLEXIC_INPUT = "font-" + FONT_DYSLEXIC
 
 /**
- * @returns string
+ * @returns {string}
  */
 function getFont() {
     const font = localStorage.getItem(FONT_VAR)
@@ -149,7 +148,7 @@ const REDUCE_MOTION_DEFAULT = window.matchMedia("(prefers-reduced-motion: reduce
 const REDUCE_MOTION_INPUT = "reduce-motion"
 
 /**
- * @returns boolean
+ * @returns {boolean}
  */
 function getMotionState() {
     return (localStorage.getItem(REDUCE_MOTION_VAR) || REDUCE_MOTION_DEFAULT) === REDUCE_MOTION_ON
@@ -157,7 +156,7 @@ function getMotionState() {
 
 /**
  * @param {boolean} state
- * @returns string
+ * @returns {string}
  */
 function motionStateToString(state) {
     return state ? REDUCE_MOTION_ON : REDUCE_MOTION_OFF
@@ -180,18 +179,24 @@ const SOUND_OFF = "off"
 const SOUND_DEFAULT = SOUND_ON
 
 const SOUND_BUTTON = "sound-button"
-const SOUND_INPUT = "sound-input"
 
 /**
- * @returns boolean
+ * @returns {boolean}
  */
 function getSoundState() {
     return (localStorage.getItem(SOUND_VAR) || SOUND_DEFAULT) === SOUND_ON
 }
 
 /**
+ * @returns {boolean}
+ */
+function swapSoundState() {
+    return !getSoundState()
+}
+
+/**
  * @param {boolean} state
- * @returns string
+ * @returns {string}
  */
 function soundStateToString(state) {
     return state ? SOUND_ON : SOUND_OFF
@@ -219,7 +224,7 @@ const BRIGHTNESS_OUTPUT = "brightness-output"
 const BRIGHTNESS_RESET_BUTTON = "brightness-reset"
 
 /**
- * @returns number
+ * @returns {number}
  */
 function getBrightnessValue() {
     const brightnessValue = localStorage.getItem(BRIGHTNESS_VAR)
@@ -243,7 +248,7 @@ root.style.setProperty(BRIGHTNESS_ATTR, brightnessValue)
 // const THEME_COLOUR_DEFAULT = 227;
 
 // /**
-//  * @returns number
+//  * @returns {number}
 //  */
 // function getThemeColour() {
 //     const themeColour = localStorage.getItem(THEME_COLOUR_VAR);
@@ -268,7 +273,7 @@ const CONTRAST_OUTPUT = "contrast-output"
 const CONTRAST_RESET_BUTTON = "contrast-reset"
 
 /**
- * @returns number
+ * @returns {number}
  */
 function getContrastValue() {
     const contrastValue = localStorage.getItem(CONTRAST_VAR)
@@ -282,6 +287,35 @@ function getContrastValue() {
 // Set contrast
 const contrastValue = getContrastValue()
 root.style.setProperty(CONTRAST_ATTR, contrastValue)
+
+/* → Saturation
+// --------------------- */
+const SATURATION_VAR = "saturation"
+const SATURATION_ATTR = "--saturation"
+const SATURATION_MIN = 0.5
+const SATURATION_MAX = 1.5
+const SATURATION_DEFAULT = 1
+const SATURATION_STEP = 0.01
+
+const SATURATION_INPUT = "saturation-input"
+const SATURATION_OUTPUT = "saturation-output"
+const SATURATION_RESET_BUTTON = "saturation-reset"
+
+/**
+ * @returns {number}
+ */
+function getSaturationValue() {
+    const saturationValue = localStorage.getItem(SATURATION_VAR)
+    return saturationValue
+        ? SATURATION_MAX >= saturationValue >= SATURATION_MIN
+            ? saturationValue
+            : SATURATION_DEFAULT
+        : SATURATION_DEFAULT
+}
+
+// Set saturation
+const saturationValue = getSaturationValue()
+root.style.setProperty(SATURATION_ATTR, saturationValue)
 
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------- Theme ----------------------------------------- //
@@ -298,14 +332,14 @@ const THEME_DEFAULT = THEME_DARK
 const THEME_BUTTON = "theme-button"
 
 /**
- * @returns string
+ * @returns {string}
  */
 function getTheme() {
     return localStorage.getItem(THEME_VAR) || THEME_DEFAULT
 }
 
 /**
- * @returns string
+ * @returns {string}
  */
 function swapTheme() {
     return getTheme() === THEME_LIGHT ? THEME_DARK : THEME_LIGHT
@@ -365,7 +399,6 @@ window.addEventListener("load", function () {
     // ----------------------------------------------------------------------------------------- //
     // ---------------------------------------- Cookies ---------------------------------------- //
     // ----------------------------------------------------------------------------------------- //
-    const cookiesButton = document.getElementById(COOKIES_BUTTON)
     const cookiesInput = document.getElementById(COOKIES_INPUT)
 
     /**
@@ -383,12 +416,6 @@ window.addEventListener("load", function () {
 
         // Set input state
         cookiesInput.checked = state
-
-        // Set button properties
-        cookiesButton.setAttribute(
-            "tooltip",
-            "Cookies are " + (state ? "✅" : "❌") + " " + cookiesToString(state).toUpperCase()
-        )
 
         // Set local storage
         state ? localStorage.setItem(COOKIES_VAR, cookiesToString(state)) : localStorage.removeItem(COOKIES_VAR)
@@ -437,7 +464,6 @@ window.addEventListener("load", function () {
     // ----------------------------------------- Sound ----------------------------------------- //
     // ----------------------------------------------------------------------------------------- //
     const soundButton = document.getElementById(SOUND_BUTTON)
-    const soundInput = document.getElementById(SOUND_INPUT)
 
     /**
      * @param {boolean} state
@@ -459,8 +485,8 @@ window.addEventListener("load", function () {
     updateSoundState(soundState)
 
     // Events
-    soundInput.addEventListener("click", function () {
-        updateSoundState(this.checked)
+    soundButton.addEventListener("click", function () {
+        updateSoundState(swapSoundState())
     })
 
     // ----------------------------------------------------------------------------------------- //
@@ -681,10 +707,44 @@ window.addEventListener("load", function () {
         updateContrast(CONTRAST_DEFAULT)
     })
 
+    // -> Saturation
+    // --------------------- //
+    const saturationInput = document.getElementById(SATURATION_INPUT)
+    const saturationOutput = document.getElementById(SATURATION_OUTPUT)
+    const saturationReset = document.getElementById(SATURATION_RESET_BUTTON)
+
+    /**
+     * @param {number} value
+     */
+    function updateSaturation(value) {
+        // Set root properties
+        root.style.setProperty(SATURATION_ATTR, value)
+
+        // Set range value
+        saturationInput.value = value
+
+        // Set output
+        saturationOutput.textContent = value.toString()
+
+        // Set local storage
+        ifCookies(localStorage.setItem.bind(localStorage), SATURATION_VAR, value)
+    }
+
+    updateSaturation(saturationValue)
+
+    // Events
+    saturationInput.addEventListener("input", function () {
+        updateSaturation(this.value)
+    })
+    saturationReset.addEventListener("click", function () {
+        updateSaturation(SATURATION_DEFAULT)
+    })
+
     // -> Page lang
     // --------------------- //
     const pageLangButtons = document.getElementsByName(PAGE_LANG_BUTTONS_NAME)
     const pageLangOutputs = Array.from(document.getElementsByClassName(PAGE_LANG_CLASS_NAME))
+    const pageLangIconOutputs = Array.from(document.getElementsByClassName(PAGE_LANG_CLASS_NAME_ICON))
 
     /**
      * @param {string} value
@@ -694,7 +754,9 @@ window.addEventListener("load", function () {
         updatePageLangText(value)
 
         // Update input (needed for page load)
-        document.getElementById(PAGE_LANG_BUTTONS_NAME + "-" + value).checked = true
+        const langInput = document.getElementById(PAGE_LANG_BUTTONS_NAME + "-" + value)
+
+        langInput.checked = true
 
         // Set root properties
         root.setAttribute(PAGE_LANG_ATTR, value)
@@ -702,6 +764,10 @@ window.addEventListener("load", function () {
         // Set outputs
         pageLangOutputs.forEach(function (output) {
             output.textContent = value
+        })
+
+        pageLangIconOutputs.forEach(function (output) {
+            output.textContent = langInput.nextElementSibling.querySelector("span").textContent
         })
 
         // Set local storage
