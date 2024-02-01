@@ -1,63 +1,48 @@
-<div class="menu" id="accessibility">
-    <button aria-label="Accessibility settings" class="menu-button" id="accessibility-button" type="button">
-        <div class="icon ph ph-person-arms-spread"></div>
-    </button>
-    <div class="menu-inner">
-        <div class="h2">
-            <span><i class="ph ph-person-arms-spread"></i> Accessibility</span>
-            <div class="no-cookies-warning ph-bold ph-warning icon-tooltip">
-                <div tooltip=""></div>
-            </div>
-        </div>
-        <form>
-            <fieldset id="accessibility-general">
-                <legend>General</legend>
-                <div class="input-wrapper">
-                    <input id="reduce-motion" name="accessibility-general" type="checkbox" value="reduce-motion" />
-                    <label for="reduce-motion">
-                        <div class="main-label">Reduce motion</div>
-                        <div class="more-info ph-bold ph-info icon-tooltip">
-                            <div tooltip="Transitions, animations, and other moving elements will become static.&#10;&#10;This may help people who can become dizzy or disoriented with certain visual effects." tooltip-type="big"></div>
-                        </div>
-                        <div class="sub-label">Disable transitions, animations, moving text, etc.</div>
-                    </label>
-                </div>
-                <div class="input-wrapper">
-                    <input disabled="" id="reduce-clutter" name="accessibility-general" type="checkbox" value="reduce-clutter" />
-                    <label for="reduce-clutter">
-                        <div class="main-label">Reduce clutter</div>
-                        <div class="more-info ph-bold ph-info icon-tooltip">
-                            <div tooltip="This option will reduce the amount of visual clutter on the screen by re-shuffling the contents and combining some buttons.&#10;&#10;This can help simplify the screen and make it less overwhelming or confusing. All functionality will still be accessible, but it may have moved places." tooltip-type="big"></div>
-                        </div>
-                        <div class="sub-label">Reduce the amount of clutter on the screen</div>
-                    </label>
-                </div>
-                <div class="input-wrapper">
-                    <input id="more-indicators" name="accessibility-general" type="checkbox" value="additional-indicators" />
-                    <label for="more-indicators">
-                        <div class="main-label">Additional indicators</div>
-                        <div class="more-info ph-bold ph-info icon-tooltip">
-                            <div tooltip="Include additional helpful indicators such as borders, arrows, tooltips, additional colours or other markers to help with page navigation and use.&#10;&#10;This is helpful for people who are hard of sight, or those who find it hard to navigate around a page." tooltip-type="big"></div>
-                        </div>
-                        <div class="sub-label">Use additional borders, colours, tooltips, etc.</div>
-                    </label>
-                </div>
-                <div class="input-wrapper">
-                    <input id="tone-indicators" name="accessibility-general" type="checkbox" value="tone-indicators" />
-                    <label for="tone-indicators">
-                        <div class="main-label">Tone indicators</div>
-                        <div class="more-info ph-bold ph-info icon-tooltip">
-                            <div tooltip='Include tone indicators next to content paragraphs.&#10;&#10;They can help people to better understand the true tone of something that can&apos;t always be captured digitally, such as sarcasm or hidden meaning.&#10;&#10;Tone indicators look like this: "/srs", or "/j, nm".' tooltip-type="big"></div>
-                        </div>
-                        <div class="sub-label">
-                            Include
-                            <a href="/help/tone-indicators"><b>tone indicators</b></a>
-                            next to paragraphs
-                            <span class="text-subtle">(where supported)</span>
-                        </div>
-                    </label>
-                </div>
-            </fieldset>
-        </form>
+<div class="h2">
+    <i class="ph ph-person-arms-spread"></i> Accessibility
+    <div class="no-cookies-warning ph-bold ph-warning icon-tooltip">
+        <div tooltip=""></div>
     </div>
 </div>
+<form>
+    <fieldset id="accessibility-general" class="breakout">
+        <legend>General</legend>
+        <div class="input-wrapper">
+            <input id="reduce-motion" name="accessibility-general" type="checkbox" value="reduce-motion" />
+            <label for="reduce-motion">
+                <div class="main-label">Reduce motion</div>
+                <div class="sub-label-desc">Disable transitions, animations, moving text, etc.</div>
+            </label>
+        </div>
+        <div class="input-wrapper">
+            <input disabled="" id="reduce-clutter" name="accessibility-general" type="checkbox" value="reduce-clutter" />
+            <label for="reduce-clutter">
+                <div class="main-label">Reduce clutter</div>
+                <div class="sub-label-desc">Reduce the amount of clutter on the screen</div>
+            </label>
+        </div>
+        <div class="input-wrapper">
+            <input id="more-indicators" name="accessibility-general" type="checkbox" value="additional-indicators" />
+            <label for="more-indicators">
+                <div class="main-label">Additional indicators</div>
+                <div class="sub-label-desc">Use additional borders, colours, tooltips, etc.</div>
+            </label>
+        </div>
+        <div class="input-wrapper">
+            <input id="tone-indicators" name="accessibility-general" type="checkbox" value="tone-indicators" />
+            <label for="tone-indicators">
+                <div class="main-label">Tone indicators</div>
+                <div class="sub-label-desc">
+                    Include
+                    <a href="/help/tone-indicators"><b>tone indicators</b></a>
+                    next to paragraphs
+                    <span class="text-subtle">(where supported)</span>
+                </div>
+            </label>
+            <div class="text-subtle">Examples: "/srs", or "/j, nm".</div>
+        </div>
+    </fieldset>
+    <!-- <fieldset id="accessibility-tts">
+        <legend>Text-to-speech</legend>
+    </fieldset> -->
+</form>

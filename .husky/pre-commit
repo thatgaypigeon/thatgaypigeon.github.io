@@ -40,7 +40,7 @@ fi
 # Generate icon font
 if echo "$changed_files" | grep -q "^/_static/fonts/TheNestIcons/[^/]*$"; then
     echo -e "${HD1} Generating icon font...${RST}"
-    cd /_static/fonts/TheNestIcons
+    cd src/_static/fonts/TheNestIcons
     python -m nanoemoji.write_font -v 0 --config_file "config.toml" --glyphmap_file "map.glyphmap"
     echo -e $DONE
     cd ../../../

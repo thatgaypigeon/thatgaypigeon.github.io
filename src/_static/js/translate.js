@@ -2,10 +2,12 @@ const LOCALE_DIRECTORY = "/_static/locales"
 
 const PAGE_LANG_VAR = "lang"
 const PAGE_LANG_ATTR = "lang"
-const PAGE_LANG_DEFAULT = "en"
+const PAGE_LANG_DEFAULT = "en-GB"
+const PAGE_LANG_FALLBACK = "en"
 
 const PAGE_LANG_BUTTONS_NAME = "lang"
 const PAGE_LANG_CLASS_NAME = "lang"
+const PAGE_LANG_CLASS_NAME_ICON = "lang-icon"
 
 /**
  * @returns {string}
@@ -16,13 +18,13 @@ function getPageLang() {
 
 // Set motion state
 const pageLang = getPageLang()
-root.setAttribute(PAGE_LANG_ATTR, pageLang)
+document.documentElement.setAttribute(PAGE_LANG_ATTR, pageLang)
 
 const TRANSLATION_MISSING_HTML =
     '<div class="translation-missing ph-bold ph-info icon-tooltip"><div tooltip="⚠️ Translation missing" tooltip-type="warning small"></div></div>'
 
 function updatePageLangText(lang) {
-    fetch(`${LOCALE_DIRECTORY}/${PAGE_LANG_DEFAULT}.json`)
+    fetch(`${LOCALE_DIRECTORY}/${PAGE_LANG_FALLBACK}.json`)
         .then((response) => response.json())
         .then((defaultData) => {
             fetch(`${LOCALE_DIRECTORY}/${lang}.json`)
@@ -62,9 +64,7 @@ function updatePageLangText(lang) {
                         ).html
                     })
                 })
-                .catch((error) => console.error(error))
+                .catch((error) => pass) // console.error(error))
         })
-        .catch((error) => console.error(error))
+        .catch((error) => pass) // console.error(error))
 }
-
-updatePageLangText(pageLang)
