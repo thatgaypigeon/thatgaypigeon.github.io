@@ -1067,7 +1067,7 @@ form input[type="range"]::-webkit-slider-runnable-track,
 form input[type="range"]::-moz-range-track {
     width: 100%;
     height: 0.5em;
-    background: var(--colour-bg-800);
+    background-color: var(--colour-bg-500);
     border-radius: 100vw;
     border: var(--border-subtle);
     cursor: pointer;
@@ -1096,7 +1096,7 @@ form input[type="button"] {
     width: 1.8em;
 }
 
-form input[type="button"][disabled] {
+form input[type="button"]:disabled {
     background-color: var(--colour-bg-400);
     border-color: var(--border-colour-subtle);
     color: var(--colour-text-400);
@@ -1118,7 +1118,7 @@ form .toggle-wrapper > input.toggle + label {
     height: 1.5em;
     aspect-ratio: 7 / 4;
     padding: 0.25em; /* spacing for 'ball' */
-    background-color: var(--colour-bg-800);
+    background-color: var(--colour-bg-500);
     border-radius: 100vw;
     outline: none !important;
     transition: all var(--transition);
@@ -1132,12 +1132,12 @@ form .toggle-wrapper > input.toggle + label::before {
     display: block;
     height: 100%;
     aspect-ratio: 1 / 1;
-    background-color: var(--colour-text-800);
+    background-color: var(--colour-text-300);
     border-radius: 100%;
     margin-inline: 0 auto;
     left: 0;
     transition: all var(--transition-wobble-short-2);
-    box-shadow: var(--shadow-small-0);
+    /* box-shadow: var(--shadow-small-1); */
 }
 
 /* → Toggled "On"
@@ -1148,13 +1148,13 @@ form .toggle-wrapper > input.toggle:checked + label {
 
 form .toggle-wrapper > input.toggle:checked + label::before {
     left: 100%;
-    background-color: var(--colour-text-900);
+    background-color: white;
     transform: translateX(-100%);
 }
 
 /* → Disabled
 // --------------------- */
-form .toggle-wrapper > input.toggle[disabled] {
+form .toggle-wrapper > input.toggle:disabled {
     background-color: var(--colour-bg-700);
     outline-color: var(--border-colour-subtle);
     color: var(--colour-text-200);
@@ -1235,24 +1235,24 @@ form label > .icon-tooltip {
     grid-area: icon;
 }
 
-form input[type="radio"][disabled] + label,
-form input[type="checkbox"]:not(.toggle)[disabled] + label {
+form input[type="radio"]:disabled + label,
+form input[type="checkbox"]:not(.toggle):disabled + label {
     background-color: var(--colour-bg-600);
     color: var(--colour-text-200);
 }
 
-form input[type="radio"][disabled] + label .main-label,
-form input[type="checkbox"]:not(.toggle)[disabled] + label .main-label {
+form input[type="radio"]:disabled + label .main-label,
+form input[type="checkbox"]:not(.toggle):disabled + label .main-label {
     color: var(--colour-text-200);
 }
 
-form input[type="radio"][disabled] + label .sub-label,
-form input[type="checkbox"]:not(.toggle)[disabled] + label .sub-label {
+form input[type="radio"]:disabled + label .sub-label,
+form input[type="checkbox"]:not(.toggle):disabled + label .sub-label {
     color: var(--colour-text-100);
 }
 
-form input[type="radio"][disabled] + label:hover,
-form input[type="checkbox"]:not(.toggle)[disabled] + label:hover {
+form input[type="radio"]:disabled + label:hover,
+form input[type="checkbox"]:not(.toggle):disabled + label:hover {
     background-color: var(--colour-bg-700);
     color: var(--colour-text-500);
     transition: all var(--transition);
@@ -2663,11 +2663,11 @@ p > i.ph-bold {
 
 /* → Inputs
 // --------------------- */
-[disabled],
+:disabled,
 .disabled,
-[disabled] + label,
+:disabled + label,
 .disabled + label {
-    cursor: not-allowed;
+    cursor: not-allowed !important;
 }
 
 /* → Fix input text opacity
@@ -2873,6 +2873,12 @@ img.loading {
         var(--tooltip-outline-width) calc(100% - var(--tooltip-outline-width)),
         var(--tooltip-outline-width) var(--tooltip-outline-width)
     );
+}
+
+/* -> Light mode */
+:root[mode~="light"] [tooltip] {
+    --tooltip-bg-colour: var(--colour-bg-500);
+    --tooltip-outline-colour: var(--colour-bg-300);
 }
 
 [tooltip]:not([tooltip-type~="bottom"])::before {

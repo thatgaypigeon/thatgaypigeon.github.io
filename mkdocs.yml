@@ -20,8 +20,11 @@ theme:
 plugins:
   - redirects:
       redirect_maps:
-        "wiki.md": "https://pigeon.miraheze.org/wiki/"
+        "discord.md": "https://discord.gg/aB4Bw5pyTS"
+        "github.md": "https://github.com/thatgaypigeon"
         "source.md": "https://github.com/thatgaypigeon/thatgaypigeon.github.io"
+        "wiki.md": "https://pigeon.miraheze.org/wiki/"
+        "youtube.md": "https://youtube.com/@thatgaypigeon"
 
 extra:
   version: 1.0
