@@ -8,13 +8,20 @@ repo_url: https://github.com/thatgaypigeon/thatgaypigeon.github.io
 docs_dir: src
 site_dir: build
 
+watch:
+  - _components
+
 theme:
   name: null
   locale: en
   custom_dir: _components
   include_sidebar: false
 
-plugins: []
+plugins:
+  - redirects:
+      redirect_maps:
+        "wiki.md": "https://pigeon.miraheze.org/wiki/"
+        "source.md": "https://github.com/thatgaypigeon/thatgaypigeon.github.io"
 
 extra:
   version: 1.0
