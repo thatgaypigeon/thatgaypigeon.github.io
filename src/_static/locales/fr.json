@@ -27,5 +27,13 @@
 
   "search": "Chercher",
 
-  "welcome": "Bienvenue!"
+  "welcome": "Bienvenue!",
+
+  "edit-on-github": "Modifier cette page sur GitHub",
+
+  "dark-mode": "Vous êtes en mode 🌙 SOMBRE",
+  "light-mode": "Vous êtes en mode ☀️ LUMIÉRE",
+
+  "sound-on": "Le son est ✅ ACTIVÉ",
+  "sound-off": "Le son est ❌ COUPÉ"
 }

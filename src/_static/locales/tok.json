@@ -27,5 +27,13 @@
 
   "search": "alasa",
 
-  "welcome": "toki!"
+  "welcome": "toki!",
+
+  "edit-on-github": "o pali ante e lipu ni lon ilo GitHub",
+
+  "dark-mode": "sina kepeken nasin 🌙 pimeja",
+  "light-mode": "sina kepeken nasin ☀️ suno",
+
+  "sound-on": "kalama li ✅ open",
+  "sound-off": "kalama li ❌ pini"
 }

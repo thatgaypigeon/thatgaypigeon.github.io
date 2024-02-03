@@ -27,5 +27,13 @@
 
   "search": "捜索",
 
-  "welcome": "ようこそ！"
+  "welcome": "ようこそ！",
+
+  "edit-on-github": "GitHub でこのページを編集する",
+
+  "dark-mode": "🌙 ダークモードです",
+  "light-mode": "☀️ ライトモードです",
+
+  "sound-on": "サウンドが✅オンになっています",
+  "sound-off": "サウンドが❌オフになっています"
 }

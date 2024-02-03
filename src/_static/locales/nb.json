@@ -27,5 +27,13 @@
 
   "search": "Søk",
 
-  "welcome": "Velkommen!"
+  "welcome": "Velkommen!",
+
+  "edit-on-github": "Rediger denne siden på GitHub",
+
+  "dark-mode": "Du er i 🌙 MØRK-modus",
+  "light-mode": "Du er i ☀️ LYS-modus",
+
+  "sound-on": "Lyden er ✅ PÅ",
+  "sound-off": "Lyden er ❌ AV"
 }
