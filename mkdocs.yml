@@ -1,21 +1,25 @@
 site_name: The Nest
-site_description: The Nest — Pigeon's safe space! Make yourself at home, it's alright. 🧡
+site_url: https://pigeon.uk.to/
 site_author: Max Kerr (@thatgaypigeon)
-copyright: 2023 © Max Kerr (@thatgaypigeon)
+site_description: The Nest — Pigeon's safe space! Make yourself at home, it's alright. 🧡
+copyright: Copyright &copy; 2023 - present Max Kerr (@thatgaypigeon)
 
+repo_name: thatgaypigeon/thatgaypigeon.github.io
 repo_url: https://github.com/thatgaypigeon/thatgaypigeon.github.io
 
 docs_dir: src
 site_dir: build
 
 watch:
-  - _components
+  - theme
 
 theme:
   name: null
   locale: en
-  custom_dir: _components
+  custom_dir: theme
   include_sidebar: false
+  static_templates:
+    - 404.html
 
 plugins:
   - redirects:
@@ -25,6 +29,43 @@ plugins:
         "source.md": "https://github.com/thatgaypigeon/thatgaypigeon.github.io"
         "wiki.md": "https://pigeon.miraheze.org/wiki/"
         "youtube.md": "https://youtube.com/@thatgaypigeon"
+
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - toc:
+      permalink: "\uEBC2"
+      permalink_title: ""
+      title: Contents
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  # - pymdownx.emoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      linenums_style: pymdownx-inline
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tilde
+
+  # Other
+  - mdx_truly_sane_lists
 
 extra:
   version: 1.0
