@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs mkdocs-redirects
+          pip install mkdocs mkdocs[i18n] mkdocs-redirects mdx_truly_sane_lists
 
       - name: Build with mkdocs
         run: mkdocs gh-deploy --force --config-file mkdocs.yml --message "🛠️ Build [$(git rev-parse HEAD)]"
