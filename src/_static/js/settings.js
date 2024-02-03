@@ -395,7 +395,7 @@ function numResultsPerPageToNumber(numResults) {
 // DO THESE AFTER DOM LOADS!
 // THIS SHOULDN'T CAUSE ANY JUMPS / FLASHES!
 
-window.addEventListener("load", function () {
+window.addEventListener("init", function () {
     // ----------------------------------------------------------------------------------------- //
     // ---------------------------------------- Cookies ---------------------------------------- //
     // ----------------------------------------------------------------------------------------- //
@@ -444,10 +444,7 @@ window.addEventListener("load", function () {
         document.getElementById("theme-css").setAttribute("href", "/_static/css/theme/" + theme + ".css")
 
         // Set button properties
-        themeButton.setAttribute(
-            "tooltip",
-            "You're in " + (theme === THEME_DARK ? "🌙" : "☀️") + " " + theme.toUpperCase() + " mode"
-        )
+        themeButton.setAttribute("tooltip", new Translation(theme + "-mode").text)
 
         // Set local storage
         ifCookies(localStorage.setItem.bind(localStorage), THEME_VAR, theme)
@@ -473,10 +470,7 @@ window.addEventListener("load", function () {
         root.setAttribute(SOUND_ATTR, soundStateToString(state))
 
         // Set button properties
-        soundButton.setAttribute(
-            "tooltip",
-            "Sound is " + (state ? "✅" : "❌") + " " + soundStateToString(state).toUpperCase()
-        )
+        soundButton.setAttribute("tooltip", new Translation("sound-" + soundStateToString(state)).text)
 
         // Set local storage
         ifCookies(localStorage.setItem.bind(localStorage), SOUND_VAR, soundStateToString(state))
@@ -750,16 +744,19 @@ window.addEventListener("load", function () {
      * @param {string} value
      */
     function updatePageLang(value) {
-        // Translate page text
-        updatePageLangText(value)
+        // Set local storage (1)
+        ifCookies(localStorage.setItem.bind(localStorage), PAGE_LANG_VAR, value)
+
+        // Set root properties (2)
+        root.setAttribute(PAGE_LANG_ATTR, value)
+
+        // Translate page text (3)
+        translatePageText(value)
 
         // Update input (needed for page load)
         const langInput = document.getElementById(PAGE_LANG_BUTTONS_NAME + "-" + value)
 
         langInput.checked = true
-
-        // Set root properties
-        root.setAttribute(PAGE_LANG_ATTR, value)
 
         // Set outputs
         pageLangOutputs.forEach(function (output) {
@@ -769,9 +766,6 @@ window.addEventListener("load", function () {
         pageLangIconOutputs.forEach(function (output) {
             output.textContent = langInput.nextElementSibling.querySelector("span").textContent
         })
-
-        // Set local storage
-        ifCookies(localStorage.setItem.bind(localStorage), PAGE_LANG_VAR, value)
     }
 
     updatePageLang(pageLang)

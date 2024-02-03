@@ -368,16 +368,94 @@ function getDeviceInfo() {
     return deviceInfo
 }
 
+const LOCALE_DIRECTORY = "/_static/locales"
+
+const PAGE_LANG_VAR = "lang"
+const PAGE_LANG_ATTR = "lang"
+const PAGE_LANG_DEFAULT = "en-GB"
+const PAGE_LANG_FALLBACK = "en"
+
+const PAGE_LANG_BUTTONS_NAME = "lang"
+const PAGE_LANG_CLASS_NAME = "lang"
+const PAGE_LANG_CLASS_NAME_ICON = "lang-icon"
+
+/**
+ * @returns {string}
+ */
+function getPageLang() {
+    return localStorage.getItem(PAGE_LANG_VAR) || PAGE_LANG_DEFAULT
+}
+
+// Set page lang
+const pageLang = getPageLang()
+document.documentElement.setAttribute(PAGE_LANG_ATTR, pageLang)
+
+const TRANSLATION_MISSING_HTML =
+    '<div class="translation-missing ph-bold ph-info icon-tooltip"><div tooltip="⚠️ Translation missing" tooltip-type="warning small"></div></div>'
+
+let LANG_DATA, LANG_DATA_DEFAULT
+
+async function loadTranslations() {
+    return Promise.all([
+        fetch(`${LOCALE_DIRECTORY}/${PAGE_LANG_FALLBACK}.json`),
+        fetch(`${LOCALE_DIRECTORY}/${getPageLang()}.json`)
+    ]).then(async ([defaultResponse, pageLangResponse]) => {
+        LANG_DATA_DEFAULT = await defaultResponse.json()
+        LANG_DATA = await pageLangResponse.json()
+    })
+}
+
+class Translation {
+    constructor(str, orig = null) {
+        this.query = str
+        this.original = orig
+
+        if (LANG_DATA.hasOwnProperty(str)) {
+            this.text = LANG_DATA[str]
+            this.html = LANG_DATA[str]
+            if (LANG_DATA[str] === null && !pageLang.startsWith("en")) {
+                this.html += TRANSLATION_MISSING_HTML
+            }
+        } else if (LANG_DATA_DEFAULT.hasOwnProperty(str)) {
+            this.text = LANG_DATA_DEFAULT[str]
+            this.html = LANG_DATA_DEFAULT[str]
+        } else {
+            throw new Error(`Translation key "${str}" does not exist for lang "${pageLang}".`)
+        }
+    }
+}
+
+async function translatePageText() {
+    await loadTranslations().then(() => {
+        const search = document.getElementById("search")
+        search.setAttribute("placeholder", new Translation("search").text)
+
+        const contentText = document.querySelectorAll("[text]")
+        contentText.forEach((element) => {
+            element.innerHTML = new Translation(element.getAttribute("text")).html
+        })
+
+        const tooltipText = document.querySelectorAll("[tooltip-text]")
+        tooltipText.forEach((element) => {
+            element.setAttribute("tooltip", new Translation(element.getAttribute("tooltip-text")).text)
+        })
+    })
+}
+
+// Function to handle initialization
+function initialize() {
+    translatePageText().then(() => {
+        detectBrokenImages([...document.getElementsByTagName("img")])
+        formatKeyboardShortcuts([...document.getElementsByTagName("kbd")])
+
+        document.body.removeAttribute("hidden")
+
+        window.dispatchEvent(new CustomEvent("init"))
+    })
+}
+
 window.addEventListener("DOMContentLoaded", () => {
-    document.body.style.opacity = "0"
-    document.body.style.visibility = "hidden"
-    document.body.style.transition = "all 150ms ease-in"
-    document.body.style.transitionDelay = "50ms"
-
-    updatePageLangText(pageLang)
-
-    detectBrokenImages([...document.getElementsByTagName("img")])
-    formatKeyboardShortcuts([...document.getElementsByTagName("kbd")])
+    initialize()
 
     // Mutation observer for detecting JS changes to the DOM
     const observer = new MutationObserver((mutations) => {
@@ -406,9 +484,6 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 window.addEventListener("load", () => {
-    document.body.style.visibility = "visible"
-    document.body.style.opacity = "1"
-
     // Mobile debugging
     // const originalConsoleError = console.error
     // const originalConsoleLog = console.log
