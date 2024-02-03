@@ -11,83 +11,87 @@
 /* → Table of Contents
 // ----------------------------- //
 CONTENTS                   4
-IMPORTS / SETUP            96
-ROOT                       183
- → Variables               200
-GENERAL                    531
- → Global                  538
- → Base                    556
- → Headings                594
- → Text                    644
-   → Links                 658
-   → Code                  677
-   → Keyboard Shortcuts    693
-   → Other                 763
- → Images                  779
- → Buttons                 791
-FORM INPUTS                811
- → Layout                  818
- → Inputs                  859
-   → Single-Cell           876
-   → Radio / Checkbox      901
-   → Range                 920
-   → Button                963
-   → Toggle                1000
-   → Select                1057
- → Labels                  1086
- → Reset Buttons           1173
- → Output                  1201
-HEADER                     1212
- → Buttons                 1256
- → Menus                   1339
- → Menu Content            1389
-   → Text                  1401
-   → Headings              1415
- → Menu Lists              1469
-   → Links                 1488
-MAIN MENU                  1583
- → Button                  1590
- → Menu                    1631
-SEARCH                     1646
- → Button                  1653
- → Menu                    1672
- → Search Bar              1777
- → Search Input            1822
- → Search Settings         1882
-   → Result Count          1941
-   → Filters               1955
- → Search Info             1970
- → Search Results          1993
-   → Results               2013
-SETTINGS                   2248
- → Button                  2255
- → Overlay                 2265
- → Menu                    2289
-COOKIES                    2302
- → Button                  2309
-FOOTER                     2323
- → Left                    2330
- → Right                   2341
-   → Links                 2364
-ICONS                      2425
-UTILITY                    2498
- → Content                 2565
- → Images                  2593
- → Tooltips                2628
- → Sparks                  2880
- → Caret                   2901
-PREFERENCES                2921
- → Accessibility           2928
-   → Reduce Motion         2933
-   → Keyboard Navigation   2972
- → Cookies                 2985
- → Other                   3000
-ANIMATIONS                 3022
- → Blink                   3057
- → Slide                   3072
- → Sparks                  3101
-MOBILE                     3148
- → Screen Width            3159
+IMPORTS / SETUP            100
+ROOT                       180
+ → Variables               197
+GENERAL                    592
+ → Global                  599
+ → Base                    619
+ → Headings                657
+ → Text                    710
+   → Lists                 724
+   → Links                 745
+   → Code                  764
+   → Keyboard Shortcuts    782
+   → Other                 856
+ → Images                  872
+ → Buttons                 884
+FORM INPUTS                939
+ → Layout                  946
+ → Inputs                  993
+   → Single-Cell           1006
+   → Radio / Checkbox      1047
+   → Range                 1073
+   → Button                1116
+   → Toggle                1152
+   → Select                1209
+ → Labels                  1238
+ → Reset Buttons           1343
+ → Output                  1371
+HEADER                     1382
+ → Buttons                 1424
+ → Menus                   1514
+ → Menu Content            1566
+   → Text                  1571
+   → Headings              1585
+ → Menu Lists              1636
+   → Links                 1655
+MAIN MENU                  1754
+ → Button                  1761
+ → Menu                    1797
+SEARCH                     1812
+ → Button                  1819
+ → Menu                    1834
+ → Search Bar              1919
+ → Search Input            1977
+ → Search Settings         2033
+   → Result Count          2093
+   → Filters               2107
+ → Search Info             2126
+ → Search Results          2149
+   → Results               2170
+SETTINGS                   2401
+ → Button                  2408
+ → Overlay                 2418
+ → Menu                    2442
+TOC                        2462
+COOKIES                    2474
+ → Button                  2481
+TABS                       2496
+COLLAPSIBLE CONTENT        2567
+FOOTER                     2609
+ → Left                    2616
+ → Right                   2627
+   → Links                 2650
+ICONS                      2711
+UTILITY                    2790
+ → Content                 2884
+ → Images                  2912
+ → Tooltips                2951
+ → Sparks                  3217
+ → Caret                   3238
+PREFERENCES                3259
+ → Accessibility           3266
+   → Reduce Motion         3271
+   → Keyboard Navigation   3310
+ → Cookies                 3323
+ → Other                   3338
+ANIMATIONS                 3360
+ → Blink                   3395
+ → Slide                   3410
+ → Sparks                  3439
+MOBILE                     3486
+ → Screen Width            3497
 // ----------------------------- */
 
 /* ------------------------------------------------------------------------------------------------------------- //
@@ -613,14 +617,18 @@ MOBILE                     3148
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- */
 
-body {
-    position: relative;
-    margin: 0;
+:root {
     background-color: var(--colour-bg);
     font-family: var(--font-text), var(--font-fallback);
     color: var(--colour-text);
     font-size: 1.1rem;
+}
+
+body {
+    position: relative;
+    margin: 0;
     overflow-x: hidden;
+    transition: all var(--transition-short-0); /* for loader */
 }
 
 header {
@@ -676,26 +684,59 @@ h1,
 .h1 {
     font-size: 1.4rem;
     font-weight: bold;
-    color: var(--colour-text-900);
+    color: var(--colour-text-800);
 }
 
 h2,
 .h2 {
     font-size: 1.25rem;
     font-weight: bolder;
-    color: var(--colour-text-800);
+    color: var(--colour-text-700);
 }
 
 h3,
 .h3 {
     font-size: 1.15rem;
-    color: var(--colour-text-700);
+    color: var(--colour-text-600);
 }
 
 h4,
 .h4 {
     font-size: 1.1rem;
     color: var(--colour-text-600);
+}
+
+/* ------------------------------------------------------------------------- //
+// -------------------------------- Anchors -------------------------------- //
+// ------------------------------------------------------------------------- */
+
+.headerlink {
+    opacity: 0;
+    margin-left: 0.25em;
+    line-height: 1.5em;
+    font-weight: normal;
+    font-size: 0.95em;
+    color: var(--colour-text-300);
+    pointer-events: none;
+}
+
+h1:hover > .headerlink,
+h2:hover > .headerlink,
+h3:hover > .headerlink,
+h4:hover > .headerlink,
+h5:hover > .headerlink,
+h6:hover > .headerlink {
+    opacity: 1;
+}
+
+.headerlink:hover {
+    /* font-weight: bold; */
+    color: var(--colour-primary) !important;
+}
+
+[id]:target > .headerlink {
+    opacity: 1 !important;
+    color: var(--colour-primary) !important;
 }
 
 /* ----------------------------------------------------------------------------------------- //
@@ -705,12 +746,33 @@ h4,
 // ----------------------------------------------------------------------------------------- */
 
 p {
-    margin-block: 1.25em;
+    margin: 1.25em 0.5em;
     text-wrap: pretty;
 }
 
-main p {
+:root[tone-indicators] main p[tone] {
     margin-inline: 1.75em; /* give space for tone indicators if enabled */
+}
+
+/* ------------------------------------------------------------------------- //
+// --------------------------------- Lists --------------------------------- //
+// ------------------------------------------------------------------------- */
+
+ul {
+    margin: 1.25em 2.5em;
+    text-wrap: pretty;
+}
+
+:root[tone-indicators] main p[tone] + ul {
+    margin-inline: 4em; /* give space for tone indicators if enabled */
+}
+
+ul li ul {
+    margin-block: 0.75em 1.5em;
+}
+
+li {
+    margin-block: 0.5em;
 }
 
 /* ------------------------------------------------------------------------- //
@@ -740,11 +802,13 @@ code,
 kbd,
 pre,
 samp {
-    font-family: var(--font-mono);
+    margin-inline: 0.1em;
+    padding: 0.1em 0.5em;
     background-color: var(--colour-bg);
-    padding: 0.15em 0.4em;
-    border: var(--border-dark-0);
+    border: var(--border);
     border-radius: 0.6em;
+    font-size: 0.85em;
+    font-family: var(--font-mono);
     white-space: pre;
 }
 
@@ -881,7 +945,7 @@ button,
     border-radius: 1em;
     background-color: var(--colour-bg-700);
     color: var(--colour-text-300);
-    max-width: 20ch;
+    max-width: 22ch;
     will-change: transform;
 }
 
@@ -932,7 +996,7 @@ form fieldset {
     border: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 0.35em;
 }
 
 form fieldset:not(.breakout):not(.horizontal) {
@@ -1204,7 +1268,7 @@ form label {
     grid-template-areas: "title sub icon" "desc desc desc";
     border-radius: var(--border-radius);
     transition: outline var(--transition-short-1);
-    --border-radius: 0.25em;
+    --border-radius: 0.3em;
     --border-radius-end: 0.5em;
 }
 
@@ -2357,6 +2421,18 @@ nav > div > .menu > .menu-button:hover {
 /* ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
+// ---------------------------------------------------- TOC ---------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+aside#toc {
+    display: none;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
 // -------------------------------------------------- COOKIES -------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
@@ -2379,7 +2455,7 @@ nav > div > .menu > .menu-button:hover {
 /* ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
-// --------------------------------------------------- TABS ---------------------------------------------------- //
+// ---------------------------------------------------- TABS --------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- */
@@ -2402,7 +2478,22 @@ nav > div > .menu > .menu-button:hover {
     width: 20ch;
     padding: 0.6em 1em;
     border-radius: 0.5em;
+    overflow: hidden;
     cursor: pointer;
+}
+
+.tabs-labels > ::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-left: 0.2em solid var(--colour-primary);
+    opacity: 0;
+    transition: opacity var(--transition-short-0);
+}
+
+.tabs-labels > :hover:not([active])::before {
+    opacity: 1;
 }
 
 .tabs-labels > :hover {
@@ -2645,6 +2736,10 @@ p > i.ph-bold {
 // ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- */
 
+header,
+footer,
+img,
+.headerlink,
 .no-select {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -2661,7 +2756,39 @@ p > i.ph-bold {
     padding: 0;
 }
 
-/* → Inputs
+.row,
+.column {
+    display: flex;
+    gap: 0.5em;
+}
+
+.row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.row[align="center"] {
+    justify-content: center;
+}
+
+.column {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.column[align="center"] {
+    align-items: center;
+}
+
+/* → Hidden
+// --------------------- */
+[hidden] {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    display: none !important;
+}
+
+/* → Disabled
 // --------------------- */
 :disabled,
 .disabled,
@@ -2726,6 +2853,10 @@ p > i.ph-bold {
 // ----------------------------------------- Images ---------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- */
+
+img {
+    pointer-events: none;
+}
 
 img.broken,
 img.loading,
@@ -2875,7 +3006,8 @@ img.loading {
     );
 }
 
-/* -> Light mode */
+/* → Light mode
+// --------------------- */
 :root[mode~="light"] [tooltip] {
     --tooltip-bg-colour: var(--colour-bg-500);
     --tooltip-outline-colour: var(--colour-bg-300);
