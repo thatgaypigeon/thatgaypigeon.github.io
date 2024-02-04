@@ -57,7 +57,7 @@ const FONT_SIZE_MAX = 150
 const FONT_SIZE_BASE = 16
 const FONT_SIZE_STEP = 10
 const FONT_SIZE_DEFAULT = 100
-const FONT_SIZE_DYSLEXIC_MODIFIER = 0.9
+const FONT_SIZE_DYSLEXIC_MODIFIER = 0.85
 const FONT_SIZE_UNITS = "px"
 
 const FONT_SIZE_INCREASE_BUTTON = "increase-font-size"
@@ -164,7 +164,94 @@ function motionStateToString(state) {
 
 // Set motion state
 const motionState = getMotionState()
-root.setAttribute(REDUCE_MOTION_ATTR, motionStateToString(motionState))
+if (motionState) root.setAttribute(REDUCE_MOTION_ATTR, motionStateToString(motionState))
+
+/* → Reduce clutter
+// --------------------- */
+const REDUCE_CLUTTER_VAR = "reduceClutter"
+const REDUCE_CLUTTER_ATTR = "reduce-clutter"
+const REDUCE_CLUTTER_ON = "true"
+const REDUCE_CLUTTER_OFF = "false"
+const REDUCE_CLUTTER_DEFAULT = REDUCE_CLUTTER_OFF
+
+const REDUCE_CLUTTER_INPUT = "reduce-clutter"
+
+/**
+ * @returns {boolean}
+ */
+function getClutterState() {
+    return (localStorage.getItem(REDUCE_CLUTTER_VAR) || REDUCE_CLUTTER_DEFAULT) === REDUCE_CLUTTER_ON
+}
+
+/**
+ * @param {boolean} state
+ * @returns {string}
+ */
+function clutterStateToString(state) {
+    return state ? REDUCE_CLUTTER_ON : REDUCE_CLUTTER_OFF
+}
+
+// Set clutter state
+const clutterState = getClutterState()
+if (clutterState) root.setAttribute(REDUCE_CLUTTER_ATTR, clutterStateToString(clutterState))
+
+/* → Tone indicators
+// --------------------- */
+const TONE_INDICATORS_VAR = "toneIndicators"
+const TONE_INDICATORS_ATTR = "tone-indicators"
+const TONE_INDICATORS_ON = "true"
+const TONE_INDICATORS_OFF = "false"
+const TONE_INDICATORS_DEFAULT = TONE_INDICATORS_OFF
+
+const TONE_INDICATORS_INPUT = "tone-indicators"
+
+/**
+ * @returns {boolean}
+ */
+function getToneIndicatorsState() {
+    return (localStorage.getItem(TONE_INDICATORS_VAR) || TONE_INDICATORS_DEFAULT) === TONE_INDICATORS_ON
+}
+
+/**
+ * @param {boolean} state
+ * @returns {string}
+ */
+function toneIndicatorsStateToString(state) {
+    return state ? TONE_INDICATORS_ON : TONE_INDICATORS_OFF
+}
+
+// Set tone indicators state
+const toneIndicatorsState = getToneIndicatorsState()
+if (toneIndicatorsState) root.setAttribute(TONE_INDICATORS_ATTR, toneIndicatorsStateToString(toneIndicatorsState))
+
+/* → More indicators
+// --------------------- */
+const MORE_INDICATORS_VAR = "moreIndicators"
+const MORE_INDICATORS_ATTR = "more-indicators"
+const MORE_INDICATORS_ON = "true"
+const MORE_INDICATORS_OFF = "false"
+const MORE_INDICATORS_DEFAULT = MORE_INDICATORS_OFF
+
+const MORE_INDICATORS_INPUT = "more-indicators"
+
+/**
+ * @returns {boolean}
+ */
+function getMoreIndicatorsState() {
+    return (localStorage.getItem(MORE_INDICATORS_VAR) || MORE_INDICATORS_DEFAULT) === MORE_INDICATORS_ON
+}
+
+/**
+ * @param {boolean} state
+ * @returns {string}
+ */
+function moreIndicatorsStateToString(state) {
+    return state ? MORE_INDICATORS_ON : MORE_INDICATORS_OFF
+}
+
+// Set more indicators state
+const moreIndicatorsState = getMoreIndicatorsState()
+if (moreIndicatorsState) root.setAttribute(MORE_INDICATORS_ATTR, moreIndicatorsStateToString(moreIndicatorsState))
 
 // ----------------------------------------------------------------------------------------- //
 // -------------------------------------- Preferences -------------------------------------- //
@@ -507,6 +594,84 @@ window.addEventListener("init", function () {
     // Events
     reduceMotionInput.addEventListener("click", function () {
         updateMotionState(this.checked)
+    })
+
+    // ----------------------------------------------------------------------------------------- //
+    // ------------------------------------- Reduce clutter ------------------------------------- //
+    // ----------------------------------------------------------------------------------------- //
+    const reduceClutterInput = document.getElementById(REDUCE_CLUTTER_INPUT)
+
+    /**
+     * @param {boolean} state
+     */
+    function updateClutterState(state) {
+        // Set root properties
+        state ? root.setAttribute(REDUCE_CLUTTER_ATTR, "") : root.removeAttribute(REDUCE_CLUTTER_ATTR)
+
+        // Set input state
+        reduceClutterInput.checked = state
+
+        // Set local storage
+        ifCookies(localStorage.setItem.bind(localStorage), REDUCE_CLUTTER_VAR, clutterStateToString(state))
+    }
+
+    updateClutterState(clutterState)
+
+    // Events
+    reduceClutterInput.addEventListener("click", function () {
+        updateClutterState(this.checked)
+    })
+
+    // ----------------------------------------------------------------------------------------- //
+    // ------------------------------------ Tone indicators ------------------------------------ //
+    // ----------------------------------------------------------------------------------------- //
+    const toneIndicatorsInput = document.getElementById(TONE_INDICATORS_INPUT)
+
+    /**
+     * @param {boolean} state
+     */
+    function updateToneIndicatorsState(state) {
+        // Set root properties
+        state ? root.setAttribute(TONE_INDICATORS_ATTR, "") : root.removeAttribute(TONE_INDICATORS_ATTR)
+
+        // Set input state
+        toneIndicatorsInput.checked = state
+
+        // Set local storage
+        ifCookies(localStorage.setItem.bind(localStorage), TONE_INDICATORS_VAR, toneIndicatorsStateToString(state))
+    }
+
+    updateToneIndicatorsState(toneIndicatorsState)
+
+    // Events
+    toneIndicatorsInput.addEventListener("click", function () {
+        updateToneIndicatorsState(this.checked)
+    })
+
+    // ----------------------------------------------------------------------------------------- //
+    // ------------------------------------ More indicators ------------------------------------ //
+    // ----------------------------------------------------------------------------------------- //
+    const moreIndicatorsInput = document.getElementById(MORE_INDICATORS_INPUT)
+
+    /**
+     * @param {boolean} state
+     */
+    function updateMoreIndicatorsState(state) {
+        // Set root properties
+        state ? root.setAttribute(MORE_INDICATORS_ATTR, "") : root.removeAttribute(MORE_INDICATORS_ATTR)
+
+        // Set input state
+        moreIndicatorsInput.checked = state
+
+        // Set local storage
+        ifCookies(localStorage.setItem.bind(localStorage), MORE_INDICATORS_VAR, moreIndicatorsStateToString(state))
+    }
+
+    updateMoreIndicatorsState(moreIndicatorsState)
+
+    // Events
+    moreIndicatorsInput.addEventListener("click", function () {
+        updateMoreIndicatorsState(this.checked)
     })
 
     // ----------------------------------------------------------------------------------------- //
