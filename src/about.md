@@ -1,6 +1,7 @@
 # About
 
 ## How I made it
+
 Here is the list of tools I used to make this site and host it completely for free:
 
 * [FreeDNS.org](https://freedns.org) - To obtain a free domain name (`pigeon.uk.to`).
@@ -21,7 +22,7 @@ I used code or other things from these sources, too:
 * [Google Fonts](https://fonts.google.com) - For some of the fonts used on this site.
 * [OpenDyslexic](https://opendyslexic.org/) - For the OpenDyslexic font.
 
-My [wiki](/wiki) is hosted on [Miraheze](https://miraheze.org/) for free.
+My [[wiki]] is hosted on [Miraheze](https://miraheze.org/) for free.
 
 I write all my code using [Visual Studio Code](https://code.visualstudio.com/) and host it on [GitHub](https://github.com).
 
