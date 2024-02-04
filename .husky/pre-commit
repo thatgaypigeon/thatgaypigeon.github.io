@@ -19,17 +19,17 @@ HD2="\n  ${CLR}${IND}"
 DONE="\nAll done! ✨ 🍰 ✨"
 
 # Get the list of modified, added, or deleted files
-changed_files=$(git status --porcelain -u | awk '{print $2}')
+files=$(git diff --cached --name-only --diff-filter=d)
 
 # Basic python file checks
-if echo "$changed_files" | grep -q "\.py$"; then
+if echo "$files" | grep -q "\.py$"; then
     echo -e "${HD1} Checking python files...${RST}"
 
     echo -e "${HD2} Running isort...${RST}"
     isort .
 
     echo -e "${HD2} Running flake8...${RST}"
-    flake8 --extend-ignore E501
+    flake8 . --extend-ignore E501
 
     echo -e "${HD2} Running black...${RST}"
     black .
@@ -38,25 +38,29 @@ if echo "$changed_files" | grep -q "\.py$"; then
 fi
 
 # Generate icon font
-if echo "$changed_files" | grep -q "^/_static/fonts/TheNestIcons/[^/]*$"; then
+if echo "$files" | grep -q "^/_static/fonts/TheNestIcons/[^/]*$"; then
     echo -e "${HD1} Generating icon font...${RST}"
+
     cd src/_static/fonts/TheNestIcons
     python -m nanoemoji.write_font -v 0 --config_file "config.toml" --glyphmap_file "map.glyphmap"
+
     echo -e $DONE
     cd ../../../
 fi
 
 # Generate CSS headers
-if echo "$changed_files" | grep -q "^/_static/css/styles\.css$"; then
+if echo "$files" | grep -q "^/_static/css/styles\.css$"; then
     echo -e "${HD1} Generating CSS headers...${RST}"
+
     cd .husky/scripts
     python css-toc.py
+
     echo -e $DONE
     cd ../../
 fi
 
 # Run prettier
-if echo "$changed_files" | grep -q ".*"; then
+if echo "$files" | grep -q ".*"; then
     echo -e "${HD1} Formatting files...${RST}"
 
     echo -e "${HD2} Running prettier...${RST}"
