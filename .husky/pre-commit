@@ -49,7 +49,7 @@ if echo "$files" | grep -q "^/_static/fonts/TheNestIcons/[^/]*$"; then
 fi
 
 # Generate CSS headers
-if echo "$files" | grep -q "^/_static/css/styles\.css$"; then
+if echo "$files" | grep -q "^/src/_static/css/styles\.css$"; then
     echo -e "${HD1} Generating CSS headers...${RST}"
 
     cd .husky/scripts
