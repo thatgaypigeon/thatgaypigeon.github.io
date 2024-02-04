@@ -531,7 +531,7 @@ MOBILE                     3486
     --search-inline-padding: 1rem;
     --search-icon-gap: 0.6rem;
     --search-icon-size: 1.2rem;
-    --divider-width: 0.1em;
+    --divider-width: 0.125em;
     --divider-gap: var(--icon-gap);
     --divider-gap-modifier: 3;
 }
@@ -710,33 +710,33 @@ h4,
 // -------------------------------- Anchors -------------------------------- //
 // ------------------------------------------------------------------------- */
 
-.headerlink {
+.anchor {
     opacity: 0;
     margin-left: 0.25em;
     line-height: 1.5em;
     font-weight: normal;
     font-size: 0.95em;
     color: var(--colour-text-300);
-    pointer-events: none;
 }
 
-h1:hover > .headerlink,
-h2:hover > .headerlink,
-h3:hover > .headerlink,
-h4:hover > .headerlink,
-h5:hover > .headerlink,
-h6:hover > .headerlink {
+h1:hover > .anchor,
+h2:hover > .anchor,
+h3:hover > .anchor,
+h4:hover > .anchor,
+h5:hover > .anchor,
+h6:hover > .anchor {
     opacity: 1;
+    transition-delay: 100ms;
 }
 
-.headerlink:hover {
+.anchor:hover {
     /* font-weight: bold; */
     color: var(--colour-primary) !important;
 }
 
-[id]:target > .headerlink {
-    opacity: 1 !important;
-    color: var(--colour-primary) !important;
+[id]:target > .anchor {
+    opacity: 1;
+    color: var(--colour-primary);
 }
 
 /* ----------------------------------------------------------------------------------------- //
@@ -750,10 +750,6 @@ p {
     text-wrap: pretty;
 }
 
-:root[tone-indicators] main p[tone] {
-    margin-inline: 1.75em; /* give space for tone indicators if enabled */
-}
-
 /* ------------------------------------------------------------------------- //
 // --------------------------------- Lists --------------------------------- //
 // ------------------------------------------------------------------------- */
@@ -761,10 +757,6 @@ p {
 ul {
     margin: 1.25em 2.5em;
     text-wrap: pretty;
-}
-
-:root[tone-indicators] main p[tone] + ul {
-    margin-inline: 4em; /* give space for tone indicators if enabled */
 }
 
 ul li ul {
@@ -810,6 +802,10 @@ samp {
     font-size: 0.85em;
     font-family: var(--font-mono);
     white-space: pre;
+}
+
+.code {
+    font-family: var(--font-mono);
 }
 
 /* ------------------------------------------------------------------------- //
@@ -899,6 +895,11 @@ mark {
     text-underline-position: under;
     /* text-underline-offset: 3px;
     text-decoration-skip-ink: none; */
+}
+
+center {
+    width: fit-content;
+    margin-inline: auto !important;
 }
 
 /* ----------------------------------------------------------------------------------------- //
@@ -1018,14 +1019,6 @@ form legend {
 // ----------------------------------------- Inputs ---------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- */
-
-form input + label {
-    padding: 0.55em 0.7em;
-}
-
-form input:checked + label {
-    outline: var(--focus-border) !important;
-}
 
 /* ------------------------------------------------------------------------- //
 // ------------------------------ Single-Cell ------------------------------ //
@@ -1259,21 +1252,30 @@ form select::-ms-expand {
 // ----------------------------------------------------------------------------------------- */
 
 form label {
-    display: -ms-grid;
     display: grid;
     gap: 0.125em;
     align-items: center;
-    -ms-grid-columns: 1fr 0.125em auto;
-    grid-template-columns: 1fr auto auto;
-    grid-template-areas: "title sub icon" "desc desc desc";
+    grid-template-columns: 1fr;
+    grid-auto-flow: column;
+    grid-auto-columns: auto;
+    grid-template-rows: 1fr;
+    grid-auto-rows: auto;
     border-radius: var(--border-radius);
     transition: outline var(--transition-short-1);
     --border-radius: 0.3em;
     --border-radius-end: 0.5em;
 }
 
-form label > .main-label {
-    grid-area: title;
+form input + label {
+    padding: 0.55em 0.7em 0.5em 0.7em;
+}
+
+form input:checked + label {
+    outline: var(--focus-border) !important;
+}
+
+form .main-label {
+    grid-area: 1 / 1 / 2 / 2;
     font-size: 0.75em;
     color: var(--colour-text);
     display: inline-flex;
@@ -1281,22 +1283,22 @@ form label > .main-label {
     align-items: center;
 }
 
-form label > .sub-label,
-form label > .sub-label-desc {
+form .sub-label,
+form .sub-label-desc {
     font-size: 0.625em;
     color: var(--colour-text-200);
 }
 
-form label > .sub-label {
-    grid-area: sub;
+form .sub-label {
+    grid-area: 1 / 2 / 2 / 3;
 }
 
-form label > .sub-label-desc {
-    grid-area: desc;
+form .sub-label-desc {
+    grid-area: 2 / 1 / -1 / -1;
 }
 
-form label > .icon-tooltip {
-    grid-area: icon;
+form .icon-tooltip {
+    grid-area: 1 / 3 / 2 / 4;
 }
 
 form input[type="radio"]:disabled + label,
@@ -1536,6 +1538,7 @@ nav > div > .menu > .menu-button:hover {
     opacity: 0;
     scale: 0;
     background-color: var(--colour-bg-700);
+    box-shadow: var(--shadow);
     transition: all var(--transition-short-1), scale var(--transition-wobble-emphasised-short-2);
     z-index: 4;
 }
@@ -1546,7 +1549,6 @@ nav > div > .menu > .menu-button:hover {
     gap: 0.75rem;
     padding: 1rem;
     border-radius: 0.5rem 0.5rem 1rem 1rem;
-    box-shadow: var(--shadow);
     z-index: 50;
 }
 
@@ -1586,8 +1588,7 @@ nav > div > .menu > .menu-button:hover {
     color: var(--colour-text-400);
 }
 
-.menu .text-subtle {
-    font-size: 0.65em;
+.menu .subtle {
     color: var(--colour-text-300);
 }
 
@@ -1664,7 +1665,7 @@ nav > div > .menu > .menu-button:hover {
     --transition: var(--transition-long-1);
     display: flex;
     align-items: center;
-    background-color: var(--colour-bg-500);
+    background-color: var(--colour-bg-600);
     padding: 0.6em 0.7em;
     border-radius: 0.4rem;
     border: var(--border-width-thick-0) var(--border-style) var(--border-colour-dark-0-subtle);
@@ -1824,6 +1825,19 @@ nav > div > .menu > .menu-button:hover {
     transform-origin: 43.5% 44.9%;
 }
 
+/* → Divider
+// --------------------- */
+#search-menu::before {
+    content: "";
+    position: absolute;
+    left: calc(0px - ((var(--divider-gap) * var(--divider-gap-modifier) / 2) + var(--divider-width)));
+    inset-block: 0.5em;
+    width: var(--divider-width);
+    backdrop-filter: brightness(1.125);
+    border-radius: 100vw;
+    transition: all var(--transition);
+}
+
 /* ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ------------------------------------------ Menu ----------------------------------------- //
@@ -1857,14 +1871,11 @@ nav > div > .menu > .menu-button:hover {
     left: 50%;
     flex-direction: column;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
     transform: translateX(-50%);
     transition: width 1000ms var(--transition-curve), gap var(--transition);
     --min-width: 14em;
-    --gap: 0.75rem;
+    --search-gap: 0.5rem;
     --border-radius: 1rem;
-    --divider-gap: 0.75rem;
-    --filter-gap: 0.75em;
 }
 
 #search-menu[open] > .menu-inner {
@@ -1874,11 +1885,11 @@ nav > div > .menu > .menu-button:hover {
 /* → Inner content
 // --------------------- */
 #search-menu .menu-inner > :not(#search-bar) {
-    margin: var(--gap);
+    margin: var(--search-gap);
 }
 
 #search-menu .menu-inner > :not(#search-bar):not(#search-results) {
-    margin-inline: calc(var(--gap) * 2);
+    margin-inline: calc(var(--search-gap) + 0.5rem);
 }
 
 #search-menu:not([open]) .menu-inner > :not(#search-bar) {
@@ -1888,19 +1899,6 @@ nav > div > .menu > .menu-button:hover {
     height: 0;
     padding-block: 0;
     margin-block: 0 !important;
-}
-
-/* → Divider
-// --------------------- */
-#search-menu::before {
-    content: "";
-    position: absolute;
-    left: calc(0px - ((var(--divider-gap) * var(--divider-gap-modifier) / 2) + var(--divider-width)));
-    inset-block: 0.5em;
-    width: var(--divider-width);
-    backdrop-filter: brightness(1.125);
-    border-radius: 100vw;
-    transition: all var(--transition);
 }
 
 /* ----------------------------------------------------------------------------------------- //
@@ -2006,8 +2004,8 @@ nav > div > .menu > .menu-button:hover {
 #search-menu .menu-inner > :nth-child(2)::before {
     content: "";
     position: absolute;
-    inset: var(--divider-gap) 5%;
-    top: calc(0px - var(--divider-gap));
+    inset: var(--search-gap) 5%;
+    top: calc(0px - var(--search-gap));
     display: block;
     height: var(--divider-width);
     backdrop-filter: brightness(1.5);
@@ -2055,7 +2053,7 @@ nav > div > .menu > .menu-button:hover {
 
 #search-settings form fieldset input + label {
     white-space: nowrap;
-    padding: 0.3em 0.25em 0.25em 0.4em;
+    padding: 0.3em 0.4em;
     margin: 0.25em;
 }
 
@@ -2122,7 +2120,7 @@ nav > div > .menu > .menu-button:hover {
 }
 
 #search-info .no-results {
-    margin: 0 auto calc(var(--gap) * 1.5);
+    margin: 0 auto calc(var(--search-gap) * 1.5);
     opacity: 0.8;
 }
 
@@ -2176,7 +2174,7 @@ nav > div > .menu > .menu-button:hover {
 
 #search-results .result:hover {
     color: var(--colour-text-600);
-    background-color: var(--colour-bg-500);
+    background-color: var(--colour-bg-600);
 }
 
 /* → Images
@@ -2418,6 +2416,17 @@ nav > div > .menu > .menu-button:hover {
     max-width: var(--form-input-max-width);
 }
 
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// -------------------------------------- Inner Menus -------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+/* Language icons (flags) */
+#language input + label .icon {
+    width: 1em;
+}
+
 /* ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
@@ -2469,13 +2478,14 @@ aside#toc {
 .tabs-labels {
     display: flex;
     flex-direction: column;
-    gap: 0.25em;
+    gap: 0.5em;
     list-style: none;
     max-width: 16em;
 }
 
 .tabs-labels > * {
     width: 20ch;
+    margin-block: 0;
     padding: 0.6em 1em;
     border-radius: 0.5em;
     overflow: hidden;
@@ -2739,7 +2749,7 @@ p > i.ph-bold {
 header,
 footer,
 img,
-.headerlink,
+.anchor,
 .no-select {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -2829,9 +2839,25 @@ img,
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- */
 
-.text-subtle {
-    font-size: 0.75em;
+.centre {
+    width: fit-content;
+    margin-inline: auto !important;
+}
+
+.subtle {
     color: var(--colour-text-100);
+}
+
+.small {
+    font-size: 0.75em;
+}
+
+.smallish {
+    font-size: 0.85em;
+}
+
+.small .small {
+    font-size: 0.9em;
 }
 
 /* → Screen reader only
@@ -3273,14 +3299,25 @@ form input:focus-visible + label {
 
 /* → Tone indicators
 // --------------------- */
-p[tone]::before {
-    content: "/" attr(tone);
+:root[tone-indicators] main p[tone]::before {
+    content: "/\200B"attr(tone);
     position: absolute;
-    right: calc(100% + 1.25em);
+    width: max-content;
+    max-width: 5ch;
+    transform: translate(calc(-100% - 1em), 0.075em);
     font-size: 0.75em;
-    color: var(--colour-text-100);
-    opacity: var(--subtle-1);
     font-family: var(--font-mono);
+    color: var(--colour-text-100);
+    text-align: center;
+    word-break: keep-all;
+}
+
+:root[tone-indicators] main p[tone] {
+    margin-inline: 1.75em;
+}
+
+:root[tone-indicators] main p[tone] + ul {
+    margin-inline: 4em;
 }
 
 /* ------------------------------------------------------------------------------------------------------------- //
@@ -3448,6 +3485,9 @@ p[tone]::before {
         width: var(--min-width);
         left: 0;
         transform: translateX(0);
+    }
+
+    :root:not([mobile]) #search-menu:not([open]) > .menu-inner {
         box-shadow: none;
     }
 }
