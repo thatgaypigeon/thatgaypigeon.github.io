@@ -12,86 +12,88 @@
 // ----------------------------- //
 CONTENTS                   4
 IMPORTS / SETUP            100
-ROOT                       180
- → Variables               197
-GENERAL                    592
- → Global                  599
- → Base                    619
- → Headings                657
- → Text                    710
-   → Lists                 724
-   → Links                 745
-   → Code                  764
-   → Keyboard Shortcuts    782
-   → Other                 856
- → Images                  872
- → Buttons                 884
-FORM INPUTS                939
- → Layout                  946
- → Inputs                  993
-   → Single-Cell           1006
-   → Radio / Checkbox      1047
-   → Range                 1073
-   → Button                1116
-   → Toggle                1152
-   → Select                1209
- → Labels                  1238
- → Reset Buttons           1343
- → Output                  1371
-HEADER                     1382
- → Buttons                 1424
- → Menus                   1514
- → Menu Content            1566
-   → Text                  1571
-   → Headings              1585
- → Menu Lists              1636
-   → Links                 1655
-MAIN MENU                  1754
- → Button                  1761
- → Menu                    1797
-SEARCH                     1812
- → Button                  1819
- → Menu                    1834
- → Search Bar              1919
- → Search Input            1977
- → Search Settings         2033
-   → Result Count          2093
-   → Filters               2107
- → Search Info             2126
- → Search Results          2149
-   → Results               2170
-SETTINGS                   2401
- → Button                  2408
- → Overlay                 2418
- → Menu                    2442
-TOC                        2462
-COOKIES                    2474
- → Button                  2481
-TABS                       2496
-COLLAPSIBLE CONTENT        2567
-FOOTER                     2609
- → Left                    2616
- → Right                   2627
-   → Links                 2650
-ICONS                      2711
-UTILITY                    2790
- → Content                 2884
- → Images                  2912
- → Tooltips                2951
- → Sparks                  3217
- → Caret                   3238
-PREFERENCES                3259
- → Accessibility           3266
-   → Reduce Motion         3271
-   → Keyboard Navigation   3310
- → Cookies                 3323
- → Other                   3338
-ANIMATIONS                 3360
- → Blink                   3395
- → Slide                   3410
- → Sparks                  3439
-MOBILE                     3486
- → Screen Width            3497
+ROOT                       187
+ → Variables               204
+GENERAL                    599
+ → Global                  606
+ → Base                    626
+ → Headings                668
+   → Anchors               720
+ → Text                    754
+   → Lists                 764
+   → Links                 781
+   → Code                  800
+   → Keyboard Shortcuts    822
+   → Other                 896
+ → Images                  917
+ → Buttons                 929
+FORM INPUTS                984
+ → Layout                  991
+ → Inputs                  1038
+   → Single-Cell           1043
+   → Radio / Checkbox      1084
+   → Range                 1110
+   → Button                1153
+   → Toggle                1189
+   → Select                1246
+ → Labels                  1275
+ → Reset Buttons           1389
+ → Output                  1417
+HEADER                     1428
+ → Buttons                 1470
+ → Menus                   1562
+ → Menu Content            1616
+   → Text                  1621
+   → Headings              1634
+ → Menu Lists              1685
+   → Links                 1704
+MAIN MENU                  1803
+ → Button                  1810
+ → Menu                    1851
+SEARCH                     1866
+ → Button                  1873
+ → Menu                    1904
+ → Search Bar              1972
+ → Search Input            2030
+ → Search Settings         2086
+   → Result Count          2146
+   → Filters               2160
+ → Search Info             2179
+ → Search Results          2202
+   → Results               2223
+SETTINGS                   2459
+ → Button                  2466
+ → Overlay                 2476
+ → Menu                    2500
+ → Inner Menus             2519
+TOC                        2531
+COOKIES                    2543
+ → Button                  2550
+TABS                       2565
+COLLAPSIBLE CONTENT        2637
+FOOTER                     2679
+ → Left                    2686
+ → Right                   2697
+   → Links                 2720
+ICONS                      2781
+UTILITY                    2860
+ → Content                 2966
+ → Images                  3010
+ → Tooltips                3049
+ → Sparks                  3322
+ → Caret                   3343
+PREFERENCES                3364
+ → Accessibility           3371
+   → Reduce Motion         3376
+   → Keyboard Navigation   3415
+ → Cookies                 3428
+ → Other                   3443
+ANIMATIONS                 3476
+ → Blink                   3511
+ → Slide                   3526
+ → Sparks                  3555
+MOBILE                     3602
+ → Screen Width            3613
 // ----------------------------- */
 
 /* ------------------------------------------------------------------------------------------------------------- //
@@ -107,7 +109,11 @@ MOBILE                     3486
 // ------------------------------------------------------------------------- */
 
 .material-symbols-rounded {
-    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    font-variation-settings:
+        "FILL" 0,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 24;
 }
 
 /* ------------------------------------------------------------------------- //
@@ -120,7 +126,8 @@ MOBILE                     3486
     font-style: normal;
     font-display: block;
     src: url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.eot");
-    src: url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.eot?#iefix") format("embedded-opentype"),
+    src:
+        url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.eot?#iefix") format("embedded-opentype"),
         url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.woff2") format("woff2"),
         url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.woff") format("woff"),
         url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.ttf") format("truetype");
@@ -132,7 +139,8 @@ MOBILE                     3486
     font-style: normal;
     font-display: block;
     src: url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.eot");
-    src: url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.eot?#iefix") format("embedded-opentype"),
+    src:
+        url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.eot?#iefix") format("embedded-opentype"),
         url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.woff2") format("woff2"),
         url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.woff") format("woff"),
         url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.ttf") format("truetype");
@@ -149,7 +157,8 @@ MOBILE                     3486
     font-weight: 400;
     font-style: normal;
     font-display: block;
-    src: url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.woff2") format("woff2"),
+    src:
+        url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.woff2") format("woff2"),
         url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.woff") format("woff"),
         url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.ttf") format("truetype"),
         url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.svg#Phosphor-Bold")
@@ -1453,7 +1462,9 @@ nav > div:first-child {
     aspect-ratio: 1 / 1;
     padding: var(--icon-padding);
     border-radius: var(--icon-border-radius);
-    transition: all var(--transition), outline-width 150ms var(--transition-wobble-curve);
+    transition:
+        all var(--transition),
+        outline-width 150ms var(--transition-wobble-curve);
     will-change: transform;
     z-index: 3;
     max-width: var(--menu-button-max-size);
@@ -1539,7 +1550,9 @@ nav > div > .menu > .menu-button:hover {
     scale: 0;
     background-color: var(--colour-bg-700);
     box-shadow: var(--shadow);
-    transition: all var(--transition-short-1), scale var(--transition-wobble-emphasised-short-2);
+    transition:
+        all var(--transition-short-1),
+        scale var(--transition-wobble-emphasised-short-2);
     z-index: 4;
 }
 
@@ -1772,7 +1785,9 @@ nav > div > .menu > .menu-button:hover {
     font-family: var(--font-header);
     font-weight: bold;
     color: var(--colour-secondary);
-    transition: all var(--transition), transform var(--transition-wobble-emphasised-short-2),
+    transition:
+        all var(--transition),
+        transform var(--transition-wobble-emphasised-short-2),
         scale 350ms cubic-bezier(0.1, 1, 0.3, 1.4);
     border-radius: var(--logo-border-radius);
     white-space: nowrap;
@@ -1781,7 +1796,10 @@ nav > div > .menu > .menu-button:hover {
 
 #menu-button > .site-icon {
     height: var(--logo-size);
-    transition: height var(--transition), padding var(--transition), border-radius var(--transition);
+    transition:
+        height var(--transition),
+        padding var(--transition),
+        border-radius var(--transition);
     outline: var(--outline-width) solid var(--border-colour-dark-0);
     outline-offset: calc(0px - var(--outline-width));
     --outline-width: 0.1rem;
@@ -1872,7 +1890,9 @@ nav > div > .menu > .menu-button:hover {
     flex-direction: column;
     border-radius: var(--border-radius);
     transform: translateX(-50%);
-    transition: width 1000ms var(--transition-curve), gap var(--transition);
+    transition:
+        width 1000ms var(--transition-curve),
+        gap var(--transition);
     --min-width: 14em;
     --search-gap: 0.5rem;
     --border-radius: 1rem;
@@ -2166,7 +2186,9 @@ nav > div > .menu > .menu-button:hover {
     row-gap: 0.35em;
     padding: 0.75em;
     border-radius: 0.75em;
-    transition: background-color var(--transition), color var(--transition);
+    transition:
+        background-color var(--transition),
+        color var(--transition);
     -webkit-animation: var(--transition-long-1) calc(var(--index) * 42ms) backwards slideInFromRight;
     animation: var(--transition-long-1) calc(var(--index) * 42ms) backwards slideInFromRight;
     --image-size: clamp(1rem, 5vw, 4rem);
@@ -2231,7 +2253,10 @@ nav > div > .menu > .menu-button:hover {
     font-size: 0.985rem;
     font-weight: bolder;
     color: var(--colour-text-700);
-    transition: background var(--transition), color var(--transition), border-color var(--transition);
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
 }
 
 #search-results code.result-name {
@@ -2422,7 +2447,8 @@ nav > div > .menu > .menu-button:hover {
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- */
 
-/* Language icons (flags) */
+/* → Language icons (flags)
+// --------------------- */
 #language input + label .icon {
     width: 1em;
 }
@@ -2981,7 +3007,9 @@ img.loading {
     scale: 0;
     border-radius: 0.5rem;
     transform: translate(calc(50% + var(--posX, 0%)), 0) translateZ(0);
-    transition: opacity var(--transition-short-0), scale var(--transition-wobble-emphasised-short-3),
+    transition:
+        opacity var(--transition-short-0),
+        scale var(--transition-wobble-emphasised-short-3),
         visibility var(--transition-short-0);
     will-change: opacity;
     z-index: 9998;
@@ -3007,7 +3035,9 @@ img.loading {
     border-radius: 1px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity var(--transition-short-1), visibility var(--transition-short-0);
+    transition:
+        opacity var(--transition-short-1),
+        visibility var(--transition-short-0);
     will-change: opacity;
     z-index: 9999;
     pointer-events: none;
@@ -3057,7 +3087,8 @@ img.loading {
 
 [tooltip][tooltip-type~="auto"]::before,
 [tooltip][tooltip-type~="auto"]::after {
-    animation: show var(--transition-wobble-emphasised-short-3) var(--tooltip-auto-delay) 1 forwards,
+    animation:
+        show var(--transition-wobble-emphasised-short-3) var(--tooltip-auto-delay) 1 forwards,
         hide var(--transition) calc(var(--tooltip-auto-delay) + var(--tooltip-auto-duration)) 1 forwards;
 }
 
@@ -3077,7 +3108,9 @@ img.loading {
 }
 
 [tooltip]:not([tooltip-type~="auto"]):hover::after {
-    transition: opacity var(--transition-short-0), visibility var(--transition-short-0);
+    transition:
+        opacity var(--transition-short-0),
+        visibility var(--transition-short-0);
 }
 
 [tooltip][tooltip-type~="bottom"]::before {
@@ -3300,7 +3333,7 @@ form input:focus-visible + label {
 /* → Tone indicators
 // --------------------- */
 :root[tone-indicators] main p[tone]::before {
-    content: "/\200B"attr(tone);
+    content: "/\200B" attr(tone);
     position: absolute;
     width: max-content;
     max-width: 5ch;
