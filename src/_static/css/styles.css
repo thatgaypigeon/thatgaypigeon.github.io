@@ -109,11 +109,7 @@ MOBILE                     3602
 // ------------------------------------------------------------------------- */
 
 .material-symbols-rounded {
-    font-variation-settings:
-        "FILL" 0,
-        "wght" 400,
-        "GRAD" 0,
-        "opsz" 24;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 /* ------------------------------------------------------------------------- //
@@ -126,8 +122,7 @@ MOBILE                     3602
     font-style: normal;
     font-display: block;
     src: url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.eot");
-    src:
-        url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.eot?#iefix") format("embedded-opentype"),
+    src: url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.eot?#iefix") format("embedded-opentype"),
         url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.woff2") format("woff2"),
         url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.woff") format("woff"),
         url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.ttf") format("truetype");
@@ -139,8 +134,7 @@ MOBILE                     3602
     font-style: normal;
     font-display: block;
     src: url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.eot");
-    src:
-        url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.eot?#iefix") format("embedded-opentype"),
+    src: url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.eot?#iefix") format("embedded-opentype"),
         url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.woff2") format("woff2"),
         url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.woff") format("woff"),
         url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.ttf") format("truetype");
@@ -157,8 +151,7 @@ MOBILE                     3602
     font-weight: 400;
     font-style: normal;
     font-display: block;
-    src:
-        url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.woff2") format("woff2"),
+    src: url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.woff2") format("woff2"),
         url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.woff") format("woff"),
         url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.ttf") format("truetype"),
         url("https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/Phosphor-Bold.svg#Phosphor-Bold")
@@ -516,8 +509,9 @@ MOBILE                     3602
     /* → Other */
     --focus-transition: outline-width 150ms (--transition-curve);
 
-    --form-input-min-width: 14rem;
-    --form-input-max-width: 21rem;
+    --form-input-min-width: 16rem;
+    --form-header-min-width: 20ch;
+    --form-input-max-width: 24rem;
 
     --menu-button-max-size: var(--logo-size);
 }
@@ -756,6 +750,7 @@ h6:hover > .anchor {
 
 p {
     margin: 1.25em 0.5em;
+    text-wrap: balance; /* fallback */
     text-wrap: pretty;
 }
 
@@ -1011,7 +1006,7 @@ form fieldset {
 
 form fieldset:not(.breakout):not(.horizontal) {
     min-width: var(--form-input-min-width);
-    width: auto;
+    width: fit-content;
     max-width: var(--form-input-max-width);
 }
 
@@ -1462,9 +1457,7 @@ nav > div:first-child {
     aspect-ratio: 1 / 1;
     padding: var(--icon-padding);
     border-radius: var(--icon-border-radius);
-    transition:
-        all var(--transition),
-        outline-width 150ms var(--transition-wobble-curve);
+    transition: all var(--transition), outline-width 150ms var(--transition-wobble-curve);
     will-change: transform;
     z-index: 3;
     max-width: var(--menu-button-max-size);
@@ -1550,9 +1543,7 @@ nav > div > .menu > .menu-button:hover {
     scale: 0;
     background-color: var(--colour-bg-700);
     box-shadow: var(--shadow);
-    transition:
-        all var(--transition-short-1),
-        scale var(--transition-wobble-emphasised-short-2);
+    transition: all var(--transition-short-1), scale var(--transition-wobble-emphasised-short-2);
     z-index: 4;
 }
 
@@ -1613,7 +1604,7 @@ nav > div > .menu > .menu-button:hover {
 .menu-inner .h2 > span {
     display: flex;
     align-items: center;
-    gap: 0.4em;
+    gap: 0.5em;
 }
 
 /* → Heading Icons
@@ -1785,9 +1776,7 @@ nav > div > .menu > .menu-button:hover {
     font-family: var(--font-header);
     font-weight: bold;
     color: var(--colour-secondary);
-    transition:
-        all var(--transition),
-        transform var(--transition-wobble-emphasised-short-2),
+    transition: all var(--transition), transform var(--transition-wobble-emphasised-short-2),
         scale 350ms cubic-bezier(0.1, 1, 0.3, 1.4);
     border-radius: var(--logo-border-radius);
     white-space: nowrap;
@@ -1796,10 +1785,7 @@ nav > div > .menu > .menu-button:hover {
 
 #menu-button > .site-icon {
     height: var(--logo-size);
-    transition:
-        height var(--transition),
-        padding var(--transition),
-        border-radius var(--transition);
+    transition: height var(--transition), padding var(--transition), border-radius var(--transition);
     outline: var(--outline-width) solid var(--border-colour-dark-0);
     outline-offset: calc(0px - var(--outline-width));
     --outline-width: 0.1rem;
@@ -1890,9 +1876,7 @@ nav > div > .menu > .menu-button:hover {
     flex-direction: column;
     border-radius: var(--border-radius);
     transform: translateX(-50%);
-    transition:
-        width 1000ms var(--transition-curve),
-        gap var(--transition);
+    transition: width 1000ms var(--transition-curve), gap var(--transition);
     --min-width: 14em;
     --search-gap: 0.5rem;
     --border-radius: 1rem;
@@ -2186,9 +2170,7 @@ nav > div > .menu > .menu-button:hover {
     row-gap: 0.35em;
     padding: 0.75em;
     border-radius: 0.75em;
-    transition:
-        background-color var(--transition),
-        color var(--transition);
+    transition: background-color var(--transition), color var(--transition);
     -webkit-animation: var(--transition-long-1) calc(var(--index) * 42ms) backwards slideInFromRight;
     animation: var(--transition-long-1) calc(var(--index) * 42ms) backwards slideInFromRight;
     --image-size: clamp(1rem, 5vw, 4rem);
@@ -2253,10 +2235,7 @@ nav > div > .menu > .menu-button:hover {
     font-size: 0.985rem;
     font-weight: bolder;
     color: var(--colour-text-700);
-    transition:
-        background var(--transition),
-        color var(--transition),
-        border-color var(--transition);
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
 }
 
 #search-results code.result-name {
@@ -2312,10 +2291,8 @@ nav > div > .menu > .menu-button:hover {
 }
 
 #search-results .result-info > :not(:last-child)::after {
-    content: "\2022";
-    margin-inline: 0.6em;
-    color: var(--colour-text-100);
-    filter: brightness(0.75) opacity(0.75);
+    content: "\E000";
+    margin-inline: 0.25rem;
 }
 
 /* → Languages
@@ -2436,8 +2413,8 @@ nav > div > .menu > .menu-button:hover {
 }
 
 #settings .h2:first-child {
-    min-width: var(--form-input-min-width);
-    width: auto;
+    min-width: var(--form-header-min-width);
+    width: fit-content;
     max-width: var(--form-input-max-width);
 }
 
@@ -2764,6 +2741,10 @@ p > i.ph-bold {
     color: var(--colour-text-300);
 }
 
+.lang-icon {
+    width: 1em;
+}
+
 /* ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------------------------------- //
@@ -3007,9 +2988,7 @@ img.loading {
     scale: 0;
     border-radius: 0.5rem;
     transform: translate(calc(50% + var(--posX, 0%)), 0) translateZ(0);
-    transition:
-        opacity var(--transition-short-0),
-        scale var(--transition-wobble-emphasised-short-3),
+    transition: opacity var(--transition-short-0), scale var(--transition-wobble-emphasised-short-3),
         visibility var(--transition-short-0);
     will-change: opacity;
     z-index: 9998;
@@ -3035,9 +3014,7 @@ img.loading {
     border-radius: 1px;
     opacity: 0;
     visibility: hidden;
-    transition:
-        opacity var(--transition-short-1),
-        visibility var(--transition-short-0);
+    transition: opacity var(--transition-short-1), visibility var(--transition-short-0);
     will-change: opacity;
     z-index: 9999;
     pointer-events: none;
@@ -3087,8 +3064,7 @@ img.loading {
 
 [tooltip][tooltip-type~="auto"]::before,
 [tooltip][tooltip-type~="auto"]::after {
-    animation:
-        show var(--transition-wobble-emphasised-short-3) var(--tooltip-auto-delay) 1 forwards,
+    animation: show var(--transition-wobble-emphasised-short-3) var(--tooltip-auto-delay) 1 forwards,
         hide var(--transition) calc(var(--tooltip-auto-delay) + var(--tooltip-auto-duration)) 1 forwards;
 }
 
@@ -3108,9 +3084,7 @@ img.loading {
 }
 
 [tooltip]:not([tooltip-type~="auto"]):hover::after {
-    transition:
-        opacity var(--transition-short-0),
-        visibility var(--transition-short-0);
+    transition: opacity var(--transition-short-0), visibility var(--transition-short-0);
 }
 
 [tooltip][tooltip-type~="bottom"]::before {
@@ -3333,7 +3307,7 @@ form input:focus-visible + label {
 /* → Tone indicators
 // --------------------- */
 :root[tone-indicators] main p[tone]::before {
-    content: "/\200B" attr(tone);
+    content: "/\200B"attr(tone);
     position: absolute;
     width: max-content;
     max-width: 5ch;
