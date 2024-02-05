@@ -531,7 +531,7 @@ window.addEventListener("init", function () {
         document.getElementById("theme-css").setAttribute("href", "/_static/css/theme/" + theme + ".css")
 
         // Set button properties
-        themeButton.setAttribute("tooltip", new Translation(theme + "-mode").text)
+        themeButton.setAttribute("tooltip", new Translation("tooltip.mode." + theme).text)
 
         // Set local storage
         ifCookies(localStorage.setItem.bind(localStorage), THEME_VAR, theme)
@@ -557,7 +557,7 @@ window.addEventListener("init", function () {
         root.setAttribute(SOUND_ATTR, soundStateToString(state))
 
         // Set button properties
-        soundButton.setAttribute("tooltip", new Translation("sound-" + soundStateToString(state)).text)
+        soundButton.setAttribute("tooltip", new Translation("tooltip.sound." + soundStateToString(state)).text)
 
         // Set local storage
         ifCookies(localStorage.setItem.bind(localStorage), SOUND_VAR, soundStateToString(state))
