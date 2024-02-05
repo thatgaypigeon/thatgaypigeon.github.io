@@ -3,14 +3,14 @@
         <div class="icon ph ph-gear"></div>
     </button>
     <div class="menu-inner">
-        <div class="h2"><i class="ph ph-gear"></i> Settings</div>
+        <div class="h2"><i class="ph ph-gear"></i> <span text="settings.settings">Settings</span></div>
         <div class="tabs">
             <ul class="tabs-labels">
-                <li id="tab-appearance" active>Appearance</li>
-                <li id="tab-preferences">Preferences</li>
-                <li id="tab-language">Language</li>
-                <li id="tab-accessibility">Accessibility</li>
-                <li id="tab-cookies">Cookies</li>
+                <li id="tab-appearance" text="settings.appearance" active>Appearance</li>
+                <li id="tab-preferences" text="settings.preferences">Preferences</li>
+                <li id="tab-language" text="settings.language">Language</li>
+                <li id="tab-accessibility" text="settings.accessibility">Accessibility</li>
+                <li id="tab-cookies" text="settings.cookies">Cookies</li>
             </ul>
             <div class="tabs-content">
                 <div id="appearance" aria-labelledby="tab-appearance" open>{% include 'menu/settings/appearance.html' %}</div>

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB" at-top>
     <head>
         {% include 'head.html' %} {% block extrahead %} {% endblock %}
@@ -17,7 +17,7 @@
             </aside>
 
             {% block content %} {{ page.content }} {% if config.repo_url and page and page.file.src_path %}
-            <a id="edit-on-github" class="no-select" href="{{ config.repo_url }}/edit/main/{{ page.file.src_path }}">
+            <a id="edit-on-github" class="no-select" href="{{ config.repo_url }}/blob/main/src/{{ page.file.src_path }}">
                 <i class="ph ph-github-logo"></i>
                 <span text="edit-on-github">Edit this page on GitHub</span>
             </a>
