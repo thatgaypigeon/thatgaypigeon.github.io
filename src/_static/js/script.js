@@ -437,7 +437,7 @@ async function translatePageText() {
 
         const tooltipText = document.querySelectorAll("[tooltip-text]")
         tooltipText.forEach((element) => {
-            element.setAttribute("tooltip", new Translation(element.getAttribute("tooltip-text")).text)
+            element.setAttribute("tooltip", new Translation("tooltip." + element.getAttribute("tooltip-text")).text)
         })
     })
 }
