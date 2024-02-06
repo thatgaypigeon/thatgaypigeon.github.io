@@ -182,13 +182,17 @@ MOBILE                     3602
 // ------------------------------------------------------------------------------------------------------------- */
 
 :root {
+    height: 100%;
+    background-color: var(--colour-bg);
+    font-family: var(--font-text), var(--font-fallback);
+    color: var(--colour-text);
+    font-size: 1.1rem;
+    letter-spacing: 0.15px;
+    -webkit-filter: brightness(var(--brightness)) contrast(var(--contrast)) saturate(var(--saturation));
+    filter: brightness(var(--brightness)) contrast(var(--contrast)) saturate(var(--saturation));
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    height: 100%;
-    -webkit-filter: brightness(var(--brightness)) contrast(var(--contrast)) saturate(var(--saturation));
-    filter: brightness(var(--brightness)) contrast(var(--contrast)) saturate(var(--saturation));
-    letter-spacing: 0.15px;
 }
 
 /* ----------------------------------------------------------------------------------------- //
@@ -204,9 +208,7 @@ MOBILE                     3602
     --contrast: 1;
     --saturation: 1;
 
-    /* → Constants */
-
-    /* → Other colours */
+    /* → Colours */
     --red-light: hsl(4 100% 75%);
     --red: hsl(4 90% 58%);
     --red-dark: hsl(8 80% 40%);
@@ -392,7 +394,7 @@ MOBILE                     3602
     --colour-good: var(--green);
     --colour-info: var(--blue);
 
-    /* → Other styles */
+    /* → Shadows */
     --shadow-small-1: hsl(0 0% 0% / 0.6) 0 0.25rem 0.5rem;
     --shadow-small-0: hsl(0 0% 0% / 0.6) 0 0.25rem 1rem;
     --shadow: hsl(0 0% 0% / 0.6) 0 0.25rem 1.5rem;
@@ -400,15 +402,6 @@ MOBILE                     3602
     --shadow-inside-small-1: inset hsl(0 0% 0% / 0.6) 0 0.25rem 0.5rem;
     --shadow-inside-small-0: inset hsl(0 0% 0% / 0.6) 0 0.25rem 1rem;
     --shadow-inside: inset hsl(0 0% 0% / 0.6) 0 0.25rem 1.5rem;
-
-    /* → Fonts */
-    --font-fallback: Helvetica, Arial, sans-serif;
-
-    --font-subheader: var(--font-subheader-name), var(--font-header);
-    --font-header: var(--font-header-name), var(--font-accent);
-    --font-accent: var(--font-accent-name), var(--font-text);
-    --font-text: TheNestIcons, PhosphorBold, var(--font-text-name), var(--font-fallback);
-    --font-mono: var(--font-mono-name), monospace, var(--font-text);
 
     /* → Borders */
     --border-style: solid;
@@ -438,10 +431,16 @@ MOBILE                     3602
     --focus-border-colour-300: var(--colour-primary-300);
     --focus-border-300: var(--focus-border-width) var(--focus-border-style) var(--focus-border-colour-300);
 
-    /* → Spacing */
-    --main-padding: 2rem;
+    /* → Fonts */
+    --font-fallback: Helvetica, Arial, sans-serif;
 
-    /* → Transition */
+    --font-subheader: var(--font-subheader-name), var(--font-header);
+    --font-header: var(--font-header-name), var(--font-accent);
+    --font-accent: var(--font-accent-name), var(--font-text);
+    --font-text: TheNestIcons, PhosphorBold, var(--font-text-name), var(--font-fallback);
+    --font-mono: var(--font-mono-name), monospace, var(--font-text);
+
+    /* → Transitions */
     --transition-curve: ease;
     --transition-short-1: 100ms var(--transition-curve);
     --transition-short-0: 200ms var(--transition-curve);
@@ -465,6 +464,8 @@ MOBILE                     3602
     --transition-wobble-emphasised-short-0: 900ms var(--transition-wobble-emphasised-curve);
     --transition-wobble-emphasised: 1200ms var(--transition-wobble-emphasised-curve);
     --transition-wobble-emphasised-long-0: 1750ms var(--transition-wobble-emphasised-curve);
+
+    --focus-transition: outline-width 150ms (--transition-curve);
 
     /* → Tooltips */
     --tooltip-auto-delay: 1000ms;
@@ -507,11 +508,11 @@ MOBILE                     3602
     --nav-text-colour: var(--colour-primary-text-500);
 
     /* → Other */
-    --focus-transition: outline-width 150ms (--transition-curve);
-
     --form-input-min-width: 16rem;
-    --form-header-min-width: 20ch;
     --form-input-max-width: 24rem;
+    --form-header-min-width: 20ch;
+
+    --main-padding: 2rem;
 
     --menu-button-max-size: var(--logo-size);
 }
@@ -612,6 +613,8 @@ MOBILE                     3602
     position: relative;
     transition: all var(--transition);
     outline-color: var(--colour-primary);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 /* ----------------------------------------------------------------------------------------- //
@@ -619,13 +622,6 @@ MOBILE                     3602
 // ------------------------------------------ Base ----------------------------------------- //
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------- */
-
-:root {
-    background-color: var(--colour-bg);
-    font-family: var(--font-text), var(--font-fallback);
-    color: var(--colour-text);
-    font-size: 1.1rem;
-}
 
 body {
     position: relative;
@@ -1871,7 +1867,7 @@ nav > div > .menu > .menu-button:hover {
     min-width: var(--min-width);
     width: var(--min-width);
     max-width: 75rem;
-    top: 0;
+    top: calc(var(--search-bar-inset) / 2);
     left: 50%;
     flex-direction: column;
     border-radius: var(--border-radius);
@@ -1880,6 +1876,7 @@ nav > div > .menu > .menu-button:hover {
     --min-width: 14em;
     --search-gap: 0.5rem;
     --border-radius: 1rem;
+    --search-bar-inset: 0.125rem;
 }
 
 #search-menu[open] > .menu-inner {
@@ -1912,7 +1909,7 @@ nav > div > .menu > .menu-button:hover {
 // ----------------------------------------------------------------------------------------- */
 
 #search-menu #search-bar {
-    height: var(--menu-button-max-size);
+    height: calc(var(--menu-button-max-size) - var(--search-bar-inset));
     display: -ms-grid;
     display: grid;
     place-items: center;
@@ -2159,13 +2156,10 @@ nav > div > .menu > .menu-button:hover {
 // ------------------------------------------------------------------------- */
 
 #search-results .result {
-    display: -ms-grid;
     display: grid;
-    -ms-grid-columns: auto 1rem 1fr;
-    grid-template-columns: auto 1fr;
-    -ms-grid-rows: auto 0.4rem 1fr;
-    grid-template-rows: auto 1fr;
-    -moz-column-gap: 1rem;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "image title info" "image desc desc";
     column-gap: 1rem;
     row-gap: 0.35em;
     padding: 0.75em;
@@ -2184,12 +2178,7 @@ nav > div > .menu > .menu-button:hover {
 /* → Images
 // --------------------- */
 #search-results .result-image {
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 1;
-    grid-column: 1 / 2;
-    -ms-grid-row: 1;
-    -ms-grid-row-span: 2;
-    grid-row: 1 / 3;
+    grid-area: image;
     place-self: center;
     width: var(--image-size);
     border-radius: 0.4em;
@@ -2214,33 +2203,24 @@ nav > div > .menu > .menu-button:hover {
     left: 0.125rem;
 }
 
-/* → Headers
-// --------------------- */
-#search-results .result-header {
-    -ms-grid-row: 1;
-    grid-row: 1;
-    grid-row-start: 1;
-    -ms-grid-column-span: -1;
-    grid-column-end: -1;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.25rem;
-}
-
 /* → Titles
 // --------------------- */
 #search-results .result-name {
+    grid-area: title;
+    width: fit-content;
     margin-block: 0;
     font-family: var(--font-subheader);
     font-size: 0.985rem;
     font-weight: bolder;
     color: var(--colour-text-700);
     transition: background var(--transition), color var(--transition), border-color var(--transition);
+    line-break: anywhere;
 }
 
 #search-results code.result-name {
     font-family: var(--font-mono);
     font-size: 1.075rem;
+    white-space: revert;
 }
 
 #search-results .result:hover .result-name {
@@ -2271,12 +2251,13 @@ nav > div > .menu > .menu-button:hover {
 /* → Info
 // --------------------- */
 #search-results .result-info {
+    grid-area: info;
     display: flex;
     align-items: center;
     height: 1.5em;
-    margin-inline: auto 1.25em;
     font-size: 0.75em;
     color: var(--colour-text-200);
+    --gap: 0.25rem;
 }
 
 #search-results .result-info > *,
@@ -2290,9 +2271,14 @@ nav > div > .menu > .menu-button:hover {
     /* ↑ for tooltip */
 }
 
+#search-results .result-info > :not(:last-child) {
+    width: 3.25em;
+    justify-content: end;
+}
+
 #search-results .result-info > :not(:last-child)::after {
     content: "\E000";
-    margin-inline: 0.25rem;
+    margin-inline: var(--gap);
 }
 
 /* → Languages
@@ -2300,7 +2286,7 @@ nav > div > .menu > .menu-button:hover {
 #search-results .result-code-lang {
     color: var(--colour-text-900);
     font-size: 1.5em;
-    transform: translateX(calc(-100% + 0.15em)); /* roughly account for space in font */
+    transform: translateX(calc(-50% - (var(--gap) * 2)));
 }
 
 #search-results .result-code-lang[tooltip]::before {
@@ -2310,7 +2296,7 @@ nav > div > .menu > .menu-button:hover {
 /* → Dates
 // --------------------- */
 #search-results .result-date-wrapper {
-    width: 3rem;
+    width: 7.5ch;
 }
 
 #search-results .result-date {
@@ -2324,12 +2310,7 @@ nav > div > .menu > .menu-button:hover {
 /* → Descriptions
 // --------------------- */
 #search-results .result-desc {
-    display: -webkit-box;
-    -ms-grid-row-span: -1;
-    grid-row-end: -1;
-    -ms-grid-column-span: -1;
-    grid-column-end: -1;
-    -ms-grid-row-align: start;
+    grid-area: desc;
     align-self: start;
     margin-block: 0;
     padding-bottom: 0.125rem; /* allow extra space for mark */
@@ -2981,7 +2962,8 @@ img.loading {
     background: var(--tooltip-bg-colour);
     color: var(--colour-text);
     border: var(--tooltip-outline-width) solid var(--tooltip-outline-colour);
-    font-size: clamp(0.5rem, 0.85em, 0.75rem);
+    font-size: 0.65rem;
+    /* font-size: clamp(0.5rem, 0.85em, 0.75rem); */
     font-family: var(--font-text);
     visibility: hidden;
     opacity: 0;
