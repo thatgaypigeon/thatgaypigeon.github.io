@@ -152,15 +152,11 @@ function search(documents, query) {
                 // resultElement.appendChild(imageWrapperElement)
                 resultElement.appendChild(imageElement)
 
-                const headerElement = document.createElement("div")
-                headerElement.classList.add("result-header")
-                resultElement.appendChild(headerElement)
-
                 const nameElement = document.createElement(result.code ? "code" : "p")
                 nameElement.classList.add("result-name")
                 nameElement.innerHTML =
                     fuzzysort.highlight(searchResult[0], "<mark>", "</mark>") || escapeHtml(result.name)
-                headerElement.appendChild(nameElement)
+                resultElement.appendChild(nameElement)
 
                 const infoElement = document.createElement("div")
                 infoElement.classList.add("result-info")
@@ -223,7 +219,7 @@ function search(documents, query) {
 
                 infoElement.appendChild(dateWrapperElement)
 
-                headerElement.appendChild(infoElement)
+                resultElement.appendChild(infoElement)
 
                 // const categoriesElement = document.createElement("p")
                 // categoriesElement.classList.add("result-cats")
