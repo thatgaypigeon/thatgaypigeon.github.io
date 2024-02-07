@@ -61,12 +61,15 @@ fi
 
 # Run prettier
 if echo "$files" | grep -q ".*"; then
-    echo -e "${HD1} Formatting files...${RST}"
-
-    echo -e "${HD2} Running prettier...${RST}"
+    echo -e "${HD1} Running prettier...${RST}"
     git diff --staged --name-only | xargs prettier --config .prettierrc --write || true
 
-    echo -e "${HD2} Running markdownlint...${RST}"
+    echo -e $DONE
+fi
+
+# Run markdownlint
+if echo "$files" | grep -q ".md$"; then
+    echo -e "${HD1} Running markdownlint...${RST}"
     markdownlint --config .markdownlint.json --fix .
 
     echo -e $DONE
