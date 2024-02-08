@@ -1,6 +1,7 @@
+_
 .vscode
+
 TODO
 
-/test
-
 **/__pycache__
+**/test
