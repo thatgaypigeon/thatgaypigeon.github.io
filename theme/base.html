@@ -6,14 +6,32 @@
     <body id="top" hidden>
         <header class="no-select">{% include 'header.html' %}</header>
         <main>
-            <aside id="toc">
-                <ul>
-                    {% for toc_item in page.toc %}
-                    <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
-                    {% for toc_item in toc_item.children %}
-                    <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
-                    {% endfor %} {% endfor %}
-                </ul>
+            <aside id="toc" class="menu right no-select">
+                <button id="toc-button" class="menu-button ph ph-list-bullets"></button>
+                <div class="menu-inner">
+                    <div id="toc-title" class="h2">Contents</div>
+                    <ul id="toc-list">
+                        {% for item0 in page.toc %}
+                            {% for item1 in item0.children %}
+                            <li>
+                                <a href="{{ item1.url }}">{{ item1.title }}</a>
+                                <ul>
+                                    {% for item2 in item1.children %}
+                                    <li>
+                                        <a href="{{ item2.url }}">{{ item2.title }}</a>
+                                        <ul>
+                                            {% for item3 in item2.children %}
+                                            <li><a href="{{ item3.url }}">{{ item3.title }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
             </aside>
 
             {% block content %} {{ page.content }} {% if config.repo_url and page and page.file.src_path %}
