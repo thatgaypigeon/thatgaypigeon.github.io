@@ -5,9 +5,7 @@
   "blanks-around-headings": {
     "lines_below": 0
   },
-  "code-block-style": {
-    "style": "fenced"
-  },
+  "code-block-style": false,
   "code-fence-style": {
     "style": "backtick"
   },
