@@ -11,27 +11,41 @@
                 <div class="menu-inner">
                     <div id="toc-title" class="h2">Contents</div>
                     <ul id="toc-list">
-                        {% for item0 in page.toc %} {% for item1 in item0.children %}
+                        {% for item in page.toc %}
                         <li>
-                            <a href="{{ item1.url }}">{{ item1.title }}</a>
+                            <a href="{{ item.url }}">{{ item.title }}</a>
+                            {% if item.children %}
                             <ul>
-                                {% for item2 in item1.children %}
+                                {% for child in item.children %}
                                 <li>
-                                    <a href="{{ item2.url }}">{{ item2.title }}</a>
+                                    <a href="{{ child.url }}">{{ child.title }}</a>
+                                    {% if child.children %}
                                     <ul>
-                                        {% for item3 in item2.children %}
-                                        <li><a href="{{ item3.url }}">{{ item3.title }}</a></li>
+                                        {% for grandchild in child.children %}
+                                        <li>
+                                            <a href="{{ grandchild.url }}">{{ grandchild.title }}</a>
+                                        </li>
                                         {% endfor %}
                                     </ul>
+                                    {% endif %}
                                 </li>
                                 {% endfor %}
                             </ul>
+                            {% endif %}
                         </li>
-                        {% endfor %} {% endfor %}
+                        {% endfor %}
                     </ul>
                 </div>
             </aside>
-
+            <nav class="breadcrumbs no-select">
+                <a href="{{ config.site_url }}"><i class="ph-bold ph-house"></i></a>
+                {% for ancestor in page.ancestors|reverse %} {% if ancestor.children[0].url != page.url %}
+                <i class="separator ph-bold ph-caret-right"></i>
+                <a href="/{{ ancestor.children[0].url }}">{{ ancestor.title }}</a>
+                {% endif %} {% endfor %}
+                <i class="separator ph-bold ph-caret-right"></i>
+                <span>{{ page.title }}</span>
+            </nav>
             {% block content %} {{ page.content }} {% if config.repo_url and page and page.file.src_path %}
             <a id="edit-on-github" class="no-select" href="{{ config.repo_url }}/blob/dev/src/{{ page.file.src_path }}">
                 <i class="ph ph-github-logo"></i>
