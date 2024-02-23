@@ -47,7 +47,7 @@
                 <span>{{ page.title }}</span>
             </nav>
             {% block content %} {{ page.content }} {% if config.repo_url and page and page.file.src_path %}
-            <a id="edit-on-github" class="no-select" href="{{ config.repo_url }}/blob/dev/src/{{ page.file.src_path }}">
+            <a id="edit-on-github" class="no-select" href="{{ page.edit_url }}">
                 <i class="ph ph-github-logo"></i>
                 <span text="edit-on-github">Edit this page on GitHub</span>
             </a>
