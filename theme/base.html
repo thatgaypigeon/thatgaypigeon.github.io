@@ -39,19 +39,67 @@
             </aside>
             <nav class="breadcrumbs no-select">
                 <a href="{{ config.site_url }}"><i class="ph-bold ph-house"></i></a>
-                {% for ancestor in page.ancestors|reverse %} {% if ancestor.children[0].url != page.url %}
-                <i class="separator ph-bold ph-caret-right"></i>
-                <a href="/{{ ancestor.children[0].url }}">{{ ancestor.title }}</a>
-                {% endif %} {% endfor %}
-                <i class="separator ph-bold ph-caret-right"></i>
-                <span>{{ page.title }}</span>
+                {% for ancestor in page.ancestors|reverse %}
+                    {% if ancestor == page.ancestors[0] %}
+                        {% if page.file and not page.file.src_uri.endswith("index.md") %}
+                            <i class="separator ph-bold ph-caret-right"></i>
+                            <a href="/{{ ancestor.children[0].url.split(ancestor.children[0].title)[0] }}">{{ ancestor.title }}</a>
+                            <i class="separator ph-bold ph-caret-right"></i>
+                            <span>{{ page.title }}</span>
+                        {% else %}
+                            <i class="separator ph-bold ph-caret-right"></i>
+                            <span>{{ ancestor.title }}</span>
+                        {% endif %}
+                    {% else %}
+                        <i class="separator ph-bold ph-caret-right"></i>
+                        <a href="/{{ ancestor.children[0].url }}">{{ ancestor.title }}</a>
+                    {% endif %}
+                {% endfor %}
             </nav>
-            {% block content %} {{ page.content }} {% if config.repo_url and page and page.file.src_path %}
-            <a id="edit-on-github" class="no-select" href="{{ page.edit_url }}">
-                <i class="ph ph-github-logo"></i>
-                <span text="edit-on-github">Edit this page on GitHub</span>
-            </a>
-            {% endif %} {% endblock %}
+            {% block content %}
+                {% if page and page.title %}
+                    <div class="page-title">
+                        <h1>{{ page.title }}</h1>
+                        {% if page.url and page.url.startswith("wiki/") and page.meta %}
+                            <!-- {% if page.meta.article or page.meta.tags %}
+                                <div class="page-article-data">
+                                    {% if page.meta.article.class %}
+                                        <span class="page-article-class">{{ page.meta.article.class }}</span>
+                                    {% endif %}
+                                    {% if page.meta.article.completion %}
+                                        <span class="page-article-completion">{{ page.meta.article.completion }}%</span>
+                                    {% endif %}
+                                    {% if page.meta.tags %}
+                                        <div class="page-tags">
+                                            {% for tag in page.meta.tags %}
+                                                <span class="page-tag">{{ tag }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %} -->
+                            {% if page.meta.summary %}
+                                <span class="short-description">{{ page.meta.summary }}</span>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+                {{ page.content }}
+                {% if config.repo_url and page and page.url %}
+                <a id="edit-on-github" class="no-select" href="{{ page.edit_url }}">
+                    <i class="ph ph-github-logo"></i>
+                    <span text="edit-on-github">Edit this page on GitHub</span>
+                </a>
+                {% endif %}
+                {% if page.url and page.url.startswith("wiki/") and page.meta and page.meta.categories %}
+                    <nav class="categories no-select">
+                        <div><i class="ph-bold ph-squares-four"></i> Categories</div>
+                        <div class="categories-list">
+                            {% for category in page.meta.categories %}<span class="category"><a href="/wiki/category/{{ category.lower().replace(' ', '-') }}">{{ category.split("/")[-1] }}</a></span>{% endfor %}
+                        </div>
+                    </nav>
+                {% endif %}
+            {% endblock %}
         </main>
         <footer class="no-select">{% include 'footer.html' %}</footer>
     </body>
