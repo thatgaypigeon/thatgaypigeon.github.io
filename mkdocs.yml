@@ -2,47 +2,72 @@ site_name: The Nest
 site_url: https://pigeon.uk.to/
 site_author: Max Kerr (@thatgaypigeon)
 site_description: The Nest — Pigeon's safe space! Make yourself at home, it's alright. 🧡
-copyright: Copyright &copy; 2023 - present Max Kerr (@thatgaypigeon)
+copyright: Copyright &copy; 2023 Max Kerr (@thatgaypigeon)
 
 repo_name: thatgaypigeon/thatgaypigeon.github.io
 repo_url: https://github.com/thatgaypigeon/thatgaypigeon.github.io
+edit_uri: blob/dev/src
 
 docs_dir: src
 site_dir: build
 
 watch:
-  - theme
   - extensions
+  - src
+  - theme
 
 theme:
   name: null
   locale: en
+  direction: ltr
   custom_dir: theme
   include_sidebar: false
   static_templates:
     - 404.html
 
 plugins:
+  - caption
+  - minify:
+      # minify_html: true  # incompatible with mermaid2
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+  # - multirepo:
+  #     cleanup: false
+  #     keep_docs_dir: true
+  #     repos:
+  #       - section: "somos-py"
+  #         import_url: "https://github.com/thatgaypigeon/somos-py?branch=main"
   - redirects:
       redirect_maps:
         "discord.md": "https://discord.gg/aB4Bw5pyTS"
         "github.md": "https://github.com/thatgaypigeon"
         "source.md": "https://github.com/thatgaypigeon/thatgaypigeon.github.io"
-        "wiki.md": "https://pigeon.miraheze.org/wiki/"
+        # "wiki.md": "https://pigeon.miraheze.org/wiki/"
         "youtube.md": "https://youtube.com/@thatgaypigeon"
+  - search:
+      prebuild_index: true
+
+hooks:
+  - extensions/hooks/pigeon.py
 
 markdown_extensions:
+  # Custom
+  - extensions.pigeon
+
   # Python Markdown
   - abbr
-  - admonition
+  # - admonition
   - attr_list
-  - def_list
+  # - def_list
   - footnotes
   - tables
   - toc:
       permalink: "\uEBC2"
       permalink_class: anchor
       permalink_title: ""
+      toc_depth: 2-6
   - wikilinks
 
   # Python Markdown Extensions
@@ -50,19 +75,28 @@ markdown_extensions:
       generic: true
   - pymdownx.betterem
   - pymdownx.caret
-  - pymdownx.details
-  # - pymdownx.emoji
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_alt
+  - pymdownx.escapeall
   - pymdownx.highlight:
-      anchor_linenums: true
-      auto_title: true
+      anchor_linenums: false
+      auto_title: false
+      css_class: block-code
+      code_attr_on_pre: true
+      guess_lang: false
+      line_anchors: false
+      line_spans: line
+      linenums: true
       linenums_style: pymdownx-inline
-      line_spans: __span
-      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tilde
@@ -70,8 +104,6 @@ markdown_extensions:
   # Other
   - mdx_truly_sane_lists
 
-  # Custom
-  - extensions.tone:ToneExtension
-
 extra:
   version: 1.0
+  wiki_path: "wiki/"
