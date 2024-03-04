@@ -1,5 +1,17 @@
 <!-- Metadata -->
-<title>{{ page.title }} • The Nest{% if page and page.file and page.file.src_uri.startswith("wiki/") %} Wiki{% endif %}</title>
+<title>{% if page_title %}
+        {{ page_title }}
+    {% elif (page and page.title) or page_name or page_title_name %}
+        {% if page and page.title %}
+            {{ page.title }}
+        {% elif page_title_name %}
+            {{ page_title_name }}
+        {% elif page_name %}
+            {{ page_name }}
+        {% endif %}
+         • The Nest{% if page and page.file and page.file.src_uri.startswith("wiki/") %} Wiki{% endif %}
+    {% endif %}
+</title>
 <meta name="application-name" content="The Nest" />
 <meta name="author" content="Max Kerr (@thatgaypigeon)" />
 <meta name="description" content="The Nest — Pigeon's safe space! Make yourself at home, it's alright. 🧡" />
