@@ -202,6 +202,12 @@ function unitsToPixels(value, element = document.documentElement) {
  */
 function detectBrokenImages(images) {
     images.forEach((image) => {
+        if (!image.hasAttribute("alt")) {
+            image.setAttribute("alt", " ")
+        }
+    })
+
+    images.forEach((image) => {
         if (image.classList.contains("none")) {
             return
         }
@@ -219,7 +225,7 @@ function detectBrokenImages(images) {
             clearTimeout(timeout)
             image.classList.remove("loading")
             image.classList.add("broken")
-            image.setAttribute("alt", "")
+            image.setAttribute("alt", " ")
         })
 
         const timeout = setTimeout(function () {
@@ -483,7 +489,7 @@ window.addEventListener("DOMContentLoaded", () => {
     observer.observe(document.body, config)
 })
 
-window.addEventListener("load", () => {
+window.addEventListener("init", () => {
     // Mobile debugging
     // const originalConsoleError = console.error
     // const originalConsoleLog = console.log
@@ -513,18 +519,175 @@ window.addEventListener("load", () => {
     root.setAttribute("browser", deviceInfo.browser)
     root.setAttribute("engine", deviceInfo.engine)
 
-    // Collapsible elements
-    const collapsibleElements = Array.from(document.getElementsByClassName("collapsible-header"))
+    // Menus
+    document.querySelectorAll(".menu-button").forEach((button) => {
+        button.addEventListener("click", () => {
+            button.parentElement.toggleAttribute("open")
+        })
+    })
 
-    collapsibleElements.forEach((element) => {
-        let parent = element.parentElement
-        if (parent.classList.contains("collapsible")) {
-            console.log(parent)
-            element.addEventListener("click", () => {
-                console.log(element, parent)
-                parent.toggleAttribute("open")
+    document.addEventListener("click", (event) => {
+        document.querySelectorAll(".menu:not(.persist)").forEach((menu) => {
+            if (
+                (menu !== event.target && !menu.contains(event.target)) ||
+                (menu === event.target && menu.id === "search-menu")
+            ) {
+                menu.removeAttribute("open")
+            } else {
+                menu.setAttribute("open", "")
+            }
+        })
+
+        const blocks = document.querySelectorAll(".block")
+        const clickedBlock = event.target.closest(".block")
+
+        if (clickedBlock) {
+            blocks.forEach((block) => {
+                block.removeAttribute("active")
+            })
+            clickedBlock.setAttribute("active", "")
+        } else {
+            blocks.forEach((block) => {
+                block.removeAttribute("active")
             })
         }
+    })
+
+    document.querySelectorAll("p").forEach((item) => {
+        if (item.textContent.trim() === "" && !item.childElementCount) {
+            item.remove()
+        }
+    })
+
+    // Collapsible elements
+    document
+        .querySelectorAll(".block-code:not(.collapsed):not(.lang-files):not(.definition),.block:not(.collapsed)")
+        .forEach((block) => {
+            block.setAttribute("open", "")
+        })
+
+    const collapsibleElements = [
+        ...document.querySelectorAll(".collapsible > .collapsible-header"),
+        ...document.querySelectorAll(".block-code > .filename"),
+        ...document.querySelectorAll(".block > .title")
+    ]
+
+    function animateOpen(element, opposite = false) {
+        const parent = element.parentElement
+        if (opposite) {
+            if (parent.hasAttribute("open")) {
+                parent.style.height = `${element.scrollHeight}px`
+            } else {
+                parent.style.height = `${parent.scrollHeight}px`
+            }
+        } else {
+            if (parent.hasAttribute("open")) {
+                parent.style.height = `${parent.scrollHeight}px`
+            } else {
+                parent.style.height = `${element.scrollHeight}px`
+            }
+        }
+    }
+
+    collapsibleElements.forEach((element) => {
+        const indicatorDiv = document.createElement("div")
+        indicatorDiv.classList = ["indicator icon ph-bold ph-caret-right"]
+        element.appendChild(indicatorDiv)
+
+        animateOpen(element)
+
+        const parent = element.parentElement
+
+        element.addEventListener("click", (event) => {
+            if (!event.target.classList.contains("no-open")) {
+                parent.style.height = `${parent.scrollHeight}px`
+                parent.toggleAttribute("open")
+                animateOpen(element)
+            }
+        })
+
+        parent.addEventListener("click", () => {
+            parent.setAttribute("active", "")
+        })
+    })
+
+    // Copyable elements (code blocks)
+    document.querySelectorAll(".block-code > .filename").forEach(function (element) {
+        const copyWrapperDiv = document.createElement("div")
+        copyWrapperDiv.classList = ["copy-code-wrapper no-open"]
+
+        const copyInnerDiv = document.createElement("div")
+        copyInnerDiv.classList = ["inner-wrapper escape-overflow no-open"]
+
+        const copyIconDiv = document.createElement("div")
+        copyIconDiv.classList = ["copy-code icon ph-bold ph-copy no-open"]
+
+        copyInnerDiv.appendChild(copyIconDiv)
+        copyWrapperDiv.appendChild(copyInnerDiv)
+
+        element.insertBefore(copyWrapperDiv, element.querySelector(".indicator"))
+
+        let tooltipTimeout
+
+        copyWrapperDiv.addEventListener("click", async function () {
+            try {
+                // Remove tooltip
+                if (tooltipTimeout) clearTimeout(tooltipTimeout)
+
+                tooltipWrapper = copyWrapperDiv.querySelector(".inner-wrapper")
+                tooltipWrapper.removeAttribute("tooltip-type")
+                tooltipWrapper.removeAttribute("tooltip-type")
+
+                // Copy text
+                const preElement = copyWrapperDiv.parentElement.parentElement.querySelector("pre")
+                const lines = Array.from(preElement.childNodes).filter((node) => node.id)
+
+                let text = []
+
+                for (const line of lines) {
+                    line_text = []
+
+                    line.childNodes.forEach((node) => {
+                        if (
+                            !(
+                                node.nodeType === 1 &&
+                                (node.classList.contains("special") || node.hasAttribute("linenum"))
+                            )
+                        ) {
+                            line_text.push(node.textContent)
+                        }
+                    })
+
+                    text.push(line_text.join("").trimEnd())
+                }
+
+                await navigator.clipboard.writeText(text.join("\n"))
+
+                // Add tooltip
+                tooltipWrapper.setAttribute("tooltip", "Copied!")
+                tooltipWrapper.setAttribute("tooltip-type", "auto success")
+
+                tooltipTimeout = setTimeout(() => {
+                    tooltipWrapper.removeAttribute("tooltip")
+                    tooltipWrapper.removeAttribute("tooltip-type")
+                }, 2000)
+            } catch (err) {
+                tooltipWrapper.setAttribute("tooltip", "Uh oh! That didn't work!")
+                tooltipWrapper.setAttribute("tooltip-type", "auto error")
+
+                tooltipTimeout = setTimeout(() => {
+                    tooltipWrapper.removeAttribute("tooltip")
+                    tooltipWrapper.removeAttribute("tooltip-type")
+                }, 2000)
+
+                console.error(err)
+            }
+        })
+    })
+
+    const tables = document.querySelectorAll("main :not(p.no-sort) + table:not(.no-sort)")
+    tables.forEach(function (table) {
+        new Tablesort(table)
     })
 })
 
@@ -554,8 +717,6 @@ document.write('<script src="/_static/js/settings.js"></script>')
 
 document.write('<script src="/_static/js/caret.js" defer></script>')
 document.write('<script src="/_static/js/clicks.js" defer></script>')
-document.write('<script src="/_static/js/menu.js" defer></script>')
-document.write('<script src="/_static/js/redirect.js"></script>')
 document.write('<script src="/_static/js/tabs.js"></script>')
 document.write('<script src="/_static/js/tooltip.js" defer></script>')
 

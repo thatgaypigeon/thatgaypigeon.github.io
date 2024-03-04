@@ -4,8 +4,8 @@ window.addEventListener("DOMContentLoaded", function () {
         .then((data) => {
             WIKI_URL = data.wiki_url
 
-            if (window.location.pathname.startsWith("/wiki")) {
-                window.location.replace(WIKI_URL + window.location.pathname)
-            }
+            // if (window.location.pathname.startsWith("/wiki")) {
+            //     window.location.replace(WIKI_URL + window.location.pathname)
+            // }
         })
 })

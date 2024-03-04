@@ -54,7 +54,7 @@ localStorage.setItem(COOKIES_VAR, cookies)
 const FONT_SIZE_VAR = "fontSize"
 const FONT_SIZE_MIN = 70
 const FONT_SIZE_MAX = 150
-const FONT_SIZE_BASE = 16
+const FONT_SIZE_BASE = 15
 const FONT_SIZE_STEP = 10
 const FONT_SIZE_DEFAULT = 100
 const FONT_SIZE_DYSLEXIC_MODIFIER = 0.85
@@ -411,6 +411,7 @@ root.style.setProperty(SATURATION_ATTR, saturationValue)
 const THEME_VAR = "theme"
 const THEME_ATTR = "mode"
 const THEME_ID = "theme-css"
+const HIGHLIGHT_ID = "highlight-css"
 const THEME_PATH = "/_static/css/theme/"
 const THEME_LIGHT = "light"
 const THEME_DARK = "dark"
@@ -437,6 +438,8 @@ const theme = getTheme()
 root.setAttribute(THEME_ATTR, theme)
 const THEME_CSS = document.getElementById(THEME_ID)
 THEME_CSS.setAttribute("href", THEME_PATH + theme + ".css")
+const HIGHLIGHT_CSS = document.getElementById(HIGHLIGHT_ID)
+HIGHLIGHT_CSS.setAttribute("href", THEME_PATH + theme + "-highlight.css")
 
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------- Other ----------------------------------------- //
@@ -527,8 +530,9 @@ window.addEventListener("init", function () {
         // Set root properties
         root.setAttribute(THEME_ATTR, theme)
 
-        // Set stylesheet
-        document.getElementById("theme-css").setAttribute("href", "/_static/css/theme/" + theme + ".css")
+        // Set stylesheets
+        document.getElementById(THEME_ID).setAttribute("href", "/_static/css/theme/" + theme + ".css")
+        document.getElementById(HIGHLIGHT_ID).setAttribute("href", "/_static/css/theme/" + theme + "-highlight.css")
 
         // Set button properties
         themeButton.setAttribute("tooltip", new Translation("tooltip.mode." + theme).text)
