@@ -25,14 +25,14 @@ files=$(git diff --cached --name-only --diff-filter=d)
 if echo "$files" | grep -q "\.py$"; then
     echo -e "${HD1} Checking python files...${RST}"
 
-    echo -e "${HD2} Running isort...${RST}"
-    isort .
+    # echo -e "${HD2} Running isort...${RST}"
+    # isort .
 
-    echo -e "${HD2} Running flake8...${RST}"
-    flake8 . --extend-ignore E501
+    # echo -e "${HD2} Running flake8...${RST}"
+    # flake8 . --extend-ignore E501
 
-    echo -e "${HD2} Running black...${RST}"
-    black .
+    echo -e "${HD2} Running ruff...${RST}"
+    ruff . --ignore E501
 
     echo -e $DNE
 fi
