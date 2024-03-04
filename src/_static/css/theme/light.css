@@ -1,43 +1,85 @@
 :root {
-    /* → Background colours */
-    --colour-bg-100: hsl(220 18% 72%);
-    --colour-bg-200: hsl(220 22% 80%);
-    --colour-bg-300: hsl(220 25% 84%);
-    --colour-bg-400: hsl(220 28% 88%);
-    --colour-bg-500: hsl(220 32% 91%);
-    --colour-bg-600: hsl(220 35% 93%);
-    --colour-bg-700: hsl(220 38% 95%);
-    --colour-bg-800: hsl(220 42% 98%);
-    --colour-bg-900: hsl(220 45% 100%);
+    /* → Background */
+    --colour-bg-100: hsl(220 45% 100%);
+    --colour-bg-200: hsl(220 43% 99.5%);
+    --colour-bg-150: hsl(220 41% 99%);
+    --colour-bg-250: hsl(220 40% 98.5%);
+    --colour-bg-300: hsl(220 38% 98%);
+    --colour-bg-350: hsl(220 36% 97.5%);
+    --colour-bg-450: hsl(220 35% 97%);
+    --colour-bg-400: hsl(220 34% 96.5%);
+    --colour-bg-500: hsl(220 32% 96%);
+    --colour-bg-550: hsl(220 30% 95%);
+    --colour-bg-600: hsl(220 28% 94%);
+    --colour-bg-650: hsl(220 26% 93%);
+    --colour-bg-700: hsl(220 25% 92%);
+    --colour-bg-750: hsl(220 24% 91%);
+    --colour-bg-800: hsl(220 22% 90%);
+    --colour-bg-850: hsl(220 20% 88%);
+    --colour-bg-900: hsl(220 18% 86%);
 
-    --colour-bg: var(--colour-bg-700);
+    --colour-bg: var(--colour-bg-350);
 
-    /* → Text colours */
-    --colour-text-100: hsl(220 20% 65%);
-    --colour-text-200: hsl(220 18% 55%);
-    --colour-text-300: hsl(220 16% 45%);
+    /* → Background (alpha) */
+    --colour-bga-100: hsl(220 18% 52% / 0.18);
+    --colour-bga-200: hsl(220 22% 56% / 0.18);
+    --colour-bga-300: hsl(220 25% 60% / 0.18);
+    --colour-bga-400: hsl(220 28% 64% / 0.18);
+    --colour-bga-500: hsl(220 32% 67% / 0.18);
+    --colour-bga-550: hsl(220 33% 70% / 0.18);
+    --colour-bga-600: hsl(220 35% 73% / 0.18);
+    --colour-bga-650: hsl(220 36% 76% / 0.18);
+    --colour-bga-700: hsl(220 38% 79% / 0.18);
+    --colour-bga-750: hsl(220 40% 82% / 0.18);
+    --colour-bga-800: hsl(220 42% 85% / 0.18);
+    --colour-bga-900: hsl(220 45% 88% / 0.18);
+
+    --colour-bga: var(--colour-bga-500);
+
+    /* → Text */
+    --colour-text-000: hsl(220 25% 68%);
+    --colour-text-050: hsl(220 23% 64%);
+    --colour-text-100: hsl(220 21% 60%);
+    --colour-text-150: hsl(220 20% 56%);
+    --colour-text-200: hsl(220 18% 52%);
+    --colour-text-250: hsl(220 18% 47%);
+    --colour-text-300: hsl(220 16% 43%);
+    --colour-text-350: hsl(220 16% 39%);
     --colour-text-400: hsl(220 14% 35%);
+    --colour-text-450: hsl(220 14% 31%);
     --colour-text-500: hsl(220 12% 27%);
+    --colour-text-550: hsl(220 12% 24%);
     --colour-text-600: hsl(220 10% 20%);
-    --colour-text-700: hsl(220 7% 15%);
+    --colour-text-650: hsl(220 10% 17%);
+    --colour-text-700: hsl(220 7% 12%);
+    --colour-text-750: hsl(220 6% 9%);
     --colour-text-800: hsl(220 5% 5%);
+    --colour-text-850: hsl(220 3% 3%);
     --colour-text-900: black;
 
     --colour-text: var(--colour-text-500);
 
-    /* → Accent colours */
-    --colour-primary-100: hsl(32 75% 34%);
+    /* → Primary */
+    --colour-primary-100: hsl(32 82% 32%);
     --colour-primary-200: hsl(34 90% 36%);
-    --colour-primary-300: hsl(36 100% 38%);
-    --colour-primary-400: hsl(36 95% 44%);
-    --colour-primary-500: hsl(37 84% 50%);
-    --colour-primary-600: hsl(36 94% 57%);
-    --colour-primary-700: hsl(35 96% 65%);
+    --colour-primary-300: hsl(36 100% 42%);
+    --colour-primary-350: hsl(36 100% 45%);
+    --colour-primary-400: hsl(36 95% 48%);
+    --colour-primary-450: hsl(36 90% 51%);
+    --colour-primary-500: hsl(36 100% 55%);
+    --colour-primary-550: hsl(36 100% 60%);
+    --colour-primary-600: hsl(36 98% 62%);
+    --colour-primary-650: hsl(35 96% 65%);
+    --colour-primary-700: hsl(35 95% 68%);
+    --colour-primary-750: hsl(35 96% 71%);
     --colour-primary-800: hsl(34 98% 75%);
     --colour-primary-900: hsl(33 100% 85%);
+    --colour-primary-950: hsl(33 100% 91%);
+    --colour-primary-1000: hsl(33 100% 97%);
 
     --colour-primary: var(--colour-primary-500);
 
+    /* → Primary text */
     --colour-primary-text-100: hsl(32 100% 45%);
     --colour-primary-text-200: hsl(34 100% 40%);
     --colour-primary-text-300: hsl(36 100% 35%);
@@ -50,23 +92,43 @@
 
     --colour-primary-text: var(--colour-primary-text-500);
 
-    --colour-secondary-dark-3: hsl(205 60% 30%);
-    --colour-secondary-dark-2: hsl(205 60% 36%);
-    --colour-secondary-dark-1: hsl(205 60% 42%);
-    --colour-secondary-dark-0: hsl(205 61% 48%);
-    --colour-secondary: hsl(205 62% 55%);
-    --colour-secondary-light-0: hsl(205 63% 60%);
-    --colour-secondary-light-1: hsl(205 64% 65%);
+    /* → Secondary */
+    --colour-secondary-100: hsl(330 37% 13%);
+    --colour-secondary-200: hsl(330 41% 19%);
+    --colour-secondary-300: hsl(330 45% 27%);
+    --colour-secondary-400: hsl(330 49% 35%);
+    --colour-secondary-450: hsl(330 50% 38%);
+    --colour-secondary-500: hsl(330 52% 41%);
+    --colour-secondary-550: hsl(330 53% 46%);
+    --colour-secondary-600: hsl(330 53% 51%);
+    --colour-secondary-650: hsl(330 52% 54%);
+    --colour-secondary-700: hsl(330 51% 57%);
+    --colour-secondary-750: hsl(330 50% 60%);
+    --colour-secondary-800: hsl(330 49% 63%);
+    --colour-secondary-850: hsl(330 48% 67%);
+    --colour-secondary-900: hsl(330 47% 71%);
 
-    --colour-tertiary-dark-3: hsl(190 52% 32%);
-    --colour-tertiary-dark-2: hsl(190 52% 36%);
-    --colour-tertiary-dark-1: hsl(190 52% 40%);
-    --colour-tertiary-dark-0: hsl(190 52% 45%);
-    --colour-tertiary: hsl(192 52% 56%);
-    --colour-tertiary-light-0: hsl(194 52% 64%);
-    --colour-tertiary-light-1: hsl(194 52% 74%);
+    --colour-secondary: var(--colour-secondary-500);
 
-    /* → Border colours */
+    /* → Tertiary */
+    --colour-tertiary-100: hsl(354 75% 11%);
+    --colour-tertiary-200: hsl(354 64% 21%);
+    --colour-tertiary-300: hsl(354 53% 34%);
+    --colour-tertiary-400: hsl(354 48% 41%);
+    --colour-tertiary-450: hsl(354 45% 45%);
+    --colour-tertiary-500: hsl(354 43% 47%);
+    --colour-tertiary-550: hsl(354 45% 51%);
+    --colour-tertiary-600: hsl(354 47% 55%);
+    --colour-tertiary-650: hsl(354 50% 60%);
+    --colour-tertiary-700: hsl(354 53% 65%);
+    --colour-tertiary-750: hsl(354 55% 68%);
+    --colour-tertiary-800: hsl(354 58% 71%);
+    --colour-tertiary-850: hsl(354 61% 75%);
+    --colour-tertiary-900: hsl(354 63% 78%);
+
+    --colour-tertiary: var(--colour-tertiary-500);
+
+    /* → Borders */
     --border-colour-dark-1: hsl(0 0% 20% / 0.25);
     --border-colour-dark-0: hsl(0 0% 50% / 0.15);
     --border-colour: hsl(0 0% 100% / 0.075);
