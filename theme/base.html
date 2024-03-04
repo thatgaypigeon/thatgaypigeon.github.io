@@ -1,104 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-GB" at-top>
     <head>
-        {% include 'head.html' %} {% block extrahead %} {% endblock %}
+        {% include 'head.html' %}
+        {% block extrahead %}{% endblock %}
     </head>
     <body id="top" hidden>
         <header class="no-select">{% include 'header.html' %}</header>
         <main>
-            <aside id="toc" class="menu right no-select">
-                <button id="toc-button" class="menu-button ph ph-list-bullets"></button>
-                <div class="menu-inner">
-                    <div id="toc-title" class="h2">Contents</div>
-                    <ul id="toc-list">
-                        {% for item in page.toc %}
-                        <li>
-                            <a href="{{ item.url }}">{{ item.title }}</a>
-                            {% if item.children %}
-                            <ul>
-                                {% for child in item.children %}
-                                <li>
-                                    <a href="{{ child.url }}">{{ child.title }}</a>
-                                    {% if child.children %}
-                                    <ul>
-                                        {% for grandchild in child.children %}
-                                        <li>
-                                            <a href="{{ grandchild.url }}">{{ grandchild.title }}</a>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% endif %}
-                                </li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </aside>
-            <nav class="breadcrumbs no-select">
-                <a href="{{ config.site_url }}"><i class="ph-bold ph-house"></i></a>
-                {% for ancestor in page.ancestors|reverse %}
-                    {% if ancestor == page.ancestors[0] %}
-                        {% if page.file and not page.file.src_uri.endswith("index.md") %}
-                            <i class="separator ph-bold ph-caret-right"></i>
-                            <a href="/{{ ancestor.children[0].url.split(ancestor.children[0].title)[0] }}">{{ ancestor.title }}</a>
-                            <i class="separator ph-bold ph-caret-right"></i>
-                            <span>{{ page.title }}</span>
-                        {% else %}
-                            <i class="separator ph-bold ph-caret-right"></i>
-                            <span>{{ ancestor.title }}</span>
-                        {% endif %}
-                    {% else %}
-                        <i class="separator ph-bold ph-caret-right"></i>
-                        <a href="/{{ ancestor.children[0].url }}">{{ ancestor.title }}</a>
-                    {% endif %}
-                {% endfor %}
-            </nav>
+            {% include 'partials/toc.html' %}
+            {% include 'partials/breadcrumbs.html' %}
             {% block content %}
-                {% if page and page.title %}
-                    <div class="page-title">
-                        <h1>{{ page.title }}</h1>
-                        {% if page.url and page.url.startswith("wiki/") and page.meta %}
-                            <!-- {% if page.meta.article or page.meta.tags %}
-                                <div class="page-article-data">
-                                    {% if page.meta.article.class %}
-                                        <span class="page-article-class">{{ page.meta.article.class }}</span>
-                                    {% endif %}
-                                    {% if page.meta.article.completion %}
-                                        <span class="page-article-completion">{{ page.meta.article.completion }}%</span>
-                                    {% endif %}
-                                    {% if page.meta.tags %}
-                                        <div class="page-tags">
-                                            {% for tag in page.meta.tags %}
-                                                <span class="page-tag">{{ tag }}</span>
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            {% endif %} -->
-                            {% if page.meta.summary %}
-                                <span class="short-description">{{ page.meta.summary }}</span>
-                            {% endif %}
-                        {% endif %}
-                    </div>
-                {% endif %}
-                {{ page.content }}
-                {% if config.repo_url and page and page.url %}
-                <a id="edit-on-github" class="no-select" href="{{ page.edit_url }}">
-                    <i class="ph ph-github-logo"></i>
-                    <span text="edit-on-github">Edit this page on GitHub</span>
-                </a>
-                {% endif %}
-                {% if page.url and page.url.startswith("wiki/") and page.meta and page.meta.categories %}
-                    <nav class="categories no-select">
-                        <div><i class="ph-bold ph-squares-four"></i> Categories</div>
-                        <div class="categories-list">
-                            {% for category in page.meta.categories %}<span class="category"><a href="/wiki/category/{{ category.lower().replace(' ', '-') }}">{{ category.split("/")[-1] }}</a></span>{% endfor %}
-                        </div>
-                    </nav>
-                {% endif %}
+                {% include 'partials/page-title.html' %}
+                <article class="main-content">{{ page.content }}</article>
+                {% include "partials/edit-on-github.html" %}
+                {% include 'partials/categories.html' %}
             {% endblock %}
         </main>
         <footer class="no-select">{% include 'footer.html' %}</footer>
