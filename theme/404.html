@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% set page_name = "404 Not Found" %}
+{% set page_title_name = "404!" %}
+{% block extrahead %}<script type="text/javascript" src="/_static/js/404.js"></script>{% endblock %}
+{% block content %}
+<div class="waves" colour="orange">
+    <img alt="" src="/_static/img/waves/orange-layers.svg" />
+    <h2 id="404" text="404">🙃 That's a 404!</h2>
+    <img alt="" src="/_static/img/waves/orange-layers.svg" />
+</div>
+{% endblock %}

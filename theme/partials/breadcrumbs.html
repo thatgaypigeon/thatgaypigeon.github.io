@@ -1,0 +1,30 @@
+<nav class="breadcrumbs no-select">
+    <a href="{{ config.site_url }}"><i class="ph-bold ph-house"></i></a>
+    {% if page.ancestors %}
+        {% for ancestor in page.ancestors|reverse %}
+            {% if ancestor == page.ancestors[0] %}
+                {% if page.file and not page.file.src_uri.endswith("index.md") %}
+                    <i class="separator ph-bold ph-caret-right"></i>
+                    <a href="/{{ ancestor.children[0].url.split(ancestor.children[0].title)[0] }}">{{ ancestor.title }}</a>
+                    <i class="separator ph-bold ph-caret-right"></i>
+                    <span>{{ page.title }}</span>
+                {% else %}
+                    <i class="separator ph-bold ph-caret-right"></i>
+                    <span>{{ ancestor.title }}</span>
+                {% endif %}
+            {% else %}
+                <i class="separator ph-bold ph-caret-right"></i>
+                <a href="/{{ ancestor.children[0].url }}">{{ ancestor.title }}</a>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <i class="separator ph-bold ph-caret-right"></i>
+        <span>
+            {% if page and page.title %}
+                {{ page.title }}
+            {% elif page_name %}
+                {{ page_name }}
+            {% endif %}
+        </span>
+    {% endif %}
+</nav>

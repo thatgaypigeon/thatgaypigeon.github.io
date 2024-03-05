@@ -1,0 +1,98 @@
+<div class="menu" id="search-menu">
+    <button aria-label="Search" class="menu-button" id="search-button" type="button">
+        <div class="icon ph ph-magnifying-glass"></div>
+    </button>
+    <div class="menu-inner">
+        <div id="search-bar">
+            <input aria-label="Search" autocomplete="off" id="search" placeholder="Search" type="text" />
+            <div class="search-icon icon ph-bold ph-magnifying-glass"></div>
+            <div class="shortcut">
+                <kbd>Ctrl</kbd>
+                <kbd>/</kbd>
+            </div>
+        </div>
+        <div id="search-settings">
+            <div id="search-filters">
+                <form>
+                    <fieldset class="horizontal">
+                        <legend class="left" tooltip="Search filters">
+                            <i class="ph ph-funnel"></i>
+                        </legend>
+                        <div>
+                            <div class="input-wrapper">
+                                <input id="search-filter-all" name="search-filter" type="checkbox" value="all" />
+                                <label for="search-filter-all">
+                                    <div class="main-label">All</div>
+                                </label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input id="search-filter-home" name="search-filter" type="checkbox" value="home" checked />
+                                <label for="search-filter-home">
+                                    <div class="main-label">
+                                        <!-- <img alt="" class="site-icon"  src="/_static/img/siteicon/square/icon-128.png" /> -->
+                                        <i class="ph-bold ph-house"></i> The Nest
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input id="search-filter-github" name="search-filter" type="checkbox" value="github" checked />
+                                <label for="search-filter-github">
+                                    <div class="main-label"><i class="ph-bold ph-github-logo"></i> GitHub</div>
+                                </label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input id="search-filter-wiki" name="search-filter" type="checkbox" value="wiki" />
+                                <label for="search-filter-wiki">
+                                    <div class="main-label"><i class="ph-bold ph-book-bookmark"></i> Wiki</div>
+                                </label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input id="search-filter-other" name="search-filter" type="checkbox" value="other" />
+                                <label for="search-filter-other">
+                                    <div class="main-label">Other</div>
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div id="search-count">
+                <form>
+                    <fieldset class="horizontal">
+                        <legend class="right" tooltip="Results per page">
+                            <i class="ph ph-list-numbers"></i>
+                        </legend>
+                        <div>
+                            <div class="input-wrapper">
+                                <input type="radio" id="search-results-count-5" name="search-results-count" value="5" checked />
+                                <label for="search-results-count-5">
+                                    <div class="main-label">5</div>
+                                </label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="radio" id="search-results-count-10" name="search-results-count" value="10" />
+                                <label for="search-results-count-10">
+                                    <div class="main-label">10</div>
+                                </label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="radio" id="search-results-count-20" name="search-results-count" value="20" />
+                                <label for="search-results-count-20">
+                                    <div class="main-label">20</div>
+                                </label>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="radio" id="search-results-count-all" name="search-results-count" value="all" />
+                                <label for="search-results-count-all">
+                                    <div class="main-label">All</div>
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div id="search-info"></div>
+        <div id="search-results"></div>
+    </div>
+</div>

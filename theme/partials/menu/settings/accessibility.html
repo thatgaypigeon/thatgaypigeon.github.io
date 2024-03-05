@@ -1,0 +1,48 @@
+<div class="h2">
+    <i class="ph ph-person-arms-spread"></i> <span text="settings.accessibility">Accessibility</span>
+    <div class="no-cookies-warning ph-bold ph-warning icon-tooltip">
+        <div tooltip=""></div>
+    </div>
+</div>
+<form>
+    <fieldset id="accessibility-general" class="breakout">
+        <legend>General</legend>
+        <div class="input-wrapper">
+            <input id="reduce-motion" name="accessibility-general" type="checkbox" value="reduce-motion" />
+            <label for="reduce-motion">
+                <div class="main-label">Reduce motion</div>
+                <div class="sub-label-desc">Disable transitions, animations, moving text, etc.</div>
+            </label>
+        </div>
+        <div class="input-wrapper">
+            <input id="reduce-clutter" name="accessibility-general" type="checkbox" value="reduce-clutter" />
+            <label for="reduce-clutter">
+                <div class="main-label">Reduce clutter</div>
+                <div class="sub-label-desc">Reduce the amount of clutter on the screen</div>
+            </label>
+        </div>
+        <div class="input-wrapper">
+            <input id="more-indicators" name="accessibility-general" type="checkbox" value="additional-indicators" />
+            <label for="more-indicators">
+                <div class="main-label">Additional indicators</div>
+                <div class="sub-label-desc">Use additional borders, colours, tooltips, etc.</div>
+            </label>
+        </div>
+        <div class="input-wrapper">
+            <input id="tone-indicators" name="accessibility-general" type="checkbox" value="tone-indicators" />
+            <label for="tone-indicators">
+                <div class="main-label">Tone indicators</div>
+                <div class="sub-label-desc">
+                    Include
+                    <a href="/help/tone-indicators"><b>tone indicators</b></a>
+                    next to paragraphs
+                    <span class="small subtle">(where supported)</span>
+                </div>
+            </label>
+            <div class="small subtle">Examples: "<span class="code subtle small">/srs</span>", or "<span class="code subtle small">/j, nm</span>".</div>
+        </div>
+    </fieldset>
+    <!-- <fieldset id="accessibility-tts">
+        <legend>Text-to-speech</legend>
+    </fieldset> -->
+</form>

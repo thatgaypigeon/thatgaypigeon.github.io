@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-GB" at-top>
+    <head>
+        {% include 'head.html' %}
+        {% block extrahead %}{% endblock %}
+    </head>
+    <body id="top" hidden>
+        <header class="no-select">{% include 'header.html' %}</header>
+        <main>
+            {% include 'partials/toc.html' %}
+            {% include 'partials/breadcrumbs.html' %}
+            {% block content %}
+                {% include 'partials/page-title.html' %}
+                <article class="main-content">
+                    <h1 align="center" style="font-size: min(3vw, 2.5rem)"><i class="ph-bold ph-barricade" style="color: var(--colour-issue)"></i><b style="margin-inline: 0.5em">Site under construction! :3</b><i class="ph-bold ph-barricade" style="color: var(--colour-issue)"></i></h1>
+                    {{ page.content }}
+                </article>
+                {% include "partials/edit-on-github.html" %}
+                {% include 'partials/categories.html' %}
+            {% endblock %}
+        </main>
+        <footer class="no-select">{% include 'footer.html' %}</footer>
+    </body>
+    <extra id="extra"></extra>
+</html>

@@ -1,0 +1,349 @@
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------- GENERAL --------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+.mermaid {
+    margin: calc(2 * var(--article-spacing)) auto;
+    background-color: var(--colour-bg-550);
+    color: var(--mermaid-text-colour);
+    border-radius: 1em;
+    border: 0.15em solid var(--colour-bg-750);
+    box-shadow: var(--shadow-small-0);
+    --mermaid-label-rect-border-radius: 0.5em;
+    --mermaid-legend-rect-border-radius: 0.2em;
+    --mermaid-title-colour: var(--colour-text-750);
+    --mermaid-text-colour: var(--colour-text-500);
+    --mermaid-text-scale: 0.9;
+    --mts: var(--mermaid-text-scale);
+}
+
+.mermaid > .mermaid-wrapper {
+    padding-bottom: 0.25em; /* adjust for scrollbar */
+    overflow: auto;
+    scrollbar-width: auto;
+}
+
+.mermaid svg {
+    margin: min(2vw, 0.5rem);
+    max-width: 100rem;
+    max-height: max(80vh, 100rem);
+}
+
+.mermaid text {
+    fill: var(--mermaid-text-colour);
+    stroke: none;
+}
+
+.mermaid span,
+.mermaid p {
+    color: var(--mermaid-text-colour);
+}
+
+.mermaid text[class*="Title"] {
+    text-anchor: middle;
+    fill: var(--mermaid-title-colour);
+    font-size: 1.25em;
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// -------------------------------------------------- GRAPHS --------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+.mermaid .error-icon {
+    fill: var(--colour-error);
+}
+
+.mermaid .error-text {
+    fill: var(--colour-error);
+    stroke: var(--colour-error);
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Edges ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------------- //
+// ----------------------------- Stroke width ------------------------------ //
+// ------------------------------------------------------------------------- */
+
+.mermaid .edge-thickness-normal {
+    stroke-width: 2px;
+}
+
+.mermaid .edge-thickness-thick {
+    stroke-width: 3.5px;
+}
+
+/* ------------------------------------------------------------------------- //
+// ---------------------------- Stroke patterns ---------------------------- //
+// ------------------------------------------------------------------------- */
+
+.mermaid .edge-pattern-solid {
+    stroke-dasharray: 0;
+}
+
+.mermaid .edge-pattern-dotted {
+    stroke-dasharray: 2;
+}
+
+.mermaid .edge-pattern-dashed {
+    stroke-dasharray: 3;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Markers ---------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.mermaid .marker {
+    fill: red;
+    stroke: orange;
+}
+
+.mermaid .marker.cross {
+    stroke: yellow;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Labels ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.mermaid .flowchart-label text {
+    text-anchor: middle;
+}
+
+.mermaid .label foreignObject .nodeLabel {
+    display: inline-block;
+    font-size: 90%;
+    top: -1px;
+    left: 0.5px;
+}
+
+.mermaid .label foreignObject code {
+    background-color: var(--colour-bg-900);
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Nodes ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.mermaid .nodes .node {
+    fill: var(--colour-bg-700);
+    stroke: var(--colour-bg-900);
+    stroke-width: 1.5px;
+}
+
+.mermaid .nodes .node .label {
+    text-align: center;
+}
+
+.mermaid .nodes .node.clickable {
+    fill: var(--colour-bg-750);
+    cursor: pointer;
+}
+
+.mermaid .nodes .node.clickable:hover {
+    fill: var(--colour-bg-800);
+}
+
+/* .mermaid .nodes .node.clickable span {
+    color: var(--colour-primary);
+}
+
+.mermaid .nodes .node.clickable:hover span {
+    color: var(--colour-primary-650);
+} */
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------- Paths ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.mermaid .arrowheadPath {
+    fill: red;
+}
+
+.mermaid .edgePath .path {
+    stroke: orange;
+    stroke-width: 2px;
+}
+
+.mermaid .flowchart-link {
+    stroke: var(--colour-primary-500);
+    stroke-opacity: 0.5;
+    fill: none;
+}
+
+.mermaid g.edgeLabel foreignObject {
+    height: 1.5em;
+}
+
+.mermaid g.edgeLabel div {
+    background-color: var(--colour-bg-700);
+    border-radius: 0.5em;
+    font-size: 0.8em;
+}
+
+.mermaid g.edgeLabel span {
+    white-space: pre;
+    font-size: 0.9em;
+}
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------- PIE CHARTS ------------------------------------------------ //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+
+/* -> Outer circle used to mimic a shadow */
+.mermaid svg[aria-roledescription="pie"] circle.pieOuterCircle {
+    filter: blur(1em) opacity(0.4);
+}
+
+:root[mode="light"] .mermaid svg[aria-roledescription="pie"] circle.pieOuterCircle {
+    filter: blur(0.8em) opacity(0.25);
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Legend ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ g.legend text {
+    transform: translate(0.125em, calc(1em * (1 - var(--mts)))) scale(var(--mts));
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ g.legend rect {
+    transform: translate(0, calc((1em * (1 - var(--mts))) / 2)) scale(var(--mts));
+}
+
+:root[mode="light"] .mermaid svg[aria-roledescription="pie"] path.pieCircle ~ g.legend rect {
+    stroke: black;
+    stroke-opacity: 0.35;
+}
+
+/* ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ---------------------------------------- Slices ----------------------------------------- //
+// ----------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------- */
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 1),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 1) rect {
+    fill: var(--red);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 2),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 2) rect {
+    fill: var(--orange);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 3),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 3) rect {
+    fill: var(--gold);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 4),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 4) rect {
+    fill: var(--yellow);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 5),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 5) rect {
+    fill: var(--lime);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 6),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 6) rect {
+    fill: var(--green);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 7),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 7) rect {
+    fill: var(--aqua);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 8),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 8) rect {
+    fill: var(--turquoise);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 9),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 9) rect {
+    fill: var(--blue);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 10),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 10) rect {
+    fill: var(--navy);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 11),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 11) rect {
+    fill: var(--indigo);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 12),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 12) rect {
+    fill: var(--purple);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 13),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 13) rect {
+    fill: var(--magenta);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n + 14),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n + 14) rect {
+    fill: var(--pink);
+}
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle:nth-of-type(15n),
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ .legend:nth-of-type(15n) rect {
+    fill: var(--rose);
+}
+
+/* ------------------------------------------------------------------------- //
+// ----------------------------- Slice labels ------------------------------ //
+// ------------------------------------------------------------------------- */
+
+.mermaid svg[aria-roledescription="pie"] path.pieCircle ~ text.slice {
+    fill: var(--black);
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// --------------------------------------------- SEQUENCE DIAGRAMS --------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */
+.mermaid svg[aria-roledescription="sequence"] g text.actor {
+    transform: translateX(-1.5%);
+}
+
+/* ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------ GIT GRAPHS ------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- */

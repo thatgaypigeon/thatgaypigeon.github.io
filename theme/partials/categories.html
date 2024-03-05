@@ -1,0 +1,8 @@
+{% if page.url and page.url.startswith("wiki/") and page.meta and page.meta.categories %}
+    <nav class="categories no-select">
+        <div><i class="ph-bold ph-squares-four"></i><span>Categories</span></div>
+        <div class="categories-list">
+            {% for category in page.meta.categories %}<span class="category"><a href="/wiki/category/{{ category.lower().replace(' ', '-') }}">{{ category.split("/")[-1] }}</a></span>{% endfor %}
+        </div>
+    </nav>
+{% endif %}

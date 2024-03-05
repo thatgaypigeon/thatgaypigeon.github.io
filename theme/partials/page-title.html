@@ -1,0 +1,38 @@
+{% if page and page.title and page.url and page.url.startswith("wiki/") and page.url != "wiki/" %}
+    <div class="page-title">
+        <!-- <h1>{{ page.title }}</h1> -->
+        {% if page.meta.source %}
+            <a class="page-source icon-tooltip" href="{{ page.meta.source }}" tooltip="Source code"><i class="ph-bold ph-file"></i></a>
+        {% endif %}
+        {% if page.meta %}
+            {% if page.meta.article or page.meta.tags %}
+                <div class="page-article-data no-select">
+                    <!-- {% if page.meta.article.class %}
+                        <div class="page-article-class" tooltip-text="article.grade"><span style="--grade: {{ {'s': 0, 'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6}[page.meta.article.class.lower()] }}">{{ page.meta.article.class.upper() }}</span></div>
+                    {% endif %} -->
+                    <div class="page-article-class" tooltip-text="article.grade"><span style="--grade: 0">S</span></div>
+                    <div class="page-article-class" tooltip-text="article.grade"><span style="--grade: 1">A</span></div>
+                    <div class="page-article-class" tooltip-text="article.grade"><span style="--grade: 2">B</span></div>
+                    <div class="page-article-class" tooltip-text="article.grade"><span style="--grade: 3">C</span></div>
+                    <div class="page-article-class" tooltip-text="article.grade"><span style="--grade: 4">D</span></div>
+                    <div class="page-article-class" tooltip-text="article.grade"><span style="--grade: 5">E</span></div>
+                    <div class="page-article-class" tooltip-text="article.grade"><span style="--grade: 6">F</span></div>
+
+                    {% if page.meta.article.completion %}
+                        <div class="page-article-completion" tooltip-text="article.completion"><span>{{ page.meta.article.completion }}%</span></div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if page.meta.tags %}
+                <div class="page-tags no-select">
+                    {% for tag in page.meta.tags %}
+                        <span class="page-tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if page.meta.summary %}
+                <span class="short-description">{{ page.meta.summary }}</span>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endif %}

@@ -1,0 +1,53 @@
+<!-- Metadata -->
+<title>{% if page_title %}
+        {{ page_title }}
+    {% elif (page and page.title) or page_name or page_title_name %}
+        {% if page and page.title %}
+            {{ page.title }}
+        {% elif page_title_name %}
+            {{ page_title_name }}
+        {% elif page_name %}
+            {{ page_name }}
+        {% endif %}
+         • The Nest{% if page and page.file and page.file.src_uri.startswith("wiki/") %} Wiki{% endif %}
+    {% endif %}
+</title>
+<meta name="application-name" content="The Nest" />
+<meta name="author" content="Max Kerr (@thatgaypigeon)" />
+<meta name="description" content="The Nest — Pigeon's safe space! Make yourself at home, it's alright. 🧡" />
+<meta name="creator" content="Max Kerr (@thatgaypigeon)" />
+<link rel="author" content="https://github.com/thatgaypigeon" />
+<!-- Technical -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Colours -->
+<meta content="dark light" name="color-scheme" />
+<meta content="#0C172D" name="theme-color" />
+<meta content="#0C172D" name="msapplication-TileColor" />
+<meta content="#0C172D" name="msapplication-navbutton-color" />
+<meta content="#0C172D" name="apple-mobile-web-app-status-bar-style" />
+<!-- Icon -->
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+<link href="/_static/img/siteicon/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+<link href="/_static/img/siteicon/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+<link href="/site.webmanifest" rel="manifest" />
+<link href="/_static/img/siteicon/favicon/safari-pinned-tab.svg" rel="mask-icon" color="#0C172D" />
+<meta content="/_static/img/siteicon/rounded/icon-rounded-144.png" name="msapplication-TileImage" />
+<!-- CSS -->
+<link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/thin/style.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/light/style.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/regular/style.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/style.min.css" rel="stylesheet" type="text/css" />
+<link href="/_static/css/font/default.css" id="font-css" rel="stylesheet" type="text/css" />
+<link href="/_static/css/theme/dark.css" id="theme-css" rel="stylesheet" type="text/css" />
+<link href="/_static/css/theme/dark-highlight.css" id="highlight-css" rel="stylesheet" type="text/css" />
+<link href="/_static/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/_static/css/content.css" rel="stylesheet" type="text/css" />
+<!-- JS -->
+<script src="/_static/js/script.js" type="text/javascript"></script>
+<script src="/_static/js/fuzzysort.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/tablesort@latest/dist/tablesort.min.js" type="text/javascript"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-chtml.js" type="text/javascript"></script>

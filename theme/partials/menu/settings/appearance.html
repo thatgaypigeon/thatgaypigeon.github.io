@@ -1,0 +1,124 @@
+<div class="h2">
+    <i class="ph ph-palette"></i> <span text="settings.appearance">Appearance</span>
+    <div class="no-cookies-warning ph-bold ph-warning icon-tooltip">
+        <div tooltip=""></div>
+    </div>
+</div>
+<form>
+    <fieldset>
+        <legend>Theme</legend>
+        <p>Mode dark / light</p>
+        <ul>
+            <li>Default</li>
+            <li>Night</li>
+            <li>Funky</li>
+            <li>Synthwave</li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend>Theme settings</legend>
+        <p>Coming soon!</p>
+        <ul>
+            <li>Dimmed mode</li>
+            <li>Rainbow mode</li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend>Display</legend>
+        <div class="input-wrapper">
+            <label for="brightness-input">
+                <div class="main-label">
+                    Brightness:
+                    <output for="brightness-input" id="brightness-output">1</output>
+                </div>
+                <div class="more-info ph-bold ph-info icon-tooltip">
+                    <div tooltip="Change the brightness"></div>
+                </div>
+            </label>
+            <div class="range-wrapper">
+                <button aria-label="Reset" class="reset-button ph-bold ph-arrow-counter-clockwise icon-tooltip" id="brightness-reset" type="button">
+                    <div tooltip="Reset the value back to default"></div>
+                </button>
+                <input id="brightness-input" max="1.5" min="0.5" name="brightness" step="0.01" type="range" value="1" />
+            </div>
+        </div>
+        <div class="input-wrapper">
+            <label for="contrast-input">
+                <div class="main-label">
+                    Contrast:
+                    <output for="contrast-input" id="contrast-output">1</output>
+                </div>
+                <div class="more-info ph-bold ph-info icon-tooltip">
+                    <div tooltip="Change the contrast ratio"></div>
+                </div>
+            </label>
+            <div class="range-wrapper">
+                <button aria-label="Reset" class="reset-button ph-bold ph-arrow-counter-clockwise icon-tooltip" id="contrast-reset" type="button">
+                    <div tooltip="Reset the value back to default"></div>
+                </button>
+                <input id="contrast-input" max="1.5" min="0.5" name="contrast" step="0.01" type="range" value="1" />
+            </div>
+        </div>
+        <div class="input-wrapper">
+            <label for="saturation-input">
+                <div class="main-label">
+                    Saturation:
+                    <output for="saturation-input" id="saturation-output">1</output>
+                </div>
+                <div class="more-info ph-bold ph-info icon-tooltip">
+                    <div tooltip="Change the saturation"></div>
+                </div>
+            </label>
+            <div class="range-wrapper">
+                <button aria-label="Reset" class="reset-button ph-bold ph-arrow-counter-clockwise icon-tooltip" id="saturation-reset" type="button">
+                    <div tooltip="Reset the value back to default"></div>
+                </button>
+                <input id="saturation-input" max="1.5" min="0.5" name="saturation" step="0.01" type="range" value="1" />
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Font</legend>
+        <div class="input-wrapper">
+            <input id="font-default" name="font" type="radio" value="default" checked />
+            <label for="font-default">
+                <div class="main-label">Default</div>
+                <div class="sub-label">Lexend</div>
+            </label>
+        </div>
+        <div class="input-wrapper">
+            <input id="font-atkinson-hyperlegible" name="font" type="radio" value="atkinson-hyperlegible" />
+            <label for="font-atkinson-hyperlegible">
+                <div class="main-label">Alternate</div>
+                <div class="sub-label">Atkinson Hyperlegible</div>
+            </label>
+        </div>
+        <div class="input-wrapper">
+            <input id="font-noto-sans" name="font" type="radio" value="noto-sans" />
+            <label for="font-noto-sans">
+                <div class="main-label">Clean</div>
+                <div class="sub-label">Noto Sans</div>
+            </label>
+        </div>
+        <div class="input-wrapper">
+            <input id="font-open-dyslexic" name="font" type="radio" value="open-dyslexic" />
+            <label for="font-open-dyslexic">
+                <div class="main-label">Dyslexia-friendly</div>
+                <div class="sub-label">Open Dyslexic</div>
+            </label>
+        </div>
+    </fieldset>
+    <fieldset id="font-size">
+        <legend>Text size</legend>
+        <div class="input-wrapper button-wrapper">
+            <div class="main-label">
+                <input aria-label="Decrease font size" class="settings-button" id="decrease-font-size" name="font-size" type="button" value="−" />
+                <output id="font-size-output">100%</output>
+                <input aria-label="Increase font size" class="settings-button" id="increase-font-size" name="font-size" type="button" value="+" />
+            </div>
+            <div class="more-info ph-bold ph-info icon-tooltip">
+                <div tooltip="Change the text size"></div>
+            </div>
+        </div>
+    </fieldset>
+</form>

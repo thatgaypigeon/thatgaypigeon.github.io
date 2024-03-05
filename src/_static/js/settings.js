@@ -54,10 +54,10 @@ localStorage.setItem(COOKIES_VAR, cookies)
 const FONT_SIZE_VAR = "fontSize"
 const FONT_SIZE_MIN = 70
 const FONT_SIZE_MAX = 150
-const FONT_SIZE_BASE = 16
+const FONT_SIZE_BASE = 15
 const FONT_SIZE_STEP = 10
 const FONT_SIZE_DEFAULT = 100
-const FONT_SIZE_DYSLEXIC_MODIFIER = 0.9
+const FONT_SIZE_DYSLEXIC_MODIFIER = 0.85
 const FONT_SIZE_UNITS = "px"
 
 const FONT_SIZE_INCREASE_BUTTON = "increase-font-size"
@@ -164,7 +164,94 @@ function motionStateToString(state) {
 
 // Set motion state
 const motionState = getMotionState()
-root.setAttribute(REDUCE_MOTION_ATTR, motionStateToString(motionState))
+if (motionState) root.setAttribute(REDUCE_MOTION_ATTR, motionStateToString(motionState))
+
+/* → Reduce clutter
+// --------------------- */
+const REDUCE_CLUTTER_VAR = "reduceClutter"
+const REDUCE_CLUTTER_ATTR = "reduce-clutter"
+const REDUCE_CLUTTER_ON = "true"
+const REDUCE_CLUTTER_OFF = "false"
+const REDUCE_CLUTTER_DEFAULT = REDUCE_CLUTTER_OFF
+
+const REDUCE_CLUTTER_INPUT = "reduce-clutter"
+
+/**
+ * @returns {boolean}
+ */
+function getClutterState() {
+    return (localStorage.getItem(REDUCE_CLUTTER_VAR) || REDUCE_CLUTTER_DEFAULT) === REDUCE_CLUTTER_ON
+}
+
+/**
+ * @param {boolean} state
+ * @returns {string}
+ */
+function clutterStateToString(state) {
+    return state ? REDUCE_CLUTTER_ON : REDUCE_CLUTTER_OFF
+}
+
+// Set clutter state
+const clutterState = getClutterState()
+if (clutterState) root.setAttribute(REDUCE_CLUTTER_ATTR, clutterStateToString(clutterState))
+
+/* → Tone indicators
+// --------------------- */
+const TONE_INDICATORS_VAR = "toneIndicators"
+const TONE_INDICATORS_ATTR = "tone-indicators"
+const TONE_INDICATORS_ON = "true"
+const TONE_INDICATORS_OFF = "false"
+const TONE_INDICATORS_DEFAULT = TONE_INDICATORS_OFF
+
+const TONE_INDICATORS_INPUT = "tone-indicators"
+
+/**
+ * @returns {boolean}
+ */
+function getToneIndicatorsState() {
+    return (localStorage.getItem(TONE_INDICATORS_VAR) || TONE_INDICATORS_DEFAULT) === TONE_INDICATORS_ON
+}
+
+/**
+ * @param {boolean} state
+ * @returns {string}
+ */
+function toneIndicatorsStateToString(state) {
+    return state ? TONE_INDICATORS_ON : TONE_INDICATORS_OFF
+}
+
+// Set tone indicators state
+const toneIndicatorsState = getToneIndicatorsState()
+if (toneIndicatorsState) root.setAttribute(TONE_INDICATORS_ATTR, toneIndicatorsStateToString(toneIndicatorsState))
+
+/* → More indicators
+// --------------------- */
+const MORE_INDICATORS_VAR = "moreIndicators"
+const MORE_INDICATORS_ATTR = "more-indicators"
+const MORE_INDICATORS_ON = "true"
+const MORE_INDICATORS_OFF = "false"
+const MORE_INDICATORS_DEFAULT = MORE_INDICATORS_OFF
+
+const MORE_INDICATORS_INPUT = "more-indicators"
+
+/**
+ * @returns {boolean}
+ */
+function getMoreIndicatorsState() {
+    return (localStorage.getItem(MORE_INDICATORS_VAR) || MORE_INDICATORS_DEFAULT) === MORE_INDICATORS_ON
+}
+
+/**
+ * @param {boolean} state
+ * @returns {string}
+ */
+function moreIndicatorsStateToString(state) {
+    return state ? MORE_INDICATORS_ON : MORE_INDICATORS_OFF
+}
+
+// Set more indicators state
+const moreIndicatorsState = getMoreIndicatorsState()
+if (moreIndicatorsState) root.setAttribute(MORE_INDICATORS_ATTR, moreIndicatorsStateToString(moreIndicatorsState))
 
 // ----------------------------------------------------------------------------------------- //
 // -------------------------------------- Preferences -------------------------------------- //
@@ -324,6 +411,7 @@ root.style.setProperty(SATURATION_ATTR, saturationValue)
 const THEME_VAR = "theme"
 const THEME_ATTR = "mode"
 const THEME_ID = "theme-css"
+const HIGHLIGHT_ID = "highlight-css"
 const THEME_PATH = "/_static/css/theme/"
 const THEME_LIGHT = "light"
 const THEME_DARK = "dark"
@@ -350,6 +438,8 @@ const theme = getTheme()
 root.setAttribute(THEME_ATTR, theme)
 const THEME_CSS = document.getElementById(THEME_ID)
 THEME_CSS.setAttribute("href", THEME_PATH + theme + ".css")
+const HIGHLIGHT_CSS = document.getElementById(HIGHLIGHT_ID)
+HIGHLIGHT_CSS.setAttribute("href", THEME_PATH + theme + "-highlight.css")
 
 // ----------------------------------------------------------------------------------------- //
 // ----------------------------------------- Other ----------------------------------------- //
@@ -395,7 +485,7 @@ function numResultsPerPageToNumber(numResults) {
 // DO THESE AFTER DOM LOADS!
 // THIS SHOULDN'T CAUSE ANY JUMPS / FLASHES!
 
-window.addEventListener("load", function () {
+window.addEventListener("init", function () {
     // ----------------------------------------------------------------------------------------- //
     // ---------------------------------------- Cookies ---------------------------------------- //
     // ----------------------------------------------------------------------------------------- //
@@ -440,14 +530,12 @@ window.addEventListener("load", function () {
         // Set root properties
         root.setAttribute(THEME_ATTR, theme)
 
-        // Set stylesheet
-        document.getElementById("theme-css").setAttribute("href", "/_static/css/theme/" + theme + ".css")
+        // Set stylesheets
+        document.getElementById(THEME_ID).setAttribute("href", "/_static/css/theme/" + theme + ".css")
+        document.getElementById(HIGHLIGHT_ID).setAttribute("href", "/_static/css/theme/" + theme + "-highlight.css")
 
         // Set button properties
-        themeButton.setAttribute(
-            "tooltip",
-            "You're in " + (theme === THEME_DARK ? "🌙" : "☀️") + " " + theme.toUpperCase() + " mode"
-        )
+        themeButton.setAttribute("tooltip", new Translation("tooltip.mode." + theme).text)
 
         // Set local storage
         ifCookies(localStorage.setItem.bind(localStorage), THEME_VAR, theme)
@@ -473,10 +561,7 @@ window.addEventListener("load", function () {
         root.setAttribute(SOUND_ATTR, soundStateToString(state))
 
         // Set button properties
-        soundButton.setAttribute(
-            "tooltip",
-            "Sound is " + (state ? "✅" : "❌") + " " + soundStateToString(state).toUpperCase()
-        )
+        soundButton.setAttribute("tooltip", new Translation("tooltip.sound." + soundStateToString(state)).text)
 
         // Set local storage
         ifCookies(localStorage.setItem.bind(localStorage), SOUND_VAR, soundStateToString(state))
@@ -513,6 +598,84 @@ window.addEventListener("load", function () {
     // Events
     reduceMotionInput.addEventListener("click", function () {
         updateMotionState(this.checked)
+    })
+
+    // ----------------------------------------------------------------------------------------- //
+    // ------------------------------------- Reduce clutter ------------------------------------- //
+    // ----------------------------------------------------------------------------------------- //
+    const reduceClutterInput = document.getElementById(REDUCE_CLUTTER_INPUT)
+
+    /**
+     * @param {boolean} state
+     */
+    function updateClutterState(state) {
+        // Set root properties
+        state ? root.setAttribute(REDUCE_CLUTTER_ATTR, "") : root.removeAttribute(REDUCE_CLUTTER_ATTR)
+
+        // Set input state
+        reduceClutterInput.checked = state
+
+        // Set local storage
+        ifCookies(localStorage.setItem.bind(localStorage), REDUCE_CLUTTER_VAR, clutterStateToString(state))
+    }
+
+    updateClutterState(clutterState)
+
+    // Events
+    reduceClutterInput.addEventListener("click", function () {
+        updateClutterState(this.checked)
+    })
+
+    // ----------------------------------------------------------------------------------------- //
+    // ------------------------------------ Tone indicators ------------------------------------ //
+    // ----------------------------------------------------------------------------------------- //
+    const toneIndicatorsInput = document.getElementById(TONE_INDICATORS_INPUT)
+
+    /**
+     * @param {boolean} state
+     */
+    function updateToneIndicatorsState(state) {
+        // Set root properties
+        state ? root.setAttribute(TONE_INDICATORS_ATTR, "") : root.removeAttribute(TONE_INDICATORS_ATTR)
+
+        // Set input state
+        toneIndicatorsInput.checked = state
+
+        // Set local storage
+        ifCookies(localStorage.setItem.bind(localStorage), TONE_INDICATORS_VAR, toneIndicatorsStateToString(state))
+    }
+
+    updateToneIndicatorsState(toneIndicatorsState)
+
+    // Events
+    toneIndicatorsInput.addEventListener("click", function () {
+        updateToneIndicatorsState(this.checked)
+    })
+
+    // ----------------------------------------------------------------------------------------- //
+    // ------------------------------------ More indicators ------------------------------------ //
+    // ----------------------------------------------------------------------------------------- //
+    const moreIndicatorsInput = document.getElementById(MORE_INDICATORS_INPUT)
+
+    /**
+     * @param {boolean} state
+     */
+    function updateMoreIndicatorsState(state) {
+        // Set root properties
+        state ? root.setAttribute(MORE_INDICATORS_ATTR, "") : root.removeAttribute(MORE_INDICATORS_ATTR)
+
+        // Set input state
+        moreIndicatorsInput.checked = state
+
+        // Set local storage
+        ifCookies(localStorage.setItem.bind(localStorage), MORE_INDICATORS_VAR, moreIndicatorsStateToString(state))
+    }
+
+    updateMoreIndicatorsState(moreIndicatorsState)
+
+    // Events
+    moreIndicatorsInput.addEventListener("click", function () {
+        updateMoreIndicatorsState(this.checked)
     })
 
     // ----------------------------------------------------------------------------------------- //
@@ -750,16 +913,19 @@ window.addEventListener("load", function () {
      * @param {string} value
      */
     function updatePageLang(value) {
-        // Translate page text
-        updatePageLangText(value)
+        // Set local storage (1)
+        ifCookies(localStorage.setItem.bind(localStorage), PAGE_LANG_VAR, value)
+
+        // Set root properties (2)
+        root.setAttribute(PAGE_LANG_ATTR, value)
+
+        // Translate page text (3)
+        translatePageText(value)
 
         // Update input (needed for page load)
         const langInput = document.getElementById(PAGE_LANG_BUTTONS_NAME + "-" + value)
 
         langInput.checked = true
-
-        // Set root properties
-        root.setAttribute(PAGE_LANG_ATTR, value)
 
         // Set outputs
         pageLangOutputs.forEach(function (output) {
@@ -769,9 +935,6 @@ window.addEventListener("load", function () {
         pageLangIconOutputs.forEach(function (output) {
             output.textContent = langInput.nextElementSibling.querySelector("span").textContent
         })
-
-        // Set local storage
-        ifCookies(localStorage.setItem.bind(localStorage), PAGE_LANG_VAR, value)
     }
 
     updatePageLang(pageLang)

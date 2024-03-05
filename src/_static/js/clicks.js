@@ -1,4 +1,11 @@
+let sparkGroup
+
 document.addEventListener("mousedown", function (event) {
+    if (event.target.tagName === "PRE" && event.target.parentElement.classList.includes("block-code")) {
+        event.preventDefault()
+        sparkGroup.remove()
+    }
+
     // if (getClickSoundState()) {
     if (getSoundState()) {
         var audioCtx = new (window.AudioContext || window.webkitAudioContext)()
@@ -28,7 +35,7 @@ document.addEventListener("mousedown", function (event) {
 
     // if (getClickEffectState()) {
     if (true && event.target.tagName !== "OPTION") {
-        const sparkGroup = document.createElement("div")
+        sparkGroup = document.createElement("div")
         sparkGroup.className = "sparks"
 
         const numSparks = getRndInteger(5, 8)
@@ -64,7 +71,5 @@ document.addEventListener("mousedown", function (event) {
         }
 
         document.querySelector("extra").appendChild(sparkGroup)
-
-        setTimeout(() => sparkGroup.remove(), 500)
     }
 })

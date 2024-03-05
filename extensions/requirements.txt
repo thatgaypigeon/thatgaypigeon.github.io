@@ -1,0 +1,7 @@
+bs4
+markdown
+mwparserfromhell
+pygments
+pyparsing
+pymdown-extensions
+wikitextprocessor

@@ -1,0 +1,6 @@
+{% if config.repo_url and page and page.url %}
+    <a id="edit-on-github" class="no-select" href="{{ page.edit_url }}">
+        <i class="ph ph-github-logo"></i>
+        <span text="edit-on-github">Edit this page on GitHub</span>
+    </a>
+{% endif %}
