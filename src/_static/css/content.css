@@ -35,7 +35,7 @@
     place-items: center;
     margin: 0 !important;
     padding: 4rem 3rem;
-    color: var(--colour-text-900);
+    color: var(--white);
     font-family: var(--font-header);
     font-size: 10vw;
     font-weight: bold;
