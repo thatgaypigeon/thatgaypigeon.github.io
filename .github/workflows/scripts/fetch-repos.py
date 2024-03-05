@@ -4,9 +4,7 @@ from datetime import datetime as dt
 
 from requests import Response, Session
 
-REPO_IMAGES: dict[str, str] = {
-    "thatgaypigeon.github.io": "/src/_static/img/banner/banner-square.png"
-}
+REPO_IMAGES: dict[str, str] = {"thatgaypigeon.github.io": "src/_static/img/banner/banner-square.png"}
 
 TOKEN: str = os.environ["GH_PAT_TOKEN"]
 HEADERS: dict[str, str] = {"Authorization": "token " + TOKEN}
@@ -52,5 +50,5 @@ for repo in repos:
 
     data.append(repo_data)
 
-with open("_static/searchindex/github.json", "w", encoding="utf-8") as f:
+with open("src/_static/searchindex/github.json", "w", encoding="utf-8") as f:
     f.write(json.dumps(data, indent=2, ensure_ascii=False))

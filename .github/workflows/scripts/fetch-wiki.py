@@ -10,9 +10,7 @@ NO_INCLUDE_CATEGORIES: set[str] = {"Redirect", "Disambiguation"}
 
 
 def strip_unprintable(s) -> LiteralString:
-    printable: LiteralString = (
-        string.ascii_letters + string.digits + string.punctuation + " "
-    )
+    printable: LiteralString = string.ascii_letters + string.digits + string.punctuation + " "
     return "".join(c for c in s if c in printable)
 
 
@@ -138,13 +136,11 @@ def get_pages(session: Session) -> list[dict[str, Any]]:
     try:
         page_data: list[dict[str, Any]] = [
             {
-                "name": "Lowercase title"
-                in {item["title"] for item in page.get("categories", {})}
+                "name": "Lowercase title" in {item["title"] for item in page.get("categories", {})}
                 and page.get("title").lower()
                 or page.get("title"),
                 "desc": page.get("extract", "").split("==")[0].strip(),
-                "date": format_date(get_latest_revision(page.get("revisions", [])))
-                or page.get("touched"),
+                "date": format_date(get_latest_revision(page.get("revisions", []))) or page.get("touched"),
                 "link": WIKI_WIKI_URL + "/" + page["title"].replace(" ", "_"),
                 "imag": format_image_src(page.get("original", {}).get("source", None)),
                 "icon": None,
@@ -156,10 +152,7 @@ def get_pages(session: Session) -> list[dict[str, Any]]:
             if page.get("ns") == 0
             and page.get("contentmodel") == "wikitext"
             and "redirect" not in page
-            and not bool(
-                NO_INCLUDE_CATEGORIES
-                & {item["title"] for item in page.get("categories", {})}
-            )
+            and not bool(NO_INCLUDE_CATEGORIES & {item["title"] for item in page.get("categories", {})})
         ]
 
         print("✅ PAGES PARSED SUCCESSFULLY")
@@ -170,7 +163,7 @@ def get_pages(session: Session) -> list[dict[str, Any]]:
         raise Exception("❌ ERROR PARSING PAGE DATA")
 
 
-with open("_static/config.json", "r") as f:
+with open("src/_static/config.json", "r") as f:
     shared_json: dict = json.load(f)
 
     ISO_DATE_FORMAT: str = shared_json.get("iso_date_format")
@@ -181,9 +174,7 @@ with open("_static/config.json", "r") as f:
     WIKI_API_URL: str = WIKI_URL + shared_json.get("wiki_api_url")
     WIKI_IMG_AUTH_URL: str = WIKI_URL + shared_json.get("wiki_img_auth_url")
     WIKI_DB_NAME: str = shared_json.get("wiki_db_name")
-    STATIC_WIKI_IMG_URL: str = (
-        shared_json.get("static_wiki_img_url") + "/" + WIKI_DB_NAME
-    )
+    STATIC_WIKI_IMG_URL: str = shared_json.get("static_wiki_img_url") + "/" + WIKI_DB_NAME
 
 USERNAME: str = os.environ["WIKI_BOT_USERNAME"]
 PASSWORD: str = os.environ["WIKI_BOT_PASSWORD"]
@@ -194,7 +185,7 @@ token: str = get_token(session)
 login(session, token)
 
 
-with open("_static/searchindex/other.json", "r", encoding="utf-8") as f:
+with open("src/_static/searchindex/other.json", "r", encoding="utf-8") as f:
     site_info: list[dict[str, Any]] = get_site_info(session)
 
     data = json.loads(f.read().encode("utf-16", "surrogatepass").decode("utf-16"))
@@ -215,12 +206,12 @@ with open("_static/searchindex/other.json", "r", encoding="utf-8") as f:
 
     print(json.dumps(data, indent=2, ensure_ascii=False))
 
-with open("_static/searchindex/other.json", "w", encoding="utf-8") as f:
+with open("src/_static/searchindex/other.json", "w", encoding="utf-8") as f:
     print("Writing site data...")
     f.write(json.dumps(data, indent=2, ensure_ascii=False))
 
 
-with open("_static/searchindex/wiki.json", "w", encoding="utf-8") as f:
+with open("src/_static/searchindex/wiki.json", "w", encoding="utf-8") as f:
     pages: list[dict[str, Any]] = get_pages(session)
     print("Writing page data...")
     f.write(json.dumps(pages, indent=2, ensure_ascii=False))
