@@ -231,6 +231,32 @@
     "star": 0
   },
   {
+    "name": "mkdocs-mermaid2-plugin",
+    "desc": "A Mermaid graphs plugin for mkdocs (🦀 fork)",
+    "date": "29-02-2024",
+    "link": "https://github.com/thatgaypigeon/mkdocs-mermaid2-plugin",
+    "icon": [
+      "ph",
+      "ph-github-logo"
+    ],
+    "type": "gh",
+    "lang": "en-GB",
+    "lcns": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "arch": false,
+    "star": 0,
+    "code": {
+      "Python": 20770,
+      "JavaScript": 13608,
+      "Shell": 1118
+    }
+  },
+  {
     "name": "mythical-madness",
     "desc": "🦸 A fan-made PvZ Heroes mod focused on magic and monsters! 🔮👻🎃",
     "date": "16-11-2023",
@@ -422,7 +448,7 @@
   {
     "name": "thatgaypigeon.github.io",
     "desc": "🖥️ Source repository for thatgaypigeon.github.io (pigeon.uk.to)",
-    "date": "30-01-2024",
+    "date": "05-03-2024",
     "link": "https://github.com/thatgaypigeon/thatgaypigeon.github.io",
     "icon": [
       "ph",
@@ -433,13 +459,13 @@
     "lcns": null,
     "arch": false,
     "star": 0,
-    "imag": "/_static/img/banner/banner-square.png",
+    "imag": "src/_static/img/banner/banner-square.png",
     "code": {
-      "CSS": 118635,
-      "JavaScript": 69555,
-      "HTML": 32562,
-      "Python": 5634,
-      "Shell": 1672
+      "CSS": 198923,
+      "JavaScript": 84498,
+      "Python": 65574,
+      "HTML": 36557,
+      "Shell": 1699
     }
   },
   {
@@ -471,23 +497,5 @@
     "lcns": null,
     "arch": false,
     "star": 0
-  },
-  {
-    "name": "vscode",
-    "desc": "🧑‍💻 VSCode stuff",
-    "date": "21-11-2023",
-    "link": "https://github.com/thatgaypigeon/vscode",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
-    "type": "gh",
-    "lang": "en-GB",
-    "lcns": null,
-    "arch": false,
-    "star": 0,
-    "code": {
-      "CSS": 104
-    }
   }
 ]
