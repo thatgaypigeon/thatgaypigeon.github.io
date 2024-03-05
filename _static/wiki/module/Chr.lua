@@ -1,0 +1,1 @@
+return { main = function ( frame ) return mw.ustring.char( tonumber ( frame.args[1] or 0x20 ) ) end }

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+
+<html at-top="" lang="en-GB">
+<head>
+<!-- Metadata -->
+<title>
+        
+            Design
+        
+         • The Nest
+    
+</title>
+<meta content="The Nest" name="application-name"/>
+<meta content="Max Kerr (@thatgaypigeon)" name="author"/>
+<meta content="The Nest — Pigeon's safe space! Make yourself at home, it's alright. 🧡" name="description"/>
+<meta content="Max Kerr (@thatgaypigeon)" name="creator"/>
+<link content="https://github.com/thatgaypigeon" rel="author"/>
+<!-- Technical -->
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Colours -->
+<meta content="dark light" name="color-scheme"/>
+<meta content="#0C172D" name="theme-color"/>
+<meta content="#0C172D" name="msapplication-TileColor"/>
+<meta content="#0C172D" name="msapplication-navbutton-color"/>
+<meta content="#0C172D" name="apple-mobile-web-app-status-bar-style"/>
+<!-- Icon -->
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/_static/img/siteicon/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/_static/img/siteicon/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link color="#0C172D" href="/_static/img/siteicon/favicon/safari-pinned-tab.svg" rel="mask-icon"/>
+<meta content="/_static/img/siteicon/rounded/icon-rounded-144.png" name="msapplication-TileImage"/>
+<!-- CSS -->
+<link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/thin/style.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/light/style.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/regular/style.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.jsdelivr.net/gh/phosphor-icons/web@latest/src/bold/style.min.css" rel="stylesheet" type="text/css"/>
+<link href="/_static/css/font/default.css" id="font-css" rel="stylesheet" type="text/css"/>
+<link href="/_static/css/theme/dark.css" id="theme-css" rel="stylesheet" type="text/css"/>
+<link href="/_static/css/theme/dark-highlight.css" id="highlight-css" rel="stylesheet" type="text/css"/>
+<link href="/_static/css/styles.css" rel="stylesheet" type="text/css"/>
+<link href="/_static/css/content.css" rel="stylesheet" type="text/css"/>
+<!-- JS -->
+<script src="/_static/js/script.js" type="text/javascript"></script>
+<script src="/_static/js/fuzzysort.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/tablesort@latest/dist/tablesort.min.js" type="text/javascript"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-chtml.js" type="text/javascript"></script>
+</head>
+<body hidden="" id="top">
+<header class="no-select"><nav class="navbar">
+<div>
+<div class="menu" id="menu">
+<button aria-label="Menu" class="menu-button" id="menu-button" type="button">
+<img alt="" class="site-icon" src="/_static/img/siteicon/square/icon-128.png"/>
+</button>
+<div class="menu-inner">
+<div class="h2" text="menu.header.menu">Menu</div>
+<div class="menu-list">
+<a href="/">
+<i class="ph-bold ph-house"></i>
+<span text="menu.item.home">Home</span>
+</a>
+<a href="/projects">
+<i class="ph-bold ph-briefcase"></i>
+<span text="menu.item.projects">Projects</span>
+</a>
+<a href="/design">
+<i class="ph-bold ph-paint-brush"></i>
+<span text="menu.item.design">Design</span>
+</a>
+<a href="/wiki">
+<i class="ph-bold ph-book-bookmark"></i>
+<span text="menu.item.wiki">Wiki</span>
+<i class="ph-bold ph-arrow-square-out"></i>
+</a>
+<a href="/links">
+<i class="ph-bold ph-link"></i>
+<span text="menu.item.links">Links</span>
+</a>
+</div>
+<div class="h3" text="menu.header.about">About</div>
+<div class="button-list">
+<a href="/about">
+<i class="ph-bold ph-info"></i>
+<span text="menu.item.about">About</span>
+</a>
+<a href="/faq">
+<i class="ph-bold ph-question"></i>
+<span text="menu.item.faq">FAQ</span>
+</a>
+<a href="/contact">
+<i class="ph-bold ph-envelope"></i>
+<span text="menu.item.contact">Contact</span>
+</a>
+<a href="/source">
+<i class="ph-bold ph-code"></i>
+<span text="menu.item.source">Source</span>
+<i class="ph-bold ph-arrow-square-out"></i>
+</a>
+<a href="/legal">
+<i class="ph-bold ph-scales"></i>
+<span text="menu.item.legal">Legal</span>
+</a>
+</div>
+</div>
+</div>
+<div class="menu" id="search-menu">
+<button aria-label="Search" class="menu-button" id="search-button" type="button">
+<div class="icon ph ph-magnifying-glass"></div>
+</button>
+<div class="menu-inner">
+<div id="search-bar">
+<input aria-label="Search" autocomplete="off" id="search" placeholder="Search" type="text"/>
+<div class="search-icon icon ph-bold ph-magnifying-glass"></div>
+<div class="shortcut">
+<kbd>Ctrl</kbd>
+<kbd>/</kbd>
+</div>
+</div>
+<div id="search-settings">
+<div id="search-filters">
+<form>
+<fieldset class="horizontal">
+<legend class="left" tooltip="Search filters">
+<i class="ph ph-funnel"></i>
+</legend>
+<div>
+<div class="input-wrapper">
+<input id="search-filter-all" name="search-filter" type="checkbox" value="all"/>
+<label for="search-filter-all">
+<div class="main-label">All</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input checked="" id="search-filter-home" name="search-filter" type="checkbox" value="home"/>
+<label for="search-filter-home">
+<div class="main-label">
+<!-- <img alt="" class="site-icon"  src="/_static/img/siteicon/square/icon-128.png" /> -->
+<i class="ph-bold ph-house"></i> The Nest
+                                    </div>
+</label>
+</div>
+<div class="input-wrapper">
+<input checked="" id="search-filter-github" name="search-filter" type="checkbox" value="github"/>
+<label for="search-filter-github">
+<div class="main-label"><i class="ph-bold ph-github-logo"></i> GitHub</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="search-filter-wiki" name="search-filter" type="checkbox" value="wiki"/>
+<label for="search-filter-wiki">
+<div class="main-label"><i class="ph-bold ph-book-bookmark"></i> Wiki</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="search-filter-other" name="search-filter" type="checkbox" value="other"/>
+<label for="search-filter-other">
+<div class="main-label">Other</div>
+</label>
+</div>
+</div>
+</fieldset>
+</form>
+</div>
+<div id="search-count">
+<form>
+<fieldset class="horizontal">
+<legend class="right" tooltip="Results per page">
+<i class="ph ph-list-numbers"></i>
+</legend>
+<div>
+<div class="input-wrapper">
+<input checked="" id="search-results-count-5" name="search-results-count" type="radio" value="5"/>
+<label for="search-results-count-5">
+<div class="main-label">5</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="search-results-count-10" name="search-results-count" type="radio" value="10"/>
+<label for="search-results-count-10">
+<div class="main-label">10</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="search-results-count-20" name="search-results-count" type="radio" value="20"/>
+<label for="search-results-count-20">
+<div class="main-label">20</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="search-results-count-all" name="search-results-count" type="radio" value="all"/>
+<label for="search-results-count-all">
+<div class="main-label">All</div>
+</label>
+</div>
+</div>
+</fieldset>
+</form>
+</div>
+</div>
+<div id="search-info"></div>
+<div id="search-results"></div>
+</div>
+</div>
+</div>
+<div>
+<div class="menu" id="theme">
+<button aria-label="Toggle theme" class="menu-button" id="theme-button" tooltip="You're in 🌙 DARK mode" tooltip-text="mode.dark" tooltip-type="bottom" type="button">
+<div class="icon">
+<div class="theme-dark ph ph-moon"></div>
+<div class="theme-light ph ph-sun"></div>
+</div>
+</button>
+</div>
+<div class="menu" id="sound">
+<button aria-label="Toggle sound" class="menu-button" id="sound-button" tooltip="Sound is ✅ ON" tooltip-text="sound.on" tooltip-type="bottom" type="button">
+<div class="icon">
+<div class="sound-on ph ph-speaker-high"></div>
+<svg class="sound-off" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<rect fill="none" height="256" width="256"></rect>
+<line x1="80" x2="80" y1="88" y2="168"></line>
+<path d="M152,154.4V224L80,168H32a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H80l6.82-5.3"></path>
+<polyline points="118.48 58.07 152 32 152 94.94"></polyline>
+<path d="M192,106.87a32,32,0,0,1,4,36.5"></path>
+<path d="M221.67,80a72,72,0,0,1,2,93.72"></path>
+<line class="red-line-through" x1="48" x2="208" y1="40" y2="216"></line>
+</svg>
+</div>
+</button>
+</div>
+<div class="menu" id="settings">
+<button aria-label="Settings" class="menu-button" id="settings-button" tooltip="🍪 Cookies are enabled!" tooltip-type="auto delay closable bottom" type="button">
+<div class="icon ph ph-gear"></div>
+</button>
+<div class="menu-inner">
+<div class="h2"><i class="ph ph-gear"></i> <span text="settings.settings">Settings</span></div>
+<div class="tabs">
+<ul class="tabs-labels">
+<li active="" id="tab-appearance" text="settings.appearance">Appearance</li>
+<li id="tab-preferences" text="settings.preferences">Preferences</li>
+<li id="tab-language" text="settings.language">Language</li>
+<li id="tab-accessibility" text="settings.accessibility">Accessibility</li>
+<li id="tab-cookies" text="settings.cookies">Cookies</li>
+</ul>
+<div class="tabs-content">
+<div aria-labelledby="tab-appearance" id="appearance" open=""><div class="h2">
+<i class="ph ph-palette"></i> <span text="settings.appearance">Appearance</span>
+<div class="no-cookies-warning ph-bold ph-warning icon-tooltip">
+<div tooltip=""></div>
+</div>
+</div>
+<form>
+<fieldset>
+<legend>Theme</legend>
+<p>Mode dark / light</p>
+<ul>
+<li>Default</li>
+<li>Night</li>
+<li>Funky</li>
+<li>Synthwave</li>
+</ul>
+</fieldset>
+<fieldset>
+<legend>Theme settings</legend>
+<p>Coming soon!</p>
+<ul>
+<li>Dimmed mode</li>
+<li>Rainbow mode</li>
+</ul>
+</fieldset>
+<fieldset>
+<legend>Display</legend>
+<div class="input-wrapper">
+<label for="brightness-input">
+<div class="main-label">
+                    Brightness:
+                    <output for="brightness-input" id="brightness-output">1</output>
+</div>
+<div class="more-info ph-bold ph-info icon-tooltip">
+<div tooltip="Change the brightness"></div>
+</div>
+</label>
+<div class="range-wrapper">
+<button aria-label="Reset" class="reset-button ph-bold ph-arrow-counter-clockwise icon-tooltip" id="brightness-reset" type="button">
+<div tooltip="Reset the value back to default"></div>
+</button>
+<input id="brightness-input" max="1.5" min="0.5" name="brightness" step="0.01" type="range" value="1"/>
+</div>
+</div>
+<div class="input-wrapper">
+<label for="contrast-input">
+<div class="main-label">
+                    Contrast:
+                    <output for="contrast-input" id="contrast-output">1</output>
+</div>
+<div class="more-info ph-bold ph-info icon-tooltip">
+<div tooltip="Change the contrast ratio"></div>
+</div>
+</label>
+<div class="range-wrapper">
+<button aria-label="Reset" class="reset-button ph-bold ph-arrow-counter-clockwise icon-tooltip" id="contrast-reset" type="button">
+<div tooltip="Reset the value back to default"></div>
+</button>
+<input id="contrast-input" max="1.5" min="0.5" name="contrast" step="0.01" type="range" value="1"/>
+</div>
+</div>
+<div class="input-wrapper">
+<label for="saturation-input">
+<div class="main-label">
+                    Saturation:
+                    <output for="saturation-input" id="saturation-output">1</output>
+</div>
+<div class="more-info ph-bold ph-info icon-tooltip">
+<div tooltip="Change the saturation"></div>
+</div>
+</label>
+<div class="range-wrapper">
+<button aria-label="Reset" class="reset-button ph-bold ph-arrow-counter-clockwise icon-tooltip" id="saturation-reset" type="button">
+<div tooltip="Reset the value back to default"></div>
+</button>
+<input id="saturation-input" max="1.5" min="0.5" name="saturation" step="0.01" type="range" value="1"/>
+</div>
+</div>
+</fieldset>
+<fieldset>
+<legend>Font</legend>
+<div class="input-wrapper">
+<input checked="" id="font-default" name="font" type="radio" value="default"/>
+<label for="font-default">
+<div class="main-label">Default</div>
+<div class="sub-label">Lexend</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="font-atkinson-hyperlegible" name="font" type="radio" value="atkinson-hyperlegible"/>
+<label for="font-atkinson-hyperlegible">
+<div class="main-label">Alternate</div>
+<div class="sub-label">Atkinson Hyperlegible</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="font-noto-sans" name="font" type="radio" value="noto-sans"/>
+<label for="font-noto-sans">
+<div class="main-label">Clean</div>
+<div class="sub-label">Noto Sans</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="font-open-dyslexic" name="font" type="radio" value="open-dyslexic"/>
+<label for="font-open-dyslexic">
+<div class="main-label">Dyslexia-friendly</div>
+<div class="sub-label">Open Dyslexic</div>
+</label>
+</div>
+</fieldset>
+<fieldset id="font-size">
+<legend>Text size</legend>
+<div class="input-wrapper button-wrapper">
+<div class="main-label">
+<input aria-label="Decrease font size" class="settings-button" id="decrease-font-size" name="font-size" type="button" value="−"/>
+<output id="font-size-output">100%</output>
+<input aria-label="Increase font size" class="settings-button" id="increase-font-size" name="font-size" type="button" value="+"/>
+</div>
+<div class="more-info ph-bold ph-info icon-tooltip">
+<div tooltip="Change the text size"></div>
+</div>
+</div>
+</fieldset>
+</form></div>
+<div aria-labelledby="tab-preferences" id="preferences"><div class="h2"><i class="ph ph-sliders-horizontal"></i> <span text="settings.preferences">Preferences</span></div>
+<form>
+<fieldset>
+<legend>Date &amp; Time</legend>
+<p>Set timezone automatically</p>
+<p>Set timezone manually</p>
+<p>Date / Time format</p>
+</fieldset>
+<fieldset>
+<legend>Sound</legend>
+<p>Sound (all)</p>
+<p>Music</p>
+<p>Sound effects</p>
+</fieldset>
+<fieldset>
+<legend>Search</legend>
+<p>Remember search history</p>
+<p>Search suggestions</p>
+<p>Search auto-fill</p>
+</fieldset>
+<fieldset>
+<legend>Tooltips</legend>
+<p>Disable all tooltips</p>
+<p>Disable auto tooltips</p>
+<p>Disable notification tooltips</p>
+<p>Tooltip size</p>
+</fieldset>
+<fieldset>
+<legend>Navigation</legend>
+<p>Table of contents</p>
+<ul>
+<li>Table of contents style</li>
+<li>Table of contents position</li>
+</ul>
+<p>Show breadcrumbs</p>
+</fieldset>
+<fieldset>
+<legend>Effects</legend>
+<p>Enable click effects</p>
+<p>Play click sound</p>
+</fieldset>
+</form></div>
+<div aria-labelledby="tab-language" id="language"><div class="h2">
+<i class="ph ph-translate"></i> <span text="settings.language">Language</span>
+<span class="lang-wrapper"><span class="lang-icon">🇬🇧</span> <span class="lang">en-GB</span></span>
+</div>
+<form>
+<fieldset>
+<legend>Select a language</legend>
+<div class="input-wrapper">
+<input checked="" id="lang-en-GB" name="lang" type="radio" value="en-GB"/>
+<label for="lang-en-GB">
+<div class="main-label">
+<span class="icon">🇬🇧</span>
+<span text="lang.en">English</span>
+</div>
+<div class="sub-label" text="lang.en-GB">British</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="lang-en-US" name="lang" type="radio" value="en-US"/>
+<label for="lang-en-US">
+<div class="main-label">
+<span class="icon">🇺🇸</span>
+<span text="lang.en">English</span>
+</div>
+<div class="sub-label" text="lang.en-US">American</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="lang-fr" name="lang" type="radio" value="fr"/>
+<label for="lang-fr">
+<div class="main-label">
+<span class="icon">🇫🇷</span>
+<span text="lang.fr">French</span>
+</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="lang-ja" name="lang" type="radio" value="ja"/>
+<label for="lang-ja">
+<div class="main-label">
+<span class="icon">🇯🇵</span>
+<span text="lang.ja">Japanese</span>
+</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="lang-nb" name="lang" type="radio" value="nb"/>
+<label for="lang-nb">
+<div class="main-label">
+<span class="icon">🇳🇴</span>
+<span text="lang.no">Norwegian</span>
+</div>
+<div class="sub-label" text="lang.nb">Bokmål</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="lang-es" name="lang" type="radio" value="es"/>
+<label for="lang-es">
+<div class="main-label">
+<span class="icon">🇪🇸</span>
+<span text="lang.es">Spanish</span>
+</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="lang-tok" name="lang" type="radio" value="tok"/>
+<label for="lang-tok">
+<div class="main-label">
+<span class="icon"></span>
+<span text="lang.tok">toki pona</span>
+</div>
+<div class="sub-label" text="lang.tok-ku">ku</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="lang-uk" name="lang" type="radio" value="uk"/>
+<label for="lang-uk">
+<div class="main-label">
+<span class="icon">🇺🇦</span>
+<span text="lang.uk">Ukrainian</span>
+</div>
+</label>
+</div>
+</fieldset>
+</form>
+<p>
+    Not all content may be translated yet. If you find something that needs translating, you can help out by providing translations over on <b><a href="https://github.com/thatgaypigeon/thatgaypigeon.github.io">GitHub</a></b>!
+</p></div>
+<div aria-labelledby="tab-accessibility" id="accessibility"><div class="h2">
+<i class="ph ph-person-arms-spread"></i> <span text="settings.accessibility">Accessibility</span>
+<div class="no-cookies-warning ph-bold ph-warning icon-tooltip">
+<div tooltip=""></div>
+</div>
+</div>
+<form>
+<fieldset class="breakout" id="accessibility-general">
+<legend>General</legend>
+<div class="input-wrapper">
+<input id="reduce-motion" name="accessibility-general" type="checkbox" value="reduce-motion"/>
+<label for="reduce-motion">
+<div class="main-label">Reduce motion</div>
+<div class="sub-label-desc">Disable transitions, animations, moving text, etc.</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="reduce-clutter" name="accessibility-general" type="checkbox" value="reduce-clutter"/>
+<label for="reduce-clutter">
+<div class="main-label">Reduce clutter</div>
+<div class="sub-label-desc">Reduce the amount of clutter on the screen</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="more-indicators" name="accessibility-general" type="checkbox" value="additional-indicators"/>
+<label for="more-indicators">
+<div class="main-label">Additional indicators</div>
+<div class="sub-label-desc">Use additional borders, colours, tooltips, etc.</div>
+</label>
+</div>
+<div class="input-wrapper">
+<input id="tone-indicators" name="accessibility-general" type="checkbox" value="tone-indicators"/>
+<label for="tone-indicators">
+<div class="main-label">Tone indicators</div>
+<div class="sub-label-desc">
+                    Include
+                    <a href="/help/tone-indicators"><b>tone indicators</b></a>
+                    next to paragraphs
+                    <span class="small subtle">(where supported)</span>
+</div>
+</label>
+<div class="small subtle">Examples: "<span class="code subtle small">/srs</span>", or "<span class="code subtle small">/j, nm</span>".</div>
+</div>
+</fieldset>
+<!-- <fieldset id="accessibility-tts">
+        <legend>Text-to-speech</legend>
+    </fieldset> -->
+</form></div>
+<div aria-labelledby="tab-cookies" id="cookies"><div class="h2">
+<span class="icon">🍪</span> <span text="settings.cookies">Cookies</span>
+<form class="right">
+<div class="input-wrapper toggle-wrapper">
+<input checked="" class="toggle" id="cookies-input" name="cookies" type="checkbox"/>
+<label for="cookies-input"></label>
+</div>
+</form>
+</div>
+<p>This site uses cookies to store settings, accessibility info, and other per-user preferences.</p>
+<p>
+    This site <i><u>does not</u></i> use cookies for advertising, data collection, or user profiling.
+</p>
+<p class="small subtle">
+    You can read more about how cookies are used on this site
+    <a href="/about/cookies">here</a>.
+</p>
+<div class="header">
+    Reset cookies
+    <button aria-label="Reset" class="reset-button ph-bold ph-arrow-counter-clockwise icon-tooltip" id="cookies-reset" type="button">
+<div tooltip="⚠️ Warning: this action cannot be undone!" tooltip-type="warning"></div>
+</button>
+</div>
+<p><i class="ph-bold ph-warning"></i> This action cannot be undone!</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="settings-overlay"></div>
+</div>
+</nav></header>
+<main>
+<aside class="menu right no-select" id="toc">
+<button class="menu-button ph ph-list-bullets" id="toc-button"></button>
+<div class="menu-inner">
+<div class="h2" id="toc-title">Contents</div>
+<ul id="toc-list">
+</ul>
+</div>
+</aside>
+<nav class="breadcrumbs no-select">
+<a href="https://pigeon.uk.to/"><i class="ph-bold ph-house"></i></a>
+<i class="separator ph-bold ph-caret-right"></i>
+<span>Design</span>
+</nav>
+<article class="main-content">
+<h1 align="center" style="font-size: min(3vw, 2.5rem)"><i class="ph-bold ph-barricade" style="color: var(--colour-issue)"></i><b style="margin-inline: 0.5em">Site under construction! :3</b><i class="ph-bold ph-barricade" style="color: var(--colour-issue)"></i></h1>
+<h1 id="design">Design<a class="anchor" href="#design"></a></h1>
+</article>
+<a class="no-select" href="https://github.com/thatgaypigeon/thatgaypigeon.github.io/blob/dev/src/design/index.md" id="edit-on-github">
+<i class="ph ph-github-logo"></i>
+<span text="edit-on-github">Edit this page on GitHub</span>
+</a>
+</main>
+<footer class="no-select"><div id="copyright">Copyright © 2023 Pigeon</div>
+<ul class="social-links nav-list">
+<div aria-label="Discord" class="social-link" tooltip="👾 Come join the Discord!" tooltip-text="social.discord">
+<a aria-label="Come join the Discord!" class="rotation-wrapper" href="https://discord.gg/aB4Bw5pyTS">
+<div class="icon">
+<div class="social-link-icon" id="social-link-icon-discord"></div>
+</div>
+</a>
+</div>
+<div aria-label="GitHub" class="social-link" tooltip="🧑‍💻 See my projects on GitHub!" tooltip-text="social.github">
+<a aria-label="See my projects on GitHub!" class="rotation-wrapper" href="https://github.com/thatgaypigeon">
+<div class="icon">
+<div class="social-link-icon" id="social-link-icon-github"></div>
+</div>
+</a>
+</div>
+<div aria-label="YouTube" class="social-link" tooltip="📽️ Check me out on YouTube!" tooltip-text="social.youtube">
+<a aria-label="Check me out on YouTube!" class="rotation-wrapper" href="https://youtube.com/@thatgaypigeon">
+<div class="icon">
+<div class="social-link-icon" id="social-link-icon-youtube"></div>
+</div>
+</a>
+</div>
+</ul></footer>
+</body>
+<extra id="extra"></extra>
+</html>

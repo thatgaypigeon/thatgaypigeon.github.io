@@ -4,10 +4,7 @@
     "desc": "🎄 Advent Of Code!",
     "date": "18-12-2023",
     "link": "https://github.com/thatgaypigeon/advent-of-code",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -22,10 +19,7 @@
     "desc": "🚗 Miscellaneous stuff for BeamNG.drive",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/beamng",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -37,10 +31,7 @@
     "desc": "📦 3D models made in Blender",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/blender",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -52,10 +43,7 @@
     "desc": "🏙️ A collection of custom assets for Cities: Skylines",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/cities-skylines",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -67,10 +55,7 @@
     "desc": "🌐 Constructed languages",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/conlangs",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -82,10 +67,7 @@
     "desc": "🌈 A Python package for basic colour system conversions",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/convert-colour-py",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -97,10 +79,7 @@
     "desc": "🕔 A Lua package for handling dates & times",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/datetime-lua",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -112,10 +91,7 @@
     "desc": "🖌️ My UI designs, concepts, and other stuff!",
     "date": "29-11-2023",
     "link": "https://github.com/thatgaypigeon/design",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -127,10 +103,7 @@
     "desc": "🦊 Firefox stuff (extensions, themes, notes, etc.)",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/firefox",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -142,10 +115,7 @@
     "desc": "📃 Glossary of cool and niche words",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/glossary",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -157,10 +127,7 @@
     "desc": "💡 Ideas, early-stage projects, etc.",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/ideas",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -172,10 +139,7 @@
     "desc": "🌈 KAMI 2 solver",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/kami-2-solver",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -187,10 +151,7 @@
     "desc": "👷 LEGO® creations",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/lego",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -202,10 +163,7 @@
     "desc": "🌻 A collection of MediaWiki gadgets, styles and other stuff",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/mediawiki",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -220,10 +178,7 @@
     "desc": "⛏️ Minecraft stuff",
     "date": "23-12-2023",
     "link": "https://github.com/thatgaypigeon/minecraft",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -235,10 +190,7 @@
     "desc": "🦸 A fan-made PvZ Heroes mod focused on magic and monsters! 🔮👻🎃",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/mythical-madness",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -250,10 +202,7 @@
     "desc": "🎶 My osu! beatmaps",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/osu",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -265,10 +214,7 @@
     "desc": "🎮 Overwatch stuff",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/overwatch",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -280,10 +226,7 @@
     "desc": "📙 A phrasebook of words and phrases in a variety of languages, some useful, some not :)",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/phrasebook",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -295,10 +238,7 @@
     "desc": "🤖 A lil' Discord bot coded in Python",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/pigeon-bot",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -310,10 +250,7 @@
     "desc": "🐍 A miscellaneous jumble of Python mini-modules not quite big enough for their own packages",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/pigeon-py",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -325,10 +262,7 @@
     "desc": "🔢 My solutions for Project Euler",
     "date": "16-11-2023",
     "link": "https://github.com/thatgaypigeon/project-euler",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -343,10 +277,7 @@
     "desc": "🔢 A basic Python package for generating somos sequences",
     "date": "27-11-2023",
     "link": "https://github.com/thatgaypigeon/somos-py",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": {
@@ -367,10 +298,7 @@
     "desc": "📖 Code conventions for thatgaypigeon",
     "date": "18-12-2023",
     "link": "https://github.com/thatgaypigeon/standards",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -382,10 +310,7 @@
     "desc": null,
     "date": "23-11-2023",
     "link": "https://github.com/thatgaypigeon/test",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": {
@@ -406,10 +331,7 @@
     "desc": "🏡 Main hub repository for my stuff",
     "date": "25-12-2023",
     "link": "https://github.com/thatgaypigeon/thatgaypigeon",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -424,10 +346,7 @@
     "desc": "🖥️ Source repository for thatgaypigeon.github.io (pigeon.uk.to)",
     "date": "30-01-2024",
     "link": "https://github.com/thatgaypigeon/thatgaypigeon.github.io",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -447,10 +366,7 @@
     "desc": "🏎️ TrackMania Nations Forever",
     "date": "03-12-2023",
     "link": "https://github.com/thatgaypigeon/tmnf",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -462,10 +378,7 @@
     "desc": "📽️ My videos (from YouTube)",
     "date": "18-11-2023",
     "link": "https://github.com/thatgaypigeon/videos",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,
@@ -477,10 +390,7 @@
     "desc": "🧑‍💻 VSCode stuff",
     "date": "21-11-2023",
     "link": "https://github.com/thatgaypigeon/vscode",
-    "icon": [
-      "ph",
-      "ph-github-logo"
-    ],
+    "icon": ["ph", "ph-github-logo"],
     "type": "gh",
     "lang": "en-GB",
     "lcns": null,

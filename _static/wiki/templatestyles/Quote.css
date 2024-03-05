@@ -1,0 +1,74 @@
+.quote {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    max-width: 65rem;
+    align-items: center;
+    justify-self: center;
+    margin: 0.75em auto 1.75em;
+    padding: clamp(1em, 1.25vw, 1.25em) clamp(1.25em, 2vw, 1.5em);
+    background-color: var(--colour-bg-650);
+    color: var(--colour-text-650);
+    border-radius: var(--border-radius);
+    font-size: 0.925em;
+    line-height: var(--line-height-300);
+    --border-width: 2px;
+    --border-radius: 0.75em;
+}
+
+.quote::before {
+    content: open-quote;
+    position: absolute;
+    inset: auto 0.5rem -2rem auto;
+    font-size: 12.5em;
+    color: var(--colour-text-250);
+    opacity: 0.125;
+    line-height: initial;
+    quotes: "„" "“" "‚" "‘";
+}
+
+.quote::after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(60deg, var(--colour-primary), var(--colour-tertiary), var(--colour-secondary));
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: calc(var(--border-width) + var(--border-radius));
+    opacity: 0.75;
+    animation: moveGradient 14s alternate infinite;
+    z-index: -1;
+}
+
+.quote > .main {
+    font-style: italic;
+}
+
+.quote > .source {
+    font-size: 0.85em;
+    line-height: var(--line-height-300);
+    padding-left: clamp(2.5em, 3vw, 3em);
+    color: var(--colour-text-500);
+}
+
+.quote > .source::before {
+    content: "—";
+    position: absolute;
+    transform: scale(1.5, 0.95);
+    top: 0.05em;
+    left: clamp(0.75em, 1vw, 1.25em);
+    color: var(--colour-text-400);
+}
+
+.quote > .source > .separator {
+    padding-inline: 0.4em;
+}
+
+@keyframes moveGradient {
+    50% {
+        background-position: 100% 50%;
+    }
+}

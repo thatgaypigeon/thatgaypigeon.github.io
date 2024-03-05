@@ -1,0 +1,44 @@
+= Examples =
+;Default
+:<pre>{{Comma separated list|Item1|Item2|Item3}}</pre>
+:{{Comma separated list|Item1|Item2|Item3}}
+
+;Specify delimeter
+:<pre>{{Comma separated list|Item1|Item2|Item3|delim=;}}</pre>
+:{{Comma separated list|Item1|Item2|Item3|delim=;}}
+
+;Specify conjunction
+:<pre>{{Comma separated list|Item1|Item2|Item3|conj=&}}</pre>
+:{{Comma separated list|Item1|Item2|Item3|conj=&}}
+
+;Default (with an item containing <code>,</code>)
+:<pre>{{Comma separated list|Item1|Item2, extra|Item3}}</pre>
+:{{Comma separated list|Item1|Item2, extra|Item3}}
+::'''''Explanation:''' when an item contains a comma (<code>,</code>), a semi-colon (<code>;</code>) is used as the default delimeter.''
+
+;Specify delimeter (with an item containing <code>,</code>)
+:<pre>{{Comma separated list|Item1|Item2, extra|Item3|delim=,}}</pre>
+:{{Comma separated list|Item1|Item2, extra|Item3|delim=,}}
+::'''''Explanation:''' the <code>delim=</code> parameter overrides the default delimeter, which in this case was a semi-colon (<code>;</code>).''
+
+;Delimter override and no conjunction
+:<pre>{{Comma separated list|Item1|Item2|Item3|delimOverride=<nowiki><nowiki></nowiki> + </nowiki>|noconj=true}}</pre>
+:{{Comma separated list|Item1|Item2|Item3|delimoverride=<nowiki> + </nowiki>|noconj=true}}
+::'''''Explanation:''' the <code>delimOverride=</code> parameter overrides the delimeter entirely, as it is concatenated with a space by default. The <code>noconj=</code> parameter specifies whether to include the conjunction before the final entry.''
+
+;Final delimeter removal (Oxford comma, serial comma, series comma)
+:<pre>{{Comma separated list|Item1|Item2|Item3|nolastdelim=true}}</pre>
+:{{Comma separated list|Item1|Item2|Item3|nolastdelim=true}}
+
+;"Linkify" items
+:<pre>{{Comma separated list|Item1|Item2|Item3|link=true}}</pre>
+:{{Comma separated list|Item1|Item2|Item3|link=true}}
+
+{{---}}
+
+;Empty
+:<pre>{{Comma separated list|}}</pre>
+:{{Comma separated list|}}
+
+:<pre>{{Comma separated list}}</pre>
+:{{Comma separated list}}

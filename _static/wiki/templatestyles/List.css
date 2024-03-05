@@ -1,0 +1,12 @@
+.plist,
+.plainlist,
+.plain-list {
+    list-style-type: none;
+    gap: 0;
+}
+
+.plist li,
+.plainlist li,
+.plain-list li {
+    margin-inline: 0;
+}

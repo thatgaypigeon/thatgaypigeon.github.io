@@ -1,0 +1,26 @@
+<pre>test<br>test<br/>test</br></pre>
+{{#invoke:split br|main|test<br>test<br/>test</br>}}
+
+<pre>test
+
+test
+
+test
+
+</pre>
+{{#invoke:split br|main|test
+
+test
+
+test
+
+}}
+
+<pre>test
+test
+test
+</pre>
+{{#invoke:split br|main|test
+test
+test
+}}

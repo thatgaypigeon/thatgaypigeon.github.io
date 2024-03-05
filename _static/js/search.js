@@ -152,15 +152,11 @@ function search(documents, query) {
                 // resultElement.appendChild(imageWrapperElement)
                 resultElement.appendChild(imageElement)
 
-                const headerElement = document.createElement("div")
-                headerElement.classList.add("result-header")
-                resultElement.appendChild(headerElement)
-
                 const nameElement = document.createElement(result.code ? "code" : "p")
                 nameElement.classList.add("result-name")
                 nameElement.innerHTML =
                     fuzzysort.highlight(searchResult[0], "<mark>", "</mark>") || escapeHtml(result.name)
-                headerElement.appendChild(nameElement)
+                resultElement.appendChild(nameElement)
 
                 const infoElement = document.createElement("div")
                 infoElement.classList.add("result-info")
@@ -223,7 +219,7 @@ function search(documents, query) {
 
                 infoElement.appendChild(dateWrapperElement)
 
-                headerElement.appendChild(infoElement)
+                resultElement.appendChild(infoElement)
 
                 // const categoriesElement = document.createElement("p")
                 // categoriesElement.classList.add("result-cats")
@@ -252,8 +248,19 @@ function search(documents, query) {
 function performSearch() {
     const query = searchBox.value
 
+    const notFoundText = "<span>Uh oh! No results found!</span>"
+
+    const noResults = document.createElement("div")
+    noResults.className = "no-results"
+    noResults.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15 1H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2m-4 15H9v-2h2zm2.7-7.6a5 5 0 0 1-.3.7a2.7 2.7 0 0 1-.5.6l-.5.5a2.7 2.7 0 0 1-.6.5c-.2.2-.3.4-.5.6a1.9 1.9 0 0 0-.3.8a3.4 3.4 0 0 0-.1 1H9.1a5 5 0 0 1 .1-1.2a3 3 0 0 1 .2-.9a2.5 2.5 0 0 1 .4-.7l.6-.6a1.8 1.8 0 0 1 .5-.4c.2-.1.3-.3.4-.4l.3-.6a1.7 1.7 0 0 0 .1-.7a3 3 0 0 0-.2-.9a2.2 2.2 0 0 0-1-.9a.9.9 0 0 0-.5-.1a1.68 1.68 0 0 0-1.5.7A2.86 2.86 0 0 0 8 8.1H6.2a5.1 5.1 0 0 1 .3-1.7a3.5 3.5 0 0 1 .8-1.3a3.6 3.6 0 0 1 1.2-.8a5.1 5.1 0 0 1 1.7-.3a6 6 0 0 1 1.4.2a2.6 2.6 0 0 1 1.1.7a4.4 4.4 0 0 1 .8 1.1a4 4 0 0 1 .3 1.5a3 3 0 0 1-.1.9"/></svg>${notFoundText}`
+
+    // '<div class="no-results">No results found</div>'
+    const searchWiki = document.createElement("a")
+    searchWiki.id = "search-wiki"
+    searchWiki.textContent = "Search the wiki!"
+
     searchResults.innerHTML = ""
-    searchInfo.innerHTML = '<div class="no-results">No results found</div>'
+    searchInfo.innerHTML = noResults.outerHTML
 
     if (query) {
         const startTime = performance.now()
@@ -289,6 +296,15 @@ function performSearch() {
                         searchInfo.innerHTML = `<div class="result-info">${numResults} results in ${elapsedTime}ms</div><div class="results-per-page">Showing ${numResultsPerPage} result${
                             numResultsPerPage !== 1 ? "s" : ""
                         }</div>`
+                    } else {
+                        // } else if (!categories.includes("wiki")) {
+                        searchWiki.href = `https://pigeon.miraheze.org/wiki/Special:Search?profile=default&search=${query}&fulltext=1`
+                        searchWiki.innerHTML = `<i class="ph-bold ph-magnifying-glass"></i>Search the wiki for "<b>${query}</b>"`
+
+                        const noResultsSearchWiki = noResults.cloneNode(true)
+                        noResultsSearchWiki.appendChild(searchWiki)
+
+                        searchInfo.innerHTML = noResultsSearchWiki.outerHTML
                     }
                 })
                 .catch((error) => console.error("Error performing search: ", error))
@@ -330,6 +346,14 @@ searchFilters.querySelectorAll("input[type=checkbox]").forEach((filter) => {
             performSearch()
         }
 
+        if (searchFilters.querySelectorAll("input[type=checkbox]:checked").length <= 1) {
+            searchFilters.querySelector(`input[type=checkbox]:checked`).setAttribute("disabled", "")
+        } else {
+            searchFilters.querySelectorAll(`input[type=checkbox]`).forEach((filter) => {
+                filter.removeAttribute("disabled")
+            })
+        }
+
         if (this.value === "all") {
             if (this.checked) {
                 searchFilters.setAttribute("all", "")
@@ -338,9 +362,15 @@ searchFilters.querySelectorAll("input[type=checkbox]").forEach((filter) => {
                 })
             } else {
                 searchFilters.removeAttribute("all")
-                searchFilters.querySelectorAll("input[type=checkbox]:not([value='all'])").forEach((filter) => {
-                    filter.removeAttribute("disabled")
-                })
+                if (searchFilters.querySelectorAll("input[type=checkbox]:checked").length <= 1) {
+                    searchFilters.querySelectorAll(`input[type=checkbox]`).forEach((element) => {
+                        if (element.checked) {
+                            element.setAttribute("disabled", "")
+                        } else {
+                            element.removeAttribute("disabled")
+                        }
+                    })
+                }
             }
         }
     })

@@ -1,0 +1,57 @@
+: <code><nowiki>{{{1}}}</nowiki></code> defaults to <code><nowiki>{{FULLPAGENAME}}</nowiki></code>
+: <code><nowiki>{{{2}}}</nowiki></code> defaults to <code><nowiki>{{{1}}}</nowiki></code>
+: <code><nowiki>{{{3}}}</nowiki></code> defaults to None
+: <code><nowiki>{{{4}}}</nowiki></code> (<code>ctx</code>) defaults to None
+
+== Examples ==
+{|class="wikitable
+! Input !! Output !! Equivalent wikitext markup
+|-
+|{{tx|Link}} || {{Link}} || {{code|<nowiki>[[{{FULLPAGENAME}}]]</nowiki>}}
+|-
+|{{tx|Link|Page}} || {{Link|Page}} || {{code|<nowiki>[[Page]]</nowiki>}}
+|-
+|{{tx|Link|Page|Display}} || {{Link|Page|Display}} || {{code|<nowiki>[[Page|Display]]</nowiki>}}
+|-
+|{{tx|Link|Page||Section}} || {{Link|Page||Section}} || {{code|<nowiki>[[Page#Section|Page § Section]]</nowiki>}}
+|-
+|{{tx|Link|Page|Display|Section}} || {{Link|Page|Display|Section}} || {{code|<nowiki>[[Page#Section|Display § Section]]</nowiki>}}
+|-
+|{{tx|Link||Display}} || {{Link||Display}} || {{code|<nowiki>[[{{FULLPAGENAME}}|Display]]</nowiki>}}
+|-
+|{{tx|Link|||Section}} || {{Link|||Section}} || {{code|<nowiki>[[{{FULLPAGENAME}}#Section|§ Section]]</nowiki>}}
+|-
+|{{tx|Link||Display|Section}} || {{Link||Display|Section}} || {{code|<nowiki>[[{{FULLPAGENAME}}#Section|Display § Section]]</nowiki>}}
+|-
+!colspan="3" | With categories
+|-
+|{{tx|Link|:Category:Page}} || {{Link|:Category:Page}} || {{code|<nowiki>[[:Category:Page|Category:Page]]</nowiki>}}
+|-
+|{{tx|Link|:Category:Page|Display}} || {{Link|:Category:Page|Display}} || {{code|<nowiki>[[:Category:Page|Display]]</nowiki>}}
+|-
+!colspan="3" | With CTX
+|-
+|{{tx|Link|Page|ctx=CTX}} || {{Link|Page|ctx=CTX}} || {{code|<nowiki>[[Page (CTX)]]</nowiki>}}
+|-
+|{{tx|Link|Page|Display|ctx=CTX}} || {{Link|Page|Display|ctx=CTX}} || {{code|<nowiki>[[Page (CTX)|Display]]</nowiki>}}
+|-
+|{{tx|Link|Page||Section|ctx=CTX}} || {{Link|Page||Section|ctx=CTX}} || {{code|<nowiki>[[Page (CTX)#Section|Page (CTX) § Section]]</nowiki>}}
+|-
+|{{tx|Link|Page|Display|Section|ctx=CTX}} || {{Link|Page|Display|Section|ctx=CTX}} || {{code|<nowiki>[[Page (CTX)#Section|Display]]</nowiki>}}
+|-
+!colspan="3" | Specify CTX display
+|-
+|{{tx|Link|Page|ctx=CTX|nodisplayctx=true}} || {{Link|Page|ctx=CTX|nodisplayctx=true}} || {{code|<nowiki>[[Page (CTX)|Page]]</nowiki>}}
+|-
+|{{tx|Link|Page||Section|ctx=CTX|nodisplayctx=true}} || {{Link|Page||Section|ctx=CTX|nodisplayctx=true}} || {{code|<nowiki>[[Page (CTX)#Section|Page § Section]]</nowiki>}}
+|-
+!colspan="3" | As string
+|-
+|{{tx|Link|<nowiki>Page#Section{{!}}Display</nowiki>}} || {{Link|Page#Section{{!}}Display}} || {{code|<nowiki>[[Page#Section|Display]]</nowiki>}}
+|-
+|{{tx|Link|<nowiki>#Section{{!}}Display</nowiki>}} || {{Link|#Section{{!}}Display}} || {{code|<nowiki>[[#Section|Display]]</nowiki>}}
+|- <!-- <nowiki> below unnecessary, but keeps things consisten -->
+|{{tx|Link|<nowiki>#Section</nowiki>}} || {{Link|#Section}} || {{code|<nowiki>[[#Section|§ Section]]</nowiki>}}
+|-
+|{{tx|Link|<nowiki>{{!}}Display</nowiki>}} || {{Link|{{!}}Display}} || {{code|<nowiki>[[{{FULLPAGENAME}}|Display]]</nowiki>}}
+|}

@@ -1,0 +1,29 @@
+obj array(*args, **kwargs):
+    func self.all(func: function = (el => el)) -> bool:
+        """
+        Returns `true` only if **all** elements of the array return `true` given a specified `function`, else it returns `false`.
+
+        Parameters
+        ----------
+        func: function
+
+        """
+        for element in self:
+            return false if not func(element)
+        return true
+
+Returns [[../boolean#true|`true`]] only if **all** elements of the array return `true` given a specified `[[../function]]`, else it returns [[../boolean#false|`false`]].
+
+```pigeon
+> arr = [0, 1, 2, 3, 4]
+> arr.all(el => el > 3)
+false
+```
+
+## Parameters
+
+### **`func`** [:version 1.0.0] [:param_func] [:param_optional] {: toc="func"}
+
+A `[[../function]]` object.
+
+: If no function is declared, it defaults to checking if items are [[boolean#truthy-values|truthy]].

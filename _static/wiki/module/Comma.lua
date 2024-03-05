@@ -1,0 +1,1 @@
+#REDIRECT [[Module:Comma separated list]]

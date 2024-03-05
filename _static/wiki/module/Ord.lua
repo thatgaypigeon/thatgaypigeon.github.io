@@ -1,0 +1,1 @@
+return { main = function ( frame ) return mw.ustring.codepoint(frame.args[1]) end }

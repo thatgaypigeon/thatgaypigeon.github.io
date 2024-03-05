@@ -1,0 +1,16 @@
+<includeonly>{{#if:{{{1|}}}|{{#if:{{{2|}}}|<!--
+--><templatestyles src="Template:Quote/styles.css" /><!--
+--><div class="quote"><!--
+    --><div class="main">{{{1|}}}</div><!--
+    --><div class="source"><!--
+        --><span class="author">{{{2|}}}</span>{{#if:{{{source|{{{src|{{{3|}}}}}}}}}
+               |<span class="separator blank-select"> • </span>{{{source|{{{src|{{{3|}}}}}}}}}
+           }}{{#if:{{{date|{{{4|}}}}}}
+               |<span class="separator blank-select"> • </span>{{{date|{{{4|}}}}}}
+           }}<!--
+    --></div><!--
+--></div>|{{Error|No source provided.}}}}|{{Error|No quote provided}}
+}}</includeonly><noinclude>
+{{Documentation}}
+[[Category:Quote templates| ]]
+</noinclude>

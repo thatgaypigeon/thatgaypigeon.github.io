@@ -1,0 +1,78 @@
+<includeonly>
+<templatestyles src="Template:Infobox/styles.css" />
+<infobox type="musician" theme-source="theme">
+    <title source="name">
+        <default>{{PAGENAME}}</default>
+    </title>
+    <figure source="image">
+        <figcaption source="caption">
+            <default>{{{name|{{PAGENAME}}}}}</default>
+        </figcaption>
+    </figure>
+    <group>
+        <header>Overview</header>
+        <data source="birth_name">
+            <label>Birth name</label>
+        </data>
+        <data source="alias">
+            <label>Also known as</label>
+        </data>
+        <data source="born">
+            <label>Born</label>
+        </data>
+        <data source="origin">
+            <label>Origin</label>
+        </data>
+        <data source="died">
+            <label>Died</label>
+        </data>
+        <data source="spouse">
+            <label>Spouse(s)</label>
+        </data>
+        <data source="partner">
+            <label>Partner(s)</label>
+        </data>
+        <data source="members">
+            <label>Members</label>
+        </data>
+        <data source="past_members">
+            <label>Former members</label>
+        </data>
+        <data source="touring_musicians">
+            <label>Touring musicians</label>
+        </data>
+    </group>
+    <group>
+        <header>Career</header>
+        <data source="occupations">
+            <label>Occupations</label>
+        </data>
+        <data source="instruments">
+            <label>Instruments</label>
+        </data>
+        <data source="genre">
+            <label>Genres</label>
+        </data>
+        <data source="years_active">
+            <label>Years active</label>
+        </data>
+        <data source="label">
+            <label>Label</label>
+        </data>
+        <data source="member_of">
+            <label>Member of</label>
+        </data>
+        <data source="formerly_of">
+            <label>Formerly of</label>
+        </data>
+    </group>
+    <group>
+        <data source="url">
+            <label>Website</label>
+        </data>
+    </group>
+</infobox></includeonly><noinclude>
+{{Documentation}}
+[[Category:Person infoboxes]]
+[[Category:Music infoboxes]]
+</noinclude>
