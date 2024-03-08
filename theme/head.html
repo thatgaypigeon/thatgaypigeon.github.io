@@ -1,15 +1,17 @@
+{% set title_site_name %}  • The Nest{% if page and page.file and page.file.src_uri.startswith("wiki/")%} Wiki{% endif %}{% endset %}
+
 <!-- Metadata -->
-<title>{% if page_title %}
-        {{ page_title }}
+<title>
+    {% if page_title %}
+        {{ page_title.__dict__ }}
     {% elif (page and page.title) or page_name or page_title_name %}
         {% if page and page.title %}
-            {{ page.title }}
+            {{ page.title | trim }}{{ title_site_name }}
         {% elif page_title_name %}
-            {{ page_title_name }}
+            {{ page_title_name | trim }}{{ title_site_name }}
         {% elif page_name %}
-            {{ page_name }}
+            {{ page_name | trim }}{{ title_site_name }}
         {% endif %}
-         • The Nest{% if page and page.file and page.file.src_uri.startswith("wiki/") %} Wiki{% endif %}
     {% endif %}
 </title>
 <meta name="application-name" content="The Nest" />
