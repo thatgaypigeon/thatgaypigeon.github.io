@@ -16,5 +16,5 @@
 ## Other projects
 
 * [[/mythical-madness|Mythical Madness]]
-* `[[/pigeon-md]]`
+* [[/pigeon-md|Pigeon Markdown]]
 * [[/stego-suite|Stego Suite]]
