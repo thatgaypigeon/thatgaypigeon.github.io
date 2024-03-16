@@ -10,20 +10,21 @@ Here is the list of tools I used to make this site and host it completely for fr
 ### Hosting
 
 * [FreeDNS.org](https://freedns.org) - To obtain a free domain name (`pigeon.uk.to`) and point it to my GitHub Pages site.
-* [GitHub Pages](https://pages.github.com) - To host my files on GitHub and deploy them for free.
+* [**GitHub Pages**](https://pages.github.com) - To host my files on GitHub and deploy them for free.
 
 ### Content
 
-* [MkDocs](https://mkdocs.org) - A helpful tool to convert markdown (`.md`) files to HTML for the web. This means it's way easier to write content and maintain a custom and modular theme.
+* [**MkDocs**](https://mkdocs.org) - A helpful tool to convert markdown (`.md`) files to HTML for the web. This means it's way easier to write content and maintain a custom and modular theme.
 * [FlexSearch](https://github.com/nextapps-de/flexsearch) - A tool to build a static search engine for my site, as well as my other projects.
+* [Tailwind CSS](https://tailwindcss.com/) - A utility-based CSS framework, which helps ensure consistency and speed when writing HTML/CSS styles.
 
 ### Formatting
 
 * [Husky](https://typicode.github.io/husky/) - A GitHub pre-commit tool to automate parts of the build and formatting process.
 * [Prettier](https://prettier.io/) & [markdownlint](https://github.com/DavidAnson/markdownlint) - Tools for applying consistent code formatting.
-  * As well as [black](https://github.com/psf/black), [flake8](https://github.com/PyCQA/flake8), and [isort](https://github.com/pycqa/isort/) for formatting Python scripts.
+  * As well as *~~[black](https://github.com/psf/black), [flake8](https://github.com/PyCQA/flake8), and [isort](https://github.com/pycqa/isort/)~~* [ruff](https://docs.astral.sh/ruff/) for formatting Python scripts.
 
-### Other tools
+### Development tools
 
 * [Pygments](https://pygments.org/) - A Python module for parsing, lexing, and highlighting code blocks.
 * [nanoemoji](https://github.com/googlefonts/nanoemoji) - A tool from Google Fonts to help create custom colour fonts.
