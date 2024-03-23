@@ -17,6 +17,9 @@
   "heading-style": {
     "style": "atx"
   },
+  "hr-style": {
+    "style": "---"
+  },
   "line-length": false,
   "no-duplicate-heading": {
     "siblings_only": true
@@ -30,6 +33,9 @@
   },
   "ol-prefix": {
     "style": "ordered"
+  },
+  "single-title": {
+    "front_matter_title": "(?!)"
   },
   "strong-style": {
     "style": "asterisk"
