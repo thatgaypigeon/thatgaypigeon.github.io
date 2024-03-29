@@ -32,7 +32,7 @@ if echo "$files" | grep -q "\.py$"; then
     # flake8 . --extend-ignore E501
 
     echo -e "${HD2} Running ruff...${RST}"
-    ruff . --ignore E501
+    ruff . --config .ruff.toml
 
     echo -e $DNE
 fi
@@ -62,7 +62,7 @@ fi
 # Run prettier
 if echo "$files" | grep -q ".*"; then
     echo -e "${HD1} Running prettier...${RST}"
-    git diff --staged --name-only | xargs prettier --config .prettierrc --write || true
+    git diff --staged --name-only | xargs prettier --config .prettierrc --ignore-path .prettierignore --write || true
 
     echo -e $DONE
 fi
@@ -70,6 +70,7 @@ fi
 # Run markdownlint
 if echo "$files" | grep -q ".md$"; then
     echo -e "${HD1} Running markdownlint...${RST}"
+
     markdownlint --config .markdownlint.json --fix .
 
     echo -e $DONE
