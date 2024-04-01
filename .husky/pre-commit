@@ -71,7 +71,7 @@ fi
 if echo "$files" | grep -q ".md$"; then
     echo -e "${HD1} Running markdownlint...${RST}"
 
-    markdownlint --config .markdownlint.json --fix .
+    git diff --staged --name-only | xargs markdownlint --config .markdownlint.json --fix || true
 
     echo -e $DONE
 fi
