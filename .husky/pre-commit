@@ -14,12 +14,12 @@ RST="\033[0m" # Reset
 IND="→"
 
 HD1="\n${CLR}${BLD}${IND}"
-HD2="\n  ${CLR}${IND}"
+HD2="\n ${CLR}${IND}"
 
 DONE="\nAll done! ✨ 🍰 ✨"
 
 # Get the list of modified, added, or deleted files
-files=$(git diff --cached --name-only --diff-filter=d)
+files=$(git diff --staged --name-only --diff-filter=d)
 
 # Basic python file checks
 if echo "$files" | grep -q "\.py$"; then
@@ -31,14 +31,17 @@ if echo "$files" | grep -q "\.py$"; then
     # echo -e "${HD2} Running flake8...${RST}"
     # flake8 . --extend-ignore E501
 
+    echo -e "${HD2} Running autoflake...${RST}"
+    echo "$files" | xargs python -m autoflake || true
+
     echo -e "${HD2} Running ruff...${RST}"
-    ruff . --config .ruff.toml
+    echo "$files" | xargs ruff --config .ruff.toml || true
 
     echo -e $DNE
 fi
 
 # Generate icon font
-if echo "$files" | grep -q "^/_static/fonts/TheNestIcons/[^/]*$"; then
+if echo "$files" | grep -q "^/_static/fonts/TheNestIcons/[^/]+$"; then
     echo -e "${HD1} Generating icon font...${RST}"
 
     cd src/_static/fonts/TheNestIcons
@@ -62,16 +65,16 @@ fi
 # Run prettier
 if echo "$files" | grep -q ".*"; then
     echo -e "${HD1} Running prettier...${RST}"
-    git diff --staged --name-only | xargs prettier --config .prettierrc --ignore-path .prettierignore --write || true
+    echo "$files" | xargs bun prettier --config .prettierrc --ignore-path .prettierignore --write || true
 
     echo -e $DONE
 fi
 
 # Run markdownlint
-if echo "$files" | grep -q ".md$"; then
+if echo "$files" | grep -q "\.md$"; then
     echo -e "${HD1} Running markdownlint...${RST}"
 
-    git diff --staged --name-only | xargs markdownlint --config .markdownlint.json --fix || true
+    echo "$files" | xargs bun markdownlint --config .markdownlint.json --fix || true
 
     echo -e $DONE
 fi
