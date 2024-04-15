@@ -9,8 +9,8 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 max_line_length = 120
 
-[*.{json,jsonc,yml,yaml,{*rc}}]
-indent_size = 2
+[*.{cpp,css,h,js,lua,md,mmd,py}]
+indent_size = 4
 
 [.html]
 max_line_length = off
