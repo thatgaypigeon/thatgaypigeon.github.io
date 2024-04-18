@@ -20,4 +20,4 @@ In the meantime, if you want to contribute, feel free to [make a pull request](h
 
 ## More coming soon! :D <a href="#top"><img align="right" height="24px" src="https://api.iconify.design/octicon:move-to-top-16.svg?color=%23ffa724" alt="⤒"/></a>
 
-> *If you want to see how I'm making the site and hosting it completely for free, check out the [FAQ](https://pigeon.uk.to/faq#how-i-made-it)!*
+> *If you want to see how I'm making the site and hosting it completely for <u>free</u>, check out the [FAQ](https://pigeon.uk.to/faq#how-i-made-it)!*
