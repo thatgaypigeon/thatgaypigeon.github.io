@@ -1,4 +1,7 @@
 *.min.*
+
 CNAME
 
-theme
+.well-known/
+build/
+theme/
