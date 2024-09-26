@@ -4,6 +4,8 @@ mkdocs[i18n]
 mkdocs-alias-plugin
 mkdocs-categories-plugin
 mkdocs-caption
+mkdocs-mermaid2-plugin
 mkdocs-minify-plugin
 mkdocs-multirepo-plugin
 mkdocs-redirects
+pymdown-extensions
